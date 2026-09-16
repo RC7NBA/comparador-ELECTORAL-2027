@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brújula Electoral - Elecciones Generales</title>
+    <style>
+        :root {
+            --color-primario: #0f172a;
+            --color-acento: #2563eb;
+            --color-fondo: #f8fafc;
+            --color-tarjeta: #ffffff;
+            --color-borde: #e2e8f0;
+            --color-texto: #1e293b;
+            --color-texto-suave: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.5;
+            padding: 16px;
+        }
+
+        .contenedor {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--color-tarjeta);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 24px;
+            border-bottom: 2px solid var(--color-borde);
+            padding-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 26px;
+            color: var(--color-primario);
+            margin-bottom: 8px;
+        }
+
+        .subtitulo {
+            color: var(--color-texto-suave);
+            font-size: 15px;
+        }
+
+        .seccion {
+            display: none;
+        }
+
+        .seccion.activa {
+            display: block;
+        }
+
+        .instrucciones {
+            background-color: #f1f5f9;
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            border-left: 4px solid var(--color-acento);
+        }
+
+        .tarjeta-competencia {
+            border: 1px solid var(--color-borde);
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 20px;
+            background: #ffffff;
+        }
+
+        .tarjeta-competencia h3 {
+            color: var(--color-primario);
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+
+        .control-deslizador {
+            margin: 14px 0 6px 0;
+        }
+
+        .etiqueta-rango {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--color-texto-suave);
+            margin-top: 4px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #cbd5e1;
+            outline: none;
+            accent-color: var(--color-acento);
+            cursor: pointer;
+        }
+
+        .valor-destacado {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-acento);
+        }
+
+        /* Bloques de propuestas por partido */
+        .bloque-partido {
+            background: #f8fafc;
+            border: 1px solid var(--color-borde);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+
+        .bloque-partido h4 {
+            color: var(--color-primario);
+            margin-bottom: 10px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .insignia-anonima {
+            background-color: #334155;
+            color: #ffffff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .lista-medidas {
+            margin: 10px 0 16px 20px;
+            font-size: 14px;
+            color: var(--color-texto);
+        }
+
+        .lista-medidas li {
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        button.btn-principal {
+            background-color: var(--color-acento);
+            color: #ffffff;
+            border: none;
+            padding: 14px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background 0.2s;
+        }
+
+        button.btn-principal:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* Pantalla de resultados */
+        .tarjeta-resultado {
+            background: #ffffff;
+            border: 1px solid var(--color-borde);
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .resultado-partido {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--color-primario);
+        }
+
+        .resultado-partido span.desvelado {
+            display: block;
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--color-texto-suave);
+            margin-top: 2px;
+        }
+
+        .resultado-afinidad {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--color-acento);
+        }
+
+        .barra-progreso-contenedor {
+            width: 100%;
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .barra-progreso-relleno {
+            height: 100%;
+            background: var(--color-acento);
+            border-radius: 5px;
+            transition: width 0.8s ease;
+        }
+
+        .alerta-privacidad {
+            font-size: 12px;
+            text-align: center;
+            color: var(--color-texto-suave);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+    <header>
+        <h1>Brújula Electoral</h1>
+        <p class="subtitulo">Comparador ponderado e independiente para elecciones generales</p>
+    </header>
+
+    <!-- PASO 1: PONDERACIÓN DE ÁREAS -->
+    <div id="paso-1" class="seccion activa">
+        <div class="instrucciones">
+            <strong>Paso 1 de 3: ¿Qué prioridades tienes para el país?</strong><br>
+            Asigna qué peso debe tener cada área temática en tu valoración final. Si un tema no te preocupa o prefieres ignorarlo, déjalo en 0 y sus propuestas no se computarán.
+        </div>
+        
+        <div id="contenedor-competencias-paso1"></div>
+
+        <button class="btn-principal" onclick="irAlPaso2()">Continuar: Evaluar Propuestas a Ciegas</button>
+    </div>
+
+    <!-- PASO 2: EVALUACIÓN A CIEGAS -->
+    <div id="paso-2" class="seccion">
+        <div class="instrucciones">
+            <strong>Paso 2 de 3: Test a ciegas de medidas</strong><br>
+            Los nombres de los partidos se han sustituido por letras anónimas (Partido A, B, C, D, E). Valora de 0 a 10 cuánto coincide cada paquete de medidas con lo que tú deseas, basándote exclusivamente en el contenido.
+        </div>
+
+        <div id="contenedor-evaluacion"></div>
+
+        <button class="btn-principal" onclick="calcularYMostrarResultados()">Calcular mi afinidad y desvelar resultados</button>
+    </div>
+
+    <!-- PASO 3: RESULTADOS Y DESVELADO -->
+    <div id="paso-3" class="seccion">
+        <div class="instrucciones">
+            <strong>Paso 3 de 3: Tu afinidad programática contrastada</strong><br>
+            A continuación se revela la correspondencia entre las letras anónimas y las formaciones políticas reales, ordenadas según la afinidad obtenida en función de tus ponderaciones.
+        </div>
+
+        <div id="contenedor-resultados"></div>
+
+        <button class="btn-principal" onclick="reiniciar()">Comenzar una nueva valoración</button>
+        <p class="alerta-privacidad">🔒 Privacidad total: ningún dato se envía a ningún servidor. Toda la ponderación matemática ocurre únicamente en tu navegador.</p>
+    </div>
+</div>
+
+<script>
+    // -------------------------------------------------------------
+    // BASE DE DATOS ESTRUCTURADA
+    // Aquí se actualizarán los textos conforme salgan los programas.
+    // -------------------------------------------------------------
+
+    const competencias = [
+        {
+            id: "vivienda",
+            nombre: "1. Vivienda y Suelo",
+            desc: "Acceso a la vivienda, regulación del alquiler, parque público, desalojos y fiscalidad inmobiliaria."
+        },
+        {
+            id: "fiscalidad",
+            nombre: "2. Impuestos y Fiscalidad",
+            desc: "Presión fiscal, IRPF, Sociedades, deducciones, lucha contra el fraude y tramos impositivos."
+        },
+        {
+            id: "empleo",
+            nombre: "3. Empleo y Modelo Laboral",
+            desc: "Salario Mínimo Interprofesional (SMI), jornada laboral, tipos de contratación y negociación colectiva."
+        },
+        {
+            id: "pensiones",
+            nombre: "4. Pensiones y Seguridad Social",
+            desc: "Edad legal de jubilación, revalorización conforme al IPC y sostenibilidad del sistema público."
+        },
+        {
+            id: "sanidad",
+            nombre: "5. Sanidad Pública",
+            desc: "Financiación estatal, listas de espera, salud mental y colaboración público-privada."
+        },
+        {
+            id: "educacion",
+            nombre: "6. Educación y Universidades",
+            desc: "Modelo de escuela pública y concertada, política de becas, ratios de aulas y pruebas comunes."
+        },
+        {
+            id: "energia",
+            nombre: "7. Energía y Transición Ecológica",
+            desc: "Energía nuclear, despliegue de renovables, mercados eléctricos e impuestos al combustible."
+        },
+        {
+            id: "modelo_estado",
+            nombre: "8. Modelo de Estado y Financiación Autonómica",
+            desc: "Descentralización, régimen de financiación territorial y reparto de competencias entre Estado y CCAA."
+        },
+        {
+            id: "justicia",
+            nombre: "9. Justicia y Seguridad Ciudadana",
+            desc: "Código Penal, ocupación de inmuebles, Ley de Seguridad Ciudadana y elección de órganos judiciales."
+        },
+        {
+            id: "politica_exterior",
+            nombre: "10. Política Exterior y Defensa",
+            desc: "Presupuesto en Defensa (OTAN), política migratoria y fronteras, y relaciones dentro de la UE."
+        }
+    ];
+
+    // Partidos con sus medidas desglosadas en viñetas literales
+    const partidos = [
+        {
+            id: "partido_a",
+            alias: "Partido A",
+            nombreReal: "Partido Socialista Obrero Español (PSOE)",
+            medidas: {
+                vivienda: [
+                    "Plan de vivienda para alquiler asequible: 201.000 viviendas mediante convenios con CCAA, ayuntamientos y SEPES, más 50.000 de la SAREB.",
+                    "Fijar por ley una reserva obligatoria del 50% de vivienda protegida para alquiler asequible en nuevos desarrollos.",
+                    "Cuenta de ahorro bonificada para adquisición de primera vivienda destinada a jóvenes de hasta 39 años.",
+                    "Línea de avales ICO dotada con 2.500 M€ para cubrir el 20% de la hipoteca a menores de 35 años.",
+                    "Reforma procesal para garantizar el desalojo de ocupantes ilegales en un plazo de 48 horas."
+                ],
+                fiscalidad: [
+                    "Mantenimiento del gravamen extraordinario a grandes entidades bancarias y energéticas.",
+                    "Aumento de la progresividad en el IRPF para las rentas del capital superiores a 300.000 euros.",
+                    "Impulso a la armonización fiscal europea para evitar la elusión en gigantes tecnológicos."
+                ],
+                empleo: [
+                    "Compromiso de mantener por ley el SMI en el 60% del salario medio nacional.",
+                    "Apertura del diálogo social para la reducción progresiva de la jornada laboral hacia las 37,5 horas.",
+                    "Estatuto del Becario para regular prácticas no laborales remuneradas."
+                ],
+                pensiones: [
+                    "Garantía de revalorización anual de todas las pensiones vinculada directamente al IPC de forma indefinida.",
+                    "Reposición progresiva del Fondo de Reserva de la Seguridad Social a través del Mecanismo de Equidad Intergeneracional."
+                ],
+                sanidad: [
+                    "Plan de choque para fijar tiempos máximos de espera garantizados por ley en todo el territorio.",
+                    "Estrategia Nacional de Salud Mental dotada con 100 millones de euros y aumento de psicólogos en primaria."
+                ],
+                educacion: [
+                    "Incremento progresivo de la dotación presupuestaria estatal para el sistema general de becas.",
+                    "Gratuidad en la escolarización del ciclo infantil de 0 a 3 años mediante cofinanciación con las CCAA."
+                ],
+                energia: [
+                    "Cumplimiento del calendario acordado de cierre escalonado de las centrales nucleares entre 2027 y 2035.",
+                    "Objetivo del 81% de generación eléctrica a partir de fuentes renovables para el horizonte 2030."
+                ],
+                modelo_estado: [
+                    "Consolidación del estado autonómico mediante diálogo multilateral y reforma del sistema de financiación caducado.",
+                    "Desconcentración de sedes de organismos estatales fuera de la capital del Estado."
+                ],
+                justicia: [
+                    "Reforma del sistema de acceso a la carrera judicial mediante becas públicas para garantizar igualdad de oportunidades.",
+                    "Culminación de la derogación de los preceptos lesivos de la Ley de Seguridad Ciudadana."
+                ],
+                politica_exterior: [
+                    "Incremento del presupuesto de defensa hasta alcanzar el 2% del PIB nacional en cumplimiento con la OTAN.",
+                    "Pacto de Migración y Asilo europeo basado en el principio de solidaridad obligatoria entre Estados miembros."
+                ]
+            }
+        },
+        {
+            id: "partido_b",
+            alias: "Partido B",
+            nombreReal: "Partido Popular (PP)",
+            medidas: {
+                vivienda: [
+                    "Derogación inmediata de la actual Ley de Vivienda y propuesta de un Pacto de Estado conjunto.",
+                    "Programa de avales para jóvenes de hasta 35 años para posibilitar créditos hipotecarios de hasta el 95% del valor.",
+                    "Cesión de suelo público a promotores para edificación de vivienda en régimen de alquiler accesible.",
+                    "Plan antiocupación con desalojo exprés en plazo de 24 horas y exención de tributos locales para la vivienda afectada.",
+                    "Aumento a 3 años de las penas de prisión por usurpación de inmuebles y agravante por bandas organizadas."
+                ],
+                fiscalidad: [
+                    "Deflactación inmediata de la tarifa del IRPF para rentas medias y bajas para compensar la inflación.",
+                    "Supresión del Impuesto sobre Grandes Fortunas y bonificación general del Impuesto sobre el Patrimonio.",
+                    "Reducción transitoria del IVA de la carne, el pescado y las conservas al tipo superreducido."
+                ],
+                empleo: [
+                    "Flexibilización de la contratación temporal ajustada a las necesidades productivas de las PYMES.",
+                    "Tarifa reducida para nuevos autónomos ampliada y supresión de trabas administrativas para la creación de empresas.",
+                    "Revisión de las bonificaciones a la contratación indefinida para colectivos de difícil inserción."
+                ],
+                pensiones: [
+                    "Compromiso con la revalorización de las pensiones y adopción de medidas en el Pacto de Toledo para la sostenibilidad.",
+                    "Incentivos fiscales ampliados para el ahorro a largo plazo y fomento de los planes de pensiones de empleo."
+                ],
+                sanidad: [
+                    "Plan integral de choque para solventar el déficit de médicos especialistas en Atención Primaria y Medicina Comunitaria.",
+                    "Aprovechamiento flexible de todos los recursos disponibles, incluyendo la concertación público-privada, para rebajar listas."
+                ],
+                educacion: [
+                    "Implantación de una prueba común de Evaluación de Bachillerato para el Acceso a la Universidad (EBAU) en toda España.",
+                    "Garantía de la libre elección de centro escolar por parte de los progenitores y defensa de la enseñanza concertada."
+                ],
+                energia: [
+                    "Moratoria y ampliación de la vida útil de las centrales nucleares existentes para garantizar el suministro de base.",
+                    "Agilización burocrática integral en la tramitación ambiental de proyectos fotovoltaicos y eólicos."
+                ],
+                modelo_estado: [
+                    "Defensa del principio de lealtad constitucional e igualdad jurídica de todos los ciudadanos españoles en cualquier territorio.",
+                    "Rechazo a la condonación de deuda autonómica selectiva o a la cesión de cupos fiscales singulares."
+                ],
+                justicia: [
+                    "Reforma de la Ley Orgánica del Poder Judicial para que los vocales jueces del CGPJ sean elegidos directamente por jueces.",
+                    "Tipificación agravada en el Código Penal del delito de deslealtad constitucional y restitución de la sedición."
+                ],
+                politica_exterior: [
+                    "Refuerzo del compromiso euroatlántico en el marco de la OTAN y equipamiento reforzado a las Fuerzas Armadas.",
+                    "Endurecimiento del control de fronteras exteriores en Ceuta y Melilla mediante despliegue y medios materiales adicionales."
+                ]
+            }
+        },
+        {
+            id: "partido_c",
+            alias: "Partido C",
+            nombreReal: "Vox",
+            medidas: {
+                vivienda: [
+                    "Reforma del Código Penal: tolerancia cero con la ocupación ilegal y exención del IBI al propietario durante la ocupación.",
+                    "Recuperación de la deducción fiscal por adquisición de vivienda habitual y eliminación del IVA en la primera compra.",
+                    "Liberalización masiva del suelo que no esté sujeto a protección medioambiental o cultural estricta.",
+                    "Impulso a la construcción de vivienda social pública reduciendo trabas administrativas y tasas edificatorias.",
+                    "Derogación de la ley estatal de vivienda y fijación de prioridad nacional en todas las líneas de ayudas públicas."
+                ],
+                fiscalidad: [
+                    "Simplificación del IRPF a dos tipos únicos: un 15% para rentas hasta 70.000€ y un 25% para el resto, con bonificaciones por hijo.",
+                    "Rebaja drástica del Impuesto de Sociedades general al 15% para empresas de cualquier tamaño.",
+                    "Supresión definitiva de los impuestos sobre Sucesiones, Donaciones y Actos Jurídicos Documentados en todo el país."
+                ],
+                empleo: [
+                    "Exoneración total de cargas sociales a las empresas durante el primer año en contratos indefinidos a trabajadores españoles.",
+                    "Derogación de las normativas de cuotas obligatorias por razón de género o procedencia en consejos de administración.",
+                    "Reducción sustancial del número y dotación económica de subvenciones asignadas a organizaciones sindicales."
+                ],
+                pensiones: [
+                    "Blindaje de las pensiones contributivas mediante la erradicación del gasto político que consideren prescindible.",
+                    "Exención de IRPF para las pensiones de jubilación al entenderse gravadas durante la vida activa laboral."
+                ],
+                sanidad: [
+                    "Centralización y devolución al Estado de todas las competencias sanitarias para unificar tarjeta sanitaria y cartera de servicios.",
+                    "Exclusión de los procedimientos estéticos o de cambio de género de la cartera de financiación pública."
+                ],
+                educacion: [
+                    "Instauración del 'Cheque Escolar' universal para que las familias financien el centro de su elección sin restricción de titularidad.",
+                    "Garantía del derecho a estudiar en lengua castellana en todo el territorio nacional e implantación del pin parental."
+                ],
+                energia: [
+                    "Plan Nacional de Soberanía Energética: reactivación de térmicas y extensión operativa indeterminada de nucleares.",
+                    "Derogación inmediata de la Ley de Cambio Climático y abandono de las restricciones de zonas de bajas emisiones."
+                ],
+                modelo_estado: [
+                    "Aspiración a la transformación hacia un Estado unitario con un solo parlamento nacional y supresión de las CCAA.",
+                    "Ilegalización de fuerzas políticas de corte separatista que atenten contra la unidad territorial de España."
+                ],
+                justicia: [
+                    "Implantación de la cadena perpetua irrevocable para delitos de máxima gravedad como terrorismo y homicidios múltiples.",
+                    "Protección jurídica absoluta y refuerzo del principio de presunción de veracidad para los Cuerpos y Fuerzas de Seguridad."
+                ],
+                politica_exterior: [
+                    "Cierre inmediato de centros de acogida de menores migrantes no acompañados (MENA) y repatriación sistemática a sus países de origen.",
+                    "Defensa del principio de soberanía de los Estados miembros frente a las directivas comunitarias de la Unión Europea."
+                ]
+            }
+        },
+        {
+            id: "partido_d",
+            alias: "Partido D",
+            nombreReal: "Sumar",
+            medidas: {
+                vivienda: [
+                    "Parque residencial de 2 millones de viviendas sociales y asequibles en 10 años, con un gasto público sostenido del 1% del PIB.",
+                    "Bono de emergencia de 1.000€ por hogar ante subidas de hipotecas variables y portabilidad hipotecaria obligatoria.",
+                    "Reforma de la Ley de Vivienda para fijar alquiler social obligatorio a todos los grandes tenedores de inmuebles.",
+                    "Límite legal del precio de alquiler en zonas de mercado tensionado equivalente como máximo al 30% de la renta familiar.",
+                    "Creación de una entidad de banca pública para presionar a la baja en márgenes comerciales del mercado hipotecario."
+                ],
+                fiscalidad: [
+                    "Creación de un impuesto permanente y progresivo a las grandes fortunas a partir de los 3 millones de euros de patrimonio neto.",
+                    "Aumento del gravamen al sector financiero y establecimiento de un tipo efectivo mínimo del 20% sobre beneficios reales.",
+                    "Reducción del IVA a productos alimenticios frescos, productos de higiene femenina y servicios veterinarios."
+                ],
+                empleo: [
+                    "Reducción legal de la jornada laboral de 40 a 32 horas semanales (o 4 días) sin reducción retributiva alguna.",
+                    "Incremento del SMI por encima del IPC hasta situarlo en la media comunitaria.",
+                    "Regulación y restricción de los despidos objetivos para desincentivar las reestructuraciones unilaterales."
+                ],
+                pensiones: [
+                    "Revalorización anual ligada al IPC y eliminación gradual de los topes máximos de cotización de los salarios más altos.",
+                    "Opción voluntaria de jubilación anticipada sin merma económica en profesiones de probada penosidad física o riesgo."
+                ],
+                sanidad: [
+                    "Incorporación progresiva en la cartera básica de la Seguridad Social de la salud bucodental, óptica y fisioterapia.",
+                    "Ley de garantías de gestión pública que prohíba de forma estricta las privatizaciones o concesiones en hospitales nuevos."
+                ],
+                educacion: [
+                    "Plan de choque para una bajada general de ratios escolares a un máximo de 15 a 20 alumnos por clase según etapa.",
+                    "Reducción sustancial del precio de las tasas universitarias y de máster público hasta aproximarse a la gratuidad."
+                ],
+                energia: [
+                    "Plan de aceleración renovable respetando la ordenación del territorio y apoyo masivo a comunidades energéticas locales.",
+                    "Creación de una empresa energética pública para gestionar saltos hidroeléctricos revertidos al Estado."
+                ],
+                modelo_estado: [
+                    "Avance decidido hacia una república federal plurinacional reconociendo el carácter específico de los territorios históricos.",
+                    "Fórmula de financiación solidaria que nivele la prestación de servicios esenciales en todas las comunidades."
+                ],
+                justicia: [
+                    "Derogación completa de la Ley de Seguridad Ciudadana y revisión de tipos penales que afecten a la libertad de expresión.",
+                    "Mecanismo de desbloqueo de órganos constitucionales por mayoría cualificada parlamentaria alternativa."
+                ],
+                politica_exterior: [
+                    "Firma del Tratado de Prohibición de Armas Nucleares de la ONU y reconducción del gasto militar hacia cooperación y transición.",
+                    "Vías de migración legales, seguras y regulares, y cierre definitivo de los Centros de Internamiento de Extranjeros (CIE)."
+                ]
+            }
+        },
+        {
+            id: "partido_e",
+            alias: "Partido E",
+            nombreReal: "Podemos",
+            medidas: {
+                vivienda: [
+                    "Moratoria absoluta de desahucios para familias en situación de vulnerabilidad social y económica sin alternativa habitacional.",
+                    "Obligación legal a los fondos buitre y grandes propietarios de poner el 50% de sus pisos en alquiler social permanente.",
+                    "Tope estricto a las hipotecas de tipo variable para que las cuotas no absorban más del 30% de los ingresos del hogar.",
+                    "Intervención directa del mercado de alquiler con rebajas directas del 50% en zonas fuertemente tensionadas.",
+                    "Sanciones económicas coercitivas para grandes tenedores que mantengan viviendas deshabitadas de forma continuada."
+                ],
+                fiscalidad: [
+                    "Impuesto especial y extraordinario sobre los beneficios caídos del cielo de las grandes distribuidoras de alimentación.",
+                    "Establecimiento de un tipo de IRPF del 55% para las rentas de trabajo y capital superiores a 300.000 euros anuales.",
+                    "Tasa específica contra la especulación inmobiliaria intensiva."
+                ],
+                empleo: [
+                    "Jornada laboral ordinaria de 32 horas semanales o 4 días laborables por mandato de ley y sin merma de retribución.",
+                    "Salario Mínimo Interprofesional fijado en un suelo no inferior a 1.500 euros mensuales.",
+                    "Prohibición taxativa de despidos procedentes en empresas con balances económicos positivos."
+                ],
+                pensiones: [
+                    "Blindaje constitucional de la subida automática con el IPC y rebaja de la edad ordinaria de jubilación a los 65 años.",
+                    "Equiparación de las pensiones mínimas y no contributivas al importe fijado para el Salario Mínimo."
+                ],
+                sanidad: [
+                    "Reversión de todas las concesiones y conciertos privados vigentes hacia el sistema público de gestión directa.",
+                    "Atención bucodental y psicológica 100% gratuita dentro de la cobertura primaria del Sistema Nacional de Salud."
+                ],
+                educacion: [
+                    "Supresión gradual de la financiación pública a centros educativos concertados que segreguen por sexo o cobren cuotas.",
+                    "Gratuidad integral de las matrículas en toda la enseñanza universitaria pública y ciclos superiores de FP."
+                ],
+                energia: [
+                    "Cierre definitivo de las centrales nucleares y prohibición constitucional de la técnica de fractura hidráulica (fracking).",
+                    "Empresa pública estatal de energía con control sobre distribución y fijación de tarifas sociales básicas gratuitas."
+                ],
+                modelo_estado: [
+                    "Reconocimiento explícito del derecho a decidir mediante referéndum pactado para los pueblos y naciones del Estado.",
+                    "Abolición de la monarquía parlamentaria e instauración de un proceso constituyente republicano."
+                ],
+                justicia: [
+                    "Derogación urgente de la Ley de Seguridad Ciudadana y depuración de responsabilidades en la llamada 'policía patriótica'.",
+                    "Reforma del Código Penal para despenalizar las protestas pacíficas, piquetes informativos y delitos contra la Corona."
+                ],
+                politica_exterior: [
+                    "Salida coordinada de las estructuras militares de la OTAN y condena activa de los conflictos armados bilaterales.",
+                    "Regularización extraordinaria e inmediata de todas las personas migrantes residentes en España."
+                ]
+            }
+        }
+    ];
+
+    // Variables de estado del test
+    let pesosUsuario = {};
+    let notasUsuario = {}; // Estructura: { partido_id: { competencia_id: valor } }
+
+    // -------------------------------------------------------------
+    // FUNCIONES DEL FLUJO DE LA APLICACIÓN
+    // -------------------------------------------------------------
+
+    function renderizarPaso1() {
+        const cont = document.getElementById("contenedor-competencias-paso1");
+        let html = "";
+
+        competencias.forEach(c => {
+            html += `
+                <div class="tarjeta-competencia">
+                    <h3>${c.nombre}</h3>
+                    <p style="font-size:14px; color:var(--color-texto-suave); margin-bottom:10px;">${c.desc}</p>
+                    
+                    <div class="control-deslizador">
+                        <label>Importancia para ti: <span id="peso-texto-${c.id}" class="valor-destacado">5</span> / 10</label>
+                        <input type="range" id="slider-peso-${c.id}" min="0" max="10" value="5" 
+                               oninput="document.getElementById('peso-texto-${c.id}').innerText = this.value">
+                        <div class="etiqueta-rango">
+                            <span>0 (Prescindible)</span>
+                            <span>5 (Moderada)</span>
+                            <span>10 (Prioridad máxima)</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        cont.innerHTML = html;
+    }
+
+    function irAlPaso2() {
+        // Guardamos los pesos seleccionados
+        competencias.forEach(c => {
+            pesosUsuario[c.id] = parseInt(document.getElementById(`slider-peso-${c.id}`).value);
+        });
+
+        // Verificamos si al menos una competencia tiene peso > 0
+        const sumaPesos = Object.values(pesosUsuario).reduce((a, b) => a + b, 0);
+        if (sumaPesos === 0) {
+            alert("Por favor, asigna al menos una prioridad superior a 0 para poder ponderar.");
+            return;
+        }
+
+        // Inicializamos las notas
+        partidos.forEach(p => {
+            notasUsuario[p.id] = {};
+        });
+
+        renderizarPaso2();
+
+        document.getElementById("paso-1").classList.remove("activa");
+        document.getElementById("paso-2").classList.add("activa");
+        window.scrollTo(0, 0);
+    }
+
+    function renderizarPaso2() {
+        const cont = document.getElementById("contenedor-evaluacion");
+        let html = "";
+
+        competencias.forEach(c => {
+            // Solo evaluamos las áreas donde el usuario indicó interés (>0)
+            if (pesosUsuario[c.id] > 0) {
+                html += `
+                    <div class="tarjeta-competencia">
+                        <h3>${c.nombre}</h3>
+                        <p style="font-size:14px; color:var(--color-texto-suave); margin-bottom:14px;">
+                            ${c.desc} — <em>(Importancia que le diste: ${pesosUsuario[c.id]}/10)</em>
+                        </p>
+                `;
+
+                partidos.forEach(p => {
+                    // Generamos viñetas de medidas
+                    let viñetas = "";
+                    if (p.medidas[c.id]) {
+                        p.medidas[c.id].forEach(m => {
+                            viñetas += `<li>${m}</li>`;
+                        });
+                    }
+
+                    html += `
+                        <div class="bloque-partido">
+                            <h4><span class="insignia-anonima">${p.alias}</span> Medidas propuestas en este ámbito</h4>
+                            <ul class="lista-medidas">
+                                ${viñetas}
+                            </ul>
+                            <div class="control-deslizador">
+                                <label>Grado de acuerdo: <span id="nota-texto-${p.id}-${c.id}" class="valor-destacado">5</span> / 10</label>
+                                <input type="range" id="slider-nota-${p.id}-${c.id}" min="0" max="10" value="5"
+                                       oninput="document.getElementById('nota-texto-${p.id}-${c.id}').innerText = this.value">
+                                <div class="etiqueta-rango">
+                                    <span>0 (Total desacuerdo)</span>
+                                    <span>5 (Neutral)</span>
+                                    <span>10 (Total acuerdo)</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div>`;
+            }
+        });
+
+        cont.innerHTML = html;
+    }
+
+    function calcularYMostrarResultados() {
+        // Recoger las notas otorgadas a ciegas
+        competencias.forEach(c => {
+            if (pesosUsuario[c.id] > 0) {
+                partidos.forEach(p => {
+                    const val = document.getElementById(`slider-nota-${p.id}-${c.id}`).value;
+                    notasUsuario[p.id][c.id] = parseInt(val);
+                });
+            }
+        });
+
+        // Cálculo matemático: Media Ponderada
+        let resultados = [];
+
+        partidos.forEach(p => {
+            let sumaPonderada = 0;
+            let sumaPesosTotales = 0;
+
+            competencias.forEach(c => {
+                const peso = pesosUsuario[c.id];
+                if (peso > 0) {
+                    const nota = notasUsuario[p.id][c.id];
+                    sumaPonderada += (peso * nota);
+                    sumaPesosTotales += peso;
+                }
+            });
+
+            // Nota sobre 10 convertida a porcentaje sobre 100
+            const notaFinalSobre10 = sumaPonderada / sumaPesosTotales;
+            const porcentaje = (notaFinalSobre10 * 10).toFixed(1);
+
+            resultados.push({
+                alias: p.alias,
+                nombreReal: p.nombreReal,
+                afinidad: parseFloat(porcentaje)
+            });
+        });
+
+        // Ordenamos de mayor afinidad a menor
+        resultados.sort((a, b) => b.afinidad - a.afinidad);
+
+        // Renderizado del Paso 3
+        const cont = document.getElementById("contenedor-resultados");
+        let htmlResultados = "";
+
+        resultados.forEach(res => {
+            htmlResultados += `
+                <div class="tarjeta-resultado">
+                    <div style="flex: 1; min-width: 200px;">
+                        <div class="resultado-partido">
+                            ${res.nombreReal}
+                            <span class="desvelado">Evaluado durante el test como: <strong>${res.alias}</strong></span>
+                        </div>
+                        <div class="barra-progreso-contenedor">
+                            <div class="barra-progreso-relleno" style="width: ${res.afinidad}%;"></div>
+                        </div>
+                    </div>
+                    <div class="resultado-afinidad">
+                        ${res.afinidad}%
+                    </div>
+                </div>
+            `;
+        });
+
+        cont.innerHTML = htmlResultados;
+
+        document.getElementById("paso-2").classList.remove("activa");
+        document.getElementById("paso-3").classList.add("activa");
+        window.scrollTo(0, 0);
+    }
+
+    function reiniciar() {
+        pesosUsuario = {};
+        notasUsuario = {};
+        renderizarPaso1();
+        document.getElementById("paso-3").classList.remove("activa");
+        document.getElementById("paso-1").classList.add("activa");
+        window.scrollTo(0, 0);
+    }
+
+    // Inicialización automática
+    renderizarPaso1();
+</script>
+
+</body>
+</html>
