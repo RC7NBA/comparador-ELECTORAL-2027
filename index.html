@@ -395,8 +395,10 @@
     // 4. MOTOR DE EVALUACIÓN A CIEGAS
     // =====================================================================
     function iniciarEvaluacion() {
-        if (modoElegido === 'personalizado' && puntosTotalesAsignados === 0) {
-            return alert("Debes asignar al menos 1 punto en total a los temas que te importan para poder ponderar tus resultados.");
+        // Bloqueo inteligente: Obligamos a que el presupuesto esté 100% gastado
+        if (modoElegido === 'personalizado' && puntosTotalesAsignados < MAX_PUNTOS) {
+            let puntosFaltantes = MAX_PUNTOS - puntosTotalesAsignados;
+            return alert("⚠️ Atención: Debes repartir exactamente los 100 puntos para que la herramienta sea precisa. Te faltan " + puntosFaltantes + " puntos por asignar.");
         }
 
         let partidosBase = [...BASE_DE_DATOS.partidos_oficiales];
