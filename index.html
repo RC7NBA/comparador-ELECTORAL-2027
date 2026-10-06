@@ -6,68 +6,73 @@
     <title>Brújula Electoral - España (29 Noviembre 2026)</title>
     <style>
         :root {
-            --primario: #0f172a;
-            --acento: #0284c7;
-            --fondo: #f8fafc;
-            --tarjeta: #ffffff;
-            --borde: #e2e8f0;
-            --texto: #334155;
-            --texto-suave: #64748b;
-            --alerta: #ef4444;
-            --exito: #10b981;
+            --primario: #0f172a; --acento: #0284c7; --fondo: #f8fafc;
+            --tarjeta: #ffffff; --borde: #e2e8f0; --texto: #334155;
+            --texto-suave: #64748b; --alerta: #f59e0b; --exito: #10b981;
         }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, system-ui, sans-serif; }
         body { background-color: var(--fondo); color: var(--texto); line-height: 1.6; padding: 15px; }
-        
         .contenedor { max-width: 800px; margin: 0 auto; background: var(--tarjeta); padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         
-        header { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid var(--borde); }
+        header { text-align: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid var(--borde); }
         header h1 { color: var(--primario); font-size: 24px; margin-bottom: 5px; }
-        header p { color: var(--texto-suave); font-size: 14px; }
-
+        
         .seccion { display: none; animation: fadeIn 0.4s ease-in-out; }
         .seccion.activa { display: block; }
-        
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* Botones y Acciones */
+        .btn-accion { width: 100%; background: var(--primario); color: white; border: none; padding: 15px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.2s; }
+        .btn-accion:hover { background: var(--acento); }
+        .btn-secundario { background: #e2e8f0; color: var(--primario); margin-top: 10px; }
+        .btn-secundario:hover { background: #cbd5e1; }
+
+        /* Paso 1: Selección de Modo y Ponderación */
+        .modo-caja { border: 2px solid var(--borde); border-radius: 10px; padding: 20px; margin-bottom: 15px; cursor: pointer; transition: 0.2s; }
+        .modo-caja:hover { border-color: var(--acento); background: #f0f9ff; }
+        .modo-caja h3 { color: var(--acento); margin-bottom: 5px; }
+        
+        .marcador-puntos { position: sticky; top: 10px; background: #e0f2fe; color: var(--primario); padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 18px; margin-bottom: 20px; z-index: 10; border: 2px solid var(--acento); transition: 0.3s; }
+        .marcador-puntos.completo { background: var(--exito); color: white; border-color: var(--exito); }
+        
+        .bloque-ponderacion { border: 1px solid var(--borde); border-radius: 8px; padding: 15px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; background: #fff;}
+        .bloque-ponderacion h3 { font-size: 16px; color: var(--primario); width: 40%;}
+        .control-rango { display: flex; align-items: center; gap: 15px; width: 60%; }
+        .control-rango input { flex: 1; accent-color: var(--acento); cursor: pointer; }
+        .nota-peso { font-weight: bold; font-size: 18px; color: var(--acento); width: 35px; text-align: right; }
+
+        /* Paso 2: Evaluación */
         .cuestion-tarjeta { border: 1px solid var(--borde); border-radius: 10px; padding: 20px; margin-bottom: 25px; background: #fff; }
-        .cuestion-header { margin-bottom: 15px; }
-        .cuestion-header span { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--acento); font-weight: 700; }
-        .cuestion-header h3 { font-size: 18px; color: var(--primario); margin-top: 5px; }
+        .migas-pan { font-size: 11px; text-transform: uppercase; color: var(--texto-suave); font-weight: 700; margin-bottom: 5px; }
+        .cuestion-tarjeta h3 { font-size: 18px; color: var(--primario); margin-bottom: 15px; }
 
         .medida-bloque { background: var(--fondo); border: 1px solid var(--borde); border-radius: 8px; padding: 15px; margin-bottom: 15px; }
-        .medida-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        .insignia-partido { background: var(--primario); color: white; padding: 4px 10px; border-radius: 4px; font-weight: bold; font-size: 13px; }
+        .insignia-partido { background: var(--primario); color: white; padding: 4px 10px; border-radius: 4px; font-weight: bold; font-size: 13px; display: inline-block; margin-bottom: 10px;}
         
-        .cita-literal { font-style: italic; border-left: 3px solid var(--acento); padding-left: 15px; margin: 10px 0; color: var(--texto); font-size: 14px; }
-        .trazabilidad { font-size: 12px; color: var(--texto-suave); margin-bottom: 15px; display: block; }
+        .resumen-neutral { font-size: 15px; color: var(--texto); font-weight: 500; margin-bottom: 10px; }
+        details { background: #f1f5f9; padding: 10px; border-radius: 6px; margin-bottom: 15px; }
+        summary { font-size: 12px; color: var(--acento); cursor: pointer; font-weight: 600; outline: none; }
+        .cita-literal { font-style: italic; border-left: 3px solid var(--acento); padding-left: 10px; margin-top: 10px; font-size: 13px; color: var(--texto-suave); }
         
-        .botonera-voto { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-        .btn-voto { flex: 1; min-width: 90px; padding: 10px 5px; border: 1px solid var(--borde); background: #fff; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.2s; text-align: center; color: var(--texto); }
+        .botonera-voto { display: flex; flex-wrap: wrap; gap: 6px; }
+        .btn-voto { flex: 1; min-width: 80px; padding: 8px 4px; border: 1px solid var(--borde); background: #fff; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; transition: all 0.2s; color: var(--texto); }
         .btn-voto:hover { border-color: var(--acento); }
         .btn-voto.seleccionado { background: var(--acento); color: white; border-color: var(--acento); }
-        
         .no-consta { color: var(--texto-suave); font-size: 13px; font-style: italic; background: #f1f5f9; padding: 10px; border-radius: 6px; text-align: center; }
 
-        .btn-accion { display: block; width: 100%; background: var(--primario); color: white; border: none; padding: 15px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: background 0.3s; }
-        .btn-accion:hover { background: var(--acento); }
-
         /* Resultados */
-        .resultado-item { border: 1px solid var(--borde); padding: 15px; border-radius: 8px; margin-bottom: 15px; display: flex; flex-direction: column; gap: 10px; }
-        .res-header { display: flex; justify-content: space-between; align-items: center; }
+        .resultado-item { border: 1px solid var(--borde); padding: 15px; border-radius: 8px; margin-bottom: 15px; }
+        .res-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
         .res-nombre { font-size: 18px; font-weight: bold; color: var(--primario); }
-        .res-afinidad { font-size: 22px; font-weight: 900; color: var(--acento); }
-        .res-alias { font-size: 13px; color: var(--texto-suave); }
-        
-        .barra-progreso { width: 100%; height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden; }
+        .res-afinidad { font-size: 24px; font-weight: 900; color: var(--acento); }
+        .barra-progreso { width: 100%; height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden; margin-bottom: 10px; }
         .barra-relleno { height: 100%; background: var(--acento); width: 0%; transition: width 1s ease-out; }
+        .metricas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 12px; color: var(--texto-suave); background: #f8fafc; padding: 10px; border-radius: 6px; margin-bottom: 10px;}
+        .alerta-cobertura { grid-column: span 2; font-size: 11px; color: var(--alerta); font-weight: 600; margin-top: 5px; }
         
-        .res-metricas { display: flex; gap: 15px; font-size: 12px; color: var(--texto-suave); margin-top: 5px; border-top: 1px solid var(--borde); padding-top: 10px; }
-        .metrica-cobertura { font-weight: bold; }
-        .rob-alta { color: var(--exito); }
-        .rob-baja { color: var(--alerta); }
+        .desglose-tabla { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 10px; }
+        .desglose-tabla th, .desglose-tabla td { padding: 8px; text-align: left; border-bottom: 1px solid var(--borde); }
+        .desglose-tabla th { color: var(--texto-suave); font-weight: 600; }
     </style>
 </head>
 <body>
@@ -75,38 +80,60 @@
 <div class="contenedor">
     <header>
         <h1>Brújula Electoral</h1>
-        <p>Comparador Oficial - Elecciones Generales 29 Nov 2026</p>
+        <p>Elecciones Generales (29 Noviembre 2026)</p>
     </header>
 
-    <!-- PANTALLA 1: TEST -->
-    <div id="vista-test" class="seccion activa">
-        <div style="background: #e0f2fe; padding: 15px; border-radius: 8px; margin-bottom: 25px; font-size: 14px;">
-            <strong>Metodología de evaluación:</strong> Las identidades de los partidos han sido ocultadas y aleatorizadas. Valora tu grado de acuerdo con la medida <em>literal</em> extraída de cada programa oficial. Si un partido no detalla la medida, no se computará en tu porcentaje final.
-        </div>
+    <!-- PASO 1: SELECCIÓN DE MODO -->
+    <div id="vista-inicio" class="seccion activa">
+        <h2 style="margin-bottom: 15px; font-size: 18px; color: var(--primario);">Paso 1: ¿Cómo quieres ponderar los temas?</h2>
         
-        <div id="contenedor-cuestiones"></div>
-        <button class="btn-accion" onclick="calcularResultados()">Ver Afinidad y Desvelar Partidos</button>
+        <div class="modo-caja" onclick="seleccionarModo('equilibrado')">
+            <h3>⚖️ Modo Equilibrado (Rápido)</h3>
+            <p style="font-size: 14px; color: var(--texto-suave);">Todas las áreas (Sanidad, Vivienda, Economía...) tendrán exactamente la misma importancia en el cálculo de tu resultado final. Ideal para una visión general.</p>
+        </div>
+
+        <div class="modo-caja" onclick="seleccionarModo('personalizado')">
+            <h3>🎯 Modo Personalizado (Preciso)</h3>
+            <p style="font-size: 14px; color: var(--texto-suave);">Tienes 100 puntos para repartir libremente entre las áreas que más te importan. El resultado se ajustará milimétricamente a tus prioridades.</p>
+        </div>
     </div>
 
-    <!-- PANTALLA 2: RESULTADOS -->
+    <!-- PASO 1.5: REPARTO DE 100 PUNTOS (Solo si elige personalizado) -->
+    <div id="vista-100-puntos" class="seccion">
+        <div id="marcador-caja" class="marcador-puntos">
+            Puntos asignados: <span id="contador-puntos">0</span> / 100
+        </div>
+        <p style="font-size: 14px; margin-bottom: 20px; color: var(--texto-suave);">Mueve los deslizadores para repartir tus puntos. Si un tema no te importa, déjalo en 0. No puedes superar los 100 puntos en total.</p>
+        
+        <div id="contenedor-ponderaciones"></div>
+        
+        <button class="btn-accion" onclick="iniciarEvaluacion()">Continuar a la evaluación a ciegas</button>
+        <button class="btn-accion btn-secundario" onclick="volverInicio()">Atrás</button>
+    </div>
+
+    <!-- PASO 2: TEST A CIEGAS -->
+    <div id="vista-paso2" class="seccion">
+        <div style="background: #e0f2fe; padding: 15px; border-radius: 8px; margin-bottom: 25px; font-size: 13px;">
+            <strong>Evaluación a ciegas:</strong> Los partidos (A, B, C...) han sido mezclados al azar. Valora cada medida. Puedes desplegar el texto literal extraído del programa si necesitas confirmar el resumen.
+        </div>
+        <div id="contenedor-cuestiones"></div>
+        <button class="btn-accion" onclick="calcularResultados()">Calcular Afinidad y Desvelar Partidos</button>
+    </div>
+
+    <!-- PASO 3: RESULTADOS -->
     <div id="vista-resultados" class="seccion">
         <h2 style="margin-bottom: 20px; color: var(--primario); text-align:center;">Tu Afinidad Programática</h2>
         <div id="contenedor-resultados"></div>
-        <button class="btn-accion" style="margin-top: 30px; background: var(--texto-suave);" onclick="location.reload()">Volver a empezar</button>
+        <button class="btn-accion btn-secundario" style="margin-top: 30px;" onclick="location.reload()">Empezar un nuevo test</button>
     </div>
 </div>
 
 <script>
     // =====================================================================
-    // 1. EL "JSON" INTERNO: BASE DE DATOS DOCUMENTAL RIGUROSA
-    // Aquí es donde volcaremos los datos cuando salgan los programas en 2026
+    // 1. BASE DE DATOS ESTRUCTURADA (NIVEL 2: Cuestiones Comparables)
     // =====================================================================
-
     const BASE_DE_DATOS = {
-        metadatos: {
-            fecha_elecciones: "2026-11-29",
-            version: "1.0"
-        },
+        metadatos: { fecha: "2026-11-29" },
         partidos_oficiales: [
             { id: "psoe", nombre: "PSOE" },
             { id: "pp", nombre: "Partido Popular" },
@@ -114,254 +141,349 @@
             { id: "sumar", nombre: "Sumar" },
             { id: "podemos", nombre: "Podemos" }
         ],
+        competencias: [
+            { id: "viv", nombre: "Vivienda y Urbanismo" },
+            { id: "fis", nombre: "Fiscalidad e Impuestos" },
+            { id: "san", nombre: "Sanidad Pública" }
+            // Se añadirán el resto aquí...
+        ],
         cuestiones: [
             {
                 id: "viv-001",
-                competencia: "Vivienda",
+                competencia_id: "viv",
+                subcompetencia: "Alquiler",
                 titulo: "Regulación de los precios del alquiler",
-                descripcion: "Posición respecto a la intervención pública en zonas de mercado residencial tensionado.",
                 medidas: {
                     "psoe": {
                         consta: true,
-                        literal: "Consolidaremos la aplicación de la Ley de Vivienda para establecer índices de precios de referencia que topen las subidas en áreas tensionadas.",
-                        fuente: "Programa Electoral, Pág. 42, Apdo. 3"
+                        resumen_neutral: "Mantener la Ley de Vivienda y topar subidas en áreas tensionadas.",
+                        texto_original: "Consolidaremos la aplicación de la Ley de Vivienda para establecer índices de precios de referencia que topen las subidas en áreas tensionadas.",
+                        fuente: "Programa PSOE, Pág. 42"
                     },
                     "pp": {
                         consta: true,
-                        literal: "Derogaremos la actual Ley de Vivienda, eliminando los topes artificiales al precio del alquiler que contraen la oferta.",
-                        fuente: "Programa Electoral, Pág. 18, Apdo. Vivienda"
+                        resumen_neutral: "Derogar la actual Ley de Vivienda y eliminar los topes de precios.",
+                        texto_original: "Derogaremos la actual Ley de Vivienda, eliminando los topes artificiales al precio del alquiler que contraen la oferta.",
+                        fuente: "Programa PP, Pág. 18"
                     },
                     "vox": {
                         consta: true,
-                        literal: "Derogación de la ley por el derecho a la vivienda y recuperación de la libertad de pactos entre propietarios e inquilinos.",
-                        fuente: "Programa Electoral, Pág. 89, Medida 204"
+                        resumen_neutral: "Derogar la ley de vivienda y permitir libre pacto de precios.",
+                        texto_original: "Derogación de la ley por el derecho a la vivienda y recuperación de la libertad de pactos entre propietarios e inquilinos.",
+                        fuente: "Programa VOX, Pág. 89"
                     },
-                    "sumar": {
-                        consta: true,
-                        literal: "Estableceremos precios de referencia para las zonas tensionadas equivalentes, como máximo, al 30% de la renta media de los hogares de la zona.",
-                        fuente: "Programa Electoral, Pág. 112, Apdo. Alquiler"
-                    },
-                    "podemos": {
-                        consta: false // Ejemplo de cómo se gestiona cuando un partido no lo detalla
-                    }
+                    "podemos": { consta: false }
                 }
             },
             {
-                id: "fis-001",
-                competencia: "Fiscalidad",
-                titulo: "Impuestos a grandes fortunas y banca",
-                descripcion: "Gestión de los gravámenes extraordinarios a entidades financieras, energéticas y grandes patrimonios.",
+                id: "fis-037",
+                competencia_id: "fis",
+                subcompetencia: "Impuestos Específicos",
+                titulo: "Eliminación del impuesto a grandes fortunas",
                 medidas: {
-                    "psoe": {
+                    "vox": {
                         consta: true,
-                        literal: "Mantendremos el gravamen extraordinario a grandes entidades bancarias y energéticas para sostener el estado del bienestar.",
-                        fuente: "Programa Electoral, Pág. 21"
+                        resumen_neutral: "Eliminación inmediata del impuesto a las grandes fortunas a nivel nacional.",
+                        texto_original: "Eliminación inmediata del impuesto a las grandes fortunas, sucesiones y donaciones en todo el territorio nacional.",
+                        fuente: "Programa VOX, Pág. 55"
                     },
                     "pp": {
                         consta: true,
-                        literal: "Supresión del Impuesto sobre Grandes Fortunas y diseño de un marco fiscal predecible que atraiga la inversión extranjera.",
-                        fuente: "Programa Electoral, Pág. 34"
-                    },
-                    "vox": {
-                        consta: true,
-                        literal: "Eliminación inmediata del impuesto a las grandes fortunas, sucesiones y donaciones en todo el territorio nacional.",
-                        fuente: "Programa Electoral, Pág. 55"
-                    },
-                    "sumar": {
-                        consta: true,
-                        literal: "Crearemos un impuesto permanente y progresivo a las grandes fortunas a partir de 3 millones de euros y aumentaremos el gravamen financiero.",
-                        fuente: "Programa Electoral, Pág. 45"
-                    },
-                    "podemos": {
-                        consta: true,
-                        literal: "Establecimiento de un tipo mínimo del 20% sobre beneficios reales de la banca y tasa específica a la especulación.",
-                        fuente: "Programa Electoral, Pág. 78"
+                        resumen_neutral: "Supresión del Impuesto sobre Grandes Fortunas.",
+                        texto_original: "Supresión del Impuesto sobre Grandes Fortunas y diseño de un marco fiscal predecible.",
+                        fuente: "Programa PP, Pág. 34"
                     }
                 }
             }
-            // Aquí se irán añadiendo el resto de cuestiones (Pensiones, Empleo, etc.)
         ]
     };
 
     // =====================================================================
-    // 2. LÓGICA DE LA APLICACIÓN (MOTOR CIEGO Y SEGURO)
+    // 2. ESTADO DE LA APLICACIÓN
     // =====================================================================
+    let modoElegido = ''; // 'equilibrado' o 'personalizado'
+    let pesosUsuario = {}; // { "viv": 20, "fis": 15... }
+    let puntosTotalesAsignados = 0;
+    const MAX_PUNTOS = 100;
+    
+    let votosUsuario = {}; // { "viv-001": { "psoe": 100, "pp": 0 } }
+    let mapaPartidos = []; // Asignación aleatoria para test ciego
 
-    // Estado del usuario
-    let votosUsuario = {}; // Estructura: { cuestionId: { partidoId: valor_del_0_al_100 } }
-    let mapaPartidos = []; // Mapeo aleatorio: Partido A -> PSOE, Partido B -> PP...
-
-    // Función de saneamiento (Seguridad requerida por el informático)
-    function escaparHTML(texto) {
-        const div = document.createElement('div');
-        div.textContent = texto;
-        return div.innerHTML;
+    function escaparHTML(t) {
+        const div = document.createElement('div'); div.textContent = t; return div.innerHTML;
     }
 
-    // Inicialización del sistema
-    function inicializarApp() {
-        // 1. Aleatorizar partidos para garantizar el test ciego
-        let partidosBase = [...BASE_DE_DATOS.partidos_oficiales];
-        partidosBase.sort(() => Math.random() - 0.5); // Barajar array
-        
-        const alfabeto = "ABCDEFGH".split("");
-        mapaPartidos = partidosBase.map((p, index) => {
-            return {
-                id_real: p.id,
-                nombre_real: p.nombre,
-                alias: "Partido " + alfabeto[index]
-            };
+    function barajar(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    // =====================================================================
+    // 3. NAVEGACIÓN Y LÓGICA DE PUNTOS
+    // =====================================================================
+    function seleccionarModo(modo) {
+        modoElegido = modo;
+        if (modo === 'equilibrado') {
+            iniciarEvaluacion();
+        } else {
+            renderizarDeslizadores100Puntos();
+            document.getElementById('vista-inicio').classList.remove('activa');
+            document.getElementById('vista-100-puntos').classList.add('activa');
+            window.scrollTo(0, 0);
+        }
+    }
+
+    function volverInicio() {
+        document.getElementById('vista-100-puntos').classList.remove('activa');
+        document.getElementById('vista-inicio').classList.add('activa');
+    }
+
+    function renderizarDeslizadores100Puntos() {
+        let htmlPesos = "";
+        BASE_DE_DATOS.competencias.forEach(comp => {
+            if (pesosUsuario[comp.id] === undefined) pesosUsuario[comp.id] = 0; // Iniciar a 0
+            
+            htmlPesos += `
+                <div class="bloque-ponderacion">
+                    <h3>${escaparHTML(comp.nombre)}</h3>
+                    <div class="control-rango">
+                        <input type="range" id="rango-${comp.id}" min="0" max="100" value="${pesosUsuario[comp.id]}" 
+                               oninput="ajustarPuntos('${comp.id}', this)">
+                        <span id="peso-texto-${comp.id}" class="nota-peso">${pesosUsuario[comp.id]}</span>
+                    </div>
+                </div>`;
         });
-
-        renderizarCuestiones();
+        document.getElementById('contenedor-ponderaciones').innerHTML = htmlPesos;
+        actualizarMarcadorUI();
     }
 
-    function renderizarCuestiones() {
-        const contenedor = document.getElementById('contenedor-cuestiones');
-        let html = "";
+    // El motor matemático que impide superar los 100 puntos en tiempo real
+    function ajustarPuntos(compId, inputElement) {
+        let nuevoValor = parseInt(inputElement.value) || 0;
+        let valorAnterior = pesosUsuario[compId];
+        let sumaRestantes = puntosTotalesAsignados - valorAnterior;
+
+        // Si la suma supera los 100, forzamos el límite
+        if (sumaRestantes + nuevoValor > MAX_PUNTOS) {
+            nuevoValor = MAX_PUNTOS - sumaRestantes;
+            inputElement.value = nuevoValor; 
+        }
+
+        pesosUsuario[compId] = nuevoValor;
+        puntosTotalesAsignados = sumaRestantes + nuevoValor;
+
+        document.getElementById(`peso-texto-${compId}`).innerText = nuevoValor;
+        actualizarMarcadorUI();
+    }
+
+    function actualizarMarcadorUI() {
+        const marcadorCaja = document.getElementById('marcador-caja');
+        document.getElementById('contador-puntos').innerText = puntosTotalesAsignados;
+        
+        if (puntosTotalesAsignados === MAX_PUNTOS) {
+            marcadorCaja.classList.add('completo');
+            marcadorCaja.innerHTML = `✅ ¡Perfecto! Has asignado tus ${MAX_PUNTOS} puntos.`;
+        } else {
+            marcadorCaja.classList.remove('completo');
+            marcadorCaja.innerHTML = `Puntos asignados: <span id="contador-puntos">${puntosTotalesAsignados}</span> / ${MAX_PUNTOS}`;
+        }
+    }
+
+    // =====================================================================
+    // 4. MOTOR DE EVALUACIÓN A CIEGAS
+    // =====================================================================
+    function iniciarEvaluacion() {
+        if (modoElegido === 'personalizado' && puntosTotalesAsignados === 0) {
+            return alert("Debes asignar al menos 1 punto en total a los temas que te importan para poder ponderar tus resultados.");
+        }
+
+        // Si es equilibrado, asignamos peso = 1 internamente a todas las competencias para la matemática final
+        if (modoElegido === 'equilibrado') {
+            BASE_DE_DATOS.competencias.forEach(comp => pesosUsuario[comp.id] = 1);
+        }
+
+        // Aleatorizar partidos
+        let partidosBase = [...BASE_DE_DATOS.partidos_oficiales];
+        barajar(partidosBase);
+        const alfabeto = "ABCDEFGH".split("");
+        mapaPartidos = partidosBase.map((p, i) => ({ id_real: p.id, nombre_real: p.nombre, alias: "Partido " + alfabeto[i] }));
+
+        // Renderizar Cuestiones
+        let htmlCuestiones = "";
+        let hayCuestionesVisibles = false;
 
         BASE_DE_DATOS.cuestiones.forEach(cuestion => {
-            html += `
+            // Si el usuario en modo personalizado le dio 0 puntos a esta competencia, la saltamos para ahorrarle tiempo
+            if (pesosUsuario[cuestion.competencia_id] === 0) return;
+            
+            hayCuestionesVisibles = true;
+            const nombreComp = BASE_DE_DATOS.competencias.find(c => c.id === cuestion.competencia_id).nombre;
+            
+            htmlCuestiones += `
                 <div class="cuestion-tarjeta">
-                    <div class="cuestion-header">
-                        <span>${escaparHTML(cuestion.competencia)}</span>
-                        <h3>${escaparHTML(cuestion.titulo)}</h3>
-                        <p style="font-size:13px; color:var(--texto-suave);">${escaparHTML(cuestion.descripcion)}</p>
-                    </div>
-            `;
+                    <div class="migas-pan">${escaparHTML(nombreComp)} > ${escaparHTML(cuestion.subcompetencia)}</div>
+                    <h3>${escaparHTML(cuestion.titulo)}</h3>`;
 
-            // Mostramos los partidos usando el mapeo aleatorio
             mapaPartidos.forEach(partido => {
                 const medida = cuestion.medidas[partido.id_real];
-                
-                html += `<div class="medida-bloque">
-                            <div class="medida-header">
-                                <span class="insignia-partido">${partido.alias}</span>
-                            </div>`;
+                htmlCuestiones += `<div class="medida-bloque"><span class="insignia-partido">${partido.alias}</span>`;
 
                 if (medida && medida.consta) {
-                    html += `
-                        <div class="cita-literal">"${escaparHTML(medida.literal)}"</div>
-                        <span class="trazabilidad">📍 Fuente original: ${escaparHTML(medida.fuente)}</span>
-                        
-                        <div class="botonera-voto" id="botones-${cuestion.id}-${partido.id_real}">
-                            <button class="btn-voto" onclick="registrarVoto('${cuestion.id}', '${partido.id_real}', 0, this)">En contra</button>
-                            <button class="btn-voto" onclick="registrarVoto('${cuestion.id}', '${partido.id_real}', 25, this)">Más bien en contra</button>
-                            <button class="btn-voto" onclick="registrarVoto('${cuestion.id}', '${partido.id_real}', 50, this)">Neutral</button>
-                            <button class="btn-voto" onclick="registrarVoto('${cuestion.id}', '${partido.id_real}', 75, this)">Más bien a favor</button>
-                            <button class="btn-voto" onclick="registrarVoto('${cuestion.id}', '${partido.id_real}', 100, this)">A favor</button>
-                            <button class="btn-voto" style="background:#f1f5f9;" onclick="registrarVoto('${cuestion.id}', '${partido.id_real}', null, this)">No valorar</button>
-                        </div>
-                    `;
+                    htmlCuestiones += `
+                        <div class="resumen-neutral">${escaparHTML(medida.resumen_neutral)}</div>
+                        <details>
+                            <summary>Ver texto literal extraído del documento</summary>
+                            <div class="cita-literal">"${escaparHTML(medida.texto_original)}" <br><br><strong>Fuente:</strong> ${escaparHTML(medida.fuente)}</div>
+                        </details>
+                        <div class="botonera-voto" id="btn-group-${cuestion.id}-${partido.id_real}">
+                            <button class="btn-voto" onclick="votar('${cuestion.id}', '${partido.id_real}', 0, this)">En contra</button>
+                            <button class="btn-voto" onclick="votar('${cuestion.id}', '${partido.id_real}', 25, this)">Más bien en contra</button>
+                            <button class="btn-voto" onclick="votar('${cuestion.id}', '${partido.id_real}', 50, this)">Neutral</button>
+                            <button class="btn-voto" onclick="votar('${cuestion.id}', '${partido.id_real}', 75, this)">Más bien a favor</button>
+                            <button class="btn-voto" onclick="votar('${cuestion.id}', '${partido.id_real}', 100, this)">A favor</button>
+                            <button class="btn-voto" style="background:#e2e8f0" onclick="votar('${cuestion.id}', '${partido.id_real}', null, this)">No valorar</button>
+                        </div>`;
                 } else {
-                    html += `<div class="no-consta">No consta una propuesta específica o explícita en el programa analizado.</div>`;
+                    htmlCuestiones += `<div class="no-consta">El programa analizado no especifica una postura concreta sobre esta cuestión.</div>`;
                 }
-
-                html += `</div>`;
+                htmlCuestiones += `</div>`;
             });
-
-            html += `</div>`;
+            htmlCuestiones += `</div>`;
         });
 
-        contenedor.innerHTML = html;
+        if (!hayCuestionesVisibles) {
+            htmlCuestiones = `<div style="text-align:center; padding: 40px;">Has asignado 0 puntos a todas las materias que tienen medidas registradas en la base de datos actual. Vuelve atrás y ajusta tus pesos.</div>`;
+        }
+
+        document.getElementById('contenedor-cuestiones').innerHTML = htmlCuestiones;
+        document.getElementById('vista-inicio').classList.remove('activa');
+        document.getElementById('vista-100-puntos').classList.remove('activa');
+        document.getElementById('vista-paso2').classList.add('activa');
+        window.scrollTo(0, 0);
     }
 
-    // Registro de interacciones UI
-    function registrarVoto(cuestionId, partidoId, valor, botonHtml) {
-        // Inicializar objeto si no existe
+    function votar(cuestionId, partidoId, valor, btnHtml) {
         if (!votosUsuario[cuestionId]) votosUsuario[cuestionId] = {};
-        
-        // Guardar voto (null significa que el usuario ha elegido explícitamente no valorar)
         votosUsuario[cuestionId][partidoId] = valor;
 
-        // Estilos visuales: quitar clase a hermanos y añadir al clickeado
-        const contenedorBotones = document.getElementById(`botones-${cuestionId}-${partidoId}`);
-        const botones = contenedorBotones.getElementsByClassName('btn-voto');
-        for (let btn of botones) { btn.classList.remove('seleccionado'); }
-        botonHtml.classList.add('seleccionado');
+        const botones = document.getElementById(`btn-group-${cuestionId}-${partidoId}`).getElementsByClassName('btn-voto');
+        for (let btn of botones) btn.classList.remove('seleccionado');
+        btnHtml.classList.add('seleccionado');
     }
 
-    // El cálculo matemático
+    // =====================================================================
+    // 5. MATEMÁTICAS PONDERADAS Y RESULTADOS
+    // =====================================================================
     function calcularResultados() {
         let resultados = [];
+        const totalCuestiones = BASE_DE_DATOS.cuestiones.length;
 
         mapaPartidos.forEach(partido => {
-            let sumaPuntos = 0;
+            let sumaPonderada = 0;
+            let pesoTotalAplicado = 0;
+            let cuestionesEnPrograma = 0;
             let medidasValoradas = 0;
-            let medidasTotalesDelPartido = 0;
+            
+            let puntuacionPorCompetencia = {}; // { "viv": { suma: 150, cuenta: 2 } }
+            let desgloseUI = []; // Para mostrar al usuario la tabla final
 
+            // 5.1 Agrupar puntuaciones por competencia (Evita que materias con muchas preguntas pesen más)
             BASE_DE_DATOS.cuestiones.forEach(cuestion => {
+                const comp_id = cuestion.competencia_id;
                 const medida = cuestion.medidas[partido.id_real];
-                
-                // Si el partido tiene medida, cuenta para su cobertura total
+
                 if (medida && medida.consta) {
-                    medidasTotalesDelPartido++;
+                    cuestionesEnPrograma++;
                     
-                    // Si el usuario ha votado esta medida (y no le ha dado a "No valorar")
                     if (votosUsuario[cuestion.id] && votosUsuario[cuestion.id][partido.id_real] !== undefined && votosUsuario[cuestion.id][partido.id_real] !== null) {
-                        sumaPuntos += votosUsuario[cuestion.id][partido.id_real];
                         medidasValoradas++;
+                        if (!puntuacionPorCompetencia[comp_id]) puntuacionPorCompetencia[comp_id] = { suma: 0, cuenta: 0 };
+                        
+                        puntuacionPorCompetencia[comp_id].suma += votosUsuario[cuestion.id][partido.id_real];
+                        puntuacionPorCompetencia[comp_id].cuenta++;
                     }
                 }
             });
 
-            // Evitar división por cero
-            let afinidad = medidasValoradas > 0 ? (sumaPuntos / medidasValoradas) : 0;
-            let coberturaUsuario = medidasTotalesDelPartido > 0 ? (medidasValoradas / medidasTotalesDelPartido) * 100 : 0;
+            // 5.2 Calcular la media por bloque y multiplicar por el peso del usuario (100 puntos)
+            Object.keys(puntuacionPorCompetencia).forEach(comp_id => {
+                const mediaBloque = puntuacionPorCompetencia[comp_id].suma / puntuacionPorCompetencia[comp_id].cuenta;
+                const pesoBloque = pesosUsuario[comp_id];
+                
+                if (pesoBloque > 0) {
+                    sumaPonderada += (mediaBloque * pesoBloque);
+                    pesoTotalAplicado += pesoBloque;
+                    
+                    const nombreComp = BASE_DE_DATOS.competencias.find(c => c.id === comp_id).nombre;
+                    desgloseUI.push({ nombre: nombreComp, afinidad: Math.round(mediaBloque), peso: pesoBloque });
+                }
+            });
+
+            const afinidadFinal = pesoTotalAplicado > 0 ? Math.round(sumaPonderada / pesoTotalAplicado) : 0;
+            const cobProgramatica = Math.round((cuestionesEnPrograma / totalCuestiones) * 100);
 
             resultados.push({
-                nombre_real: partido.nombre_real,
+                nombre: partido.nombre_real,
                 alias: partido.alias,
-                afinidad: Math.round(afinidad),
-                medidasEvaluadas: medidasValoradas,
-                medidasPosibles: medidasTotalesDelPartido,
-                robustez: coberturaUsuario >= 50 ? "Alta" : "Baja" // Si el usuario ha evaluado más de la mitad, es robusto
+                afinidad: afinidadFinal,
+                valoradas: medidasValoradas,
+                enPrograma: cuestionesEnPrograma,
+                cobProgramatica: cobProgramatica,
+                desglose: desgloseUI
             });
         });
 
-        // Ordenar de mayor a menor afinidad
+        // Ordenar del partido más afín al menos afín
         resultados.sort((a, b) => b.afinidad - a.afinidad);
-        mostrarResultados(resultados);
-    }
 
-    function mostrarResultados(resultados) {
-        const contenedor = document.getElementById('contenedor-resultados');
-        let html = "";
-
-        resultados.forEach(res => {
-            const claseRobustez = res.robustez === "Alta" ? "rob-alta" : "rob-baja";
+        // 5.3 Pintar la pantalla final
+        let htmlRes = "";
+        resultados.forEach((res, index) => {
+            const alerta = res.cobProgramatica < 50 ? `<div class="alerta-cobertura">⚠ Cobertura programática baja: Este partido tiene posición explícita en menos de la mitad de los temas generales, lo que reduce la solidez de esta comparación.</div>` : "";
             
-            html += `
+            // Generar tabla de desglose
+            let filasDesglose = "";
+            res.desglose.forEach(d => {
+                const etiquetaPeso = modoElegido === 'personalizado' ? `${d.peso} pts` : `Igualado`;
+                filasDesglose += `<tr><td>${escaparHTML(d.nombre)}</td><td><strong>${d.afinidad}%</strong></td><td style="color:var(--texto-suave)">${etiquetaPeso}</td></tr>`;
+            });
+
+            htmlRes += `
                 <div class="resultado-item">
                     <div class="res-header">
                         <div>
-                            <span class="res-alias">Evaluado a ciegas como ${res.alias}</span>
-                            <div class="res-nombre">${res.nombre_real}</div>
+                            <span style="font-size:12px; color:var(--texto-suave)">Evaluado a ciegas como ${res.alias}</span>
+                            <div class="res-nombre">${index === 0 ? '🏆 ' : ''}${res.nombre}</div>
                         </div>
                         <div class="res-afinidad">${res.afinidad}%</div>
                     </div>
                     
-                    <div class="barra-progreso">
-                        <div class="barra-relleno" style="width: ${res.afinidad}%"></div>
-                    </div>
+                    <div class="barra-progreso"><div class="barra-relleno" style="width: ${res.afinidad}%"></div></div>
                     
-                    <div class="res-metricas">
-                        <div>Cobertura de evaluación: <span class="metrica-cobertura">${res.medidasEvaluadas} de ${res.medidasPosibles}</span> medidas</div>
-                        <div>Robustez del dato: <span class="metrica-cobertura ${claseRobustez}">${res.robustez}</span></div>
+                    <div class="metricas-grid">
+                        <div><strong>Tu evaluación:</strong><br>${res.valoradas} de ${res.enPrograma} medidas votadas.</div>
+                        <div><strong>Programa del partido:</strong><br>Posición localizada en el ${res.cobProgramatica}% de temas.</div>
+                        ${alerta}
                     </div>
-                </div>
-            `;
+
+                    <details style="margin-top:10px; background:#fff; border:1px solid var(--borde);">
+                        <summary style="font-size:13px; color:var(--primario);">📊 Ver desglose de tu afinidad por materias</summary>
+                        <table class="desglose-tabla">
+                            <tr><th>Materia</th><th>Afinidad</th><th>Peso aplicado</th></tr>
+                            ${filasDesglose || '<tr><td colspan="3">No se valoraron materias para este partido.</td></tr>'}
+                        </table>
+                    </details>
+                </div>`;
         });
 
-        contenedor.innerHTML = html;
-        document.getElementById('vista-test').classList.remove('activa');
+        document.getElementById('contenedor-resultados').innerHTML = htmlRes;
+        document.getElementById('vista-paso2').classList.remove('activa');
         document.getElementById('vista-resultados').classList.add('activa');
         window.scrollTo(0, 0);
     }
-
-    // Arrancar la aplicación
-    window.onload = inicializarApp;
 </script>
-
 </body>
 </html>
