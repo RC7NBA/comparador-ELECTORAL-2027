@@ -35,11 +35,22 @@
         .marcador-puntos { position: sticky; top: 10px; background: #e0f2fe; color: var(--primario); padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 18px; margin-bottom: 20px; z-index: 10; border: 2px solid var(--acento); transition: 0.3s; }
         .marcador-puntos.completo { background: var(--exito); color: white; border-color: var(--exito); }
         
-        .bloque-ponderacion { border: 1px solid var(--borde); border-radius: 8px; padding: 15px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; background: #fff;}
-        .bloque-ponderacion h3 { font-size: 16px; color: var(--primario); width: 40%;}
-        .control-rango { display: flex; align-items: center; gap: 15px; width: 60%; }
+        /* Modificación para el bloque pedagógico */
+        .bloque-ponderacion { border: 1px solid var(--borde); border-radius: 8px; padding: 15px; margin-bottom: 15px; background: #fff; display: flex; flex-direction: column;}
+        .ponderacion-header { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .ponderacion-header h3 { font-size: 14px; color: var(--primario); width: 45%; }
+        .control-rango { display: flex; align-items: center; gap: 15px; width: 55%; }
         .control-rango input { flex: 1; accent-color: var(--acento); cursor: pointer; }
-        .nota-peso { font-weight: bold; font-size: 18px; color: var(--acento); width: 35px; text-align: right; }
+        .nota-peso { font-weight: bold; font-size: 16px; color: var(--acento); width: 35px; text-align: right; }
+
+        .info-competencial { background: #f8fafc; border: 1px solid var(--borde); border-radius: 6px; padding: 10px; margin-top: 12px; }
+        .info-competencial summary { font-size: 12px; color: var(--texto-suave); font-weight: 600; cursor: pointer; outline: none; list-style: none;}
+        .info-competencial summary::-webkit-details-marker { display: none; }
+        .info-competencial p { font-size: 12px; color: var(--texto); margin-top: 10px; line-height: 1.4; }
+        .info-barras { display: flex; height: 8px; border-radius: 4px; overflow: hidden; margin-top: 8px; }
+        .barra-est { background: var(--primario); }
+        .barra-aut { background: #94a3b8; }
+        .leyenda-barras { display: flex; justify-content: space-between; font-size: 10px; color: var(--texto-suave); margin-top: 4px; font-weight: bold; }
 
         /* Paso 2: Evaluación */
         .cuestion-tarjeta { border: 1px solid var(--borde); border-radius: 10px; padding: 20px; margin-bottom: 25px; background: #fff; }
@@ -50,8 +61,8 @@
         .insignia-partido { background: var(--primario); color: white; padding: 4px 10px; border-radius: 4px; font-weight: bold; font-size: 13px; display: inline-block; margin-bottom: 10px;}
         
         .resumen-neutral { font-size: 15px; color: var(--texto); font-weight: 500; margin-bottom: 10px; }
-        details { background: #f1f5f9; padding: 10px; border-radius: 6px; margin-bottom: 15px; }
-        summary { font-size: 12px; color: var(--acento); cursor: pointer; font-weight: 600; outline: none; }
+        details.cita-desplegable { background: #f1f5f9; padding: 10px; border-radius: 6px; margin-bottom: 15px; }
+        details.cita-desplegable summary { font-size: 12px; color: var(--acento); cursor: pointer; font-weight: 600; outline: none; }
         .cita-literal { font-style: italic; border-left: 3px solid var(--acento); padding-left: 10px; margin-top: 10px; font-size: 13px; color: var(--texto-suave); }
         
         .botonera-voto { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -89,7 +100,7 @@
         
         <div class="modo-caja" onclick="seleccionarModo('equilibrado')">
             <h3>⚖️ Modo Equilibrado (Rápido)</h3>
-            <p style="font-size: 14px; color: var(--texto-suave);">Todas las áreas (Sanidad, Vivienda, Economía...) tendrán exactamente la misma importancia en el cálculo de tu resultado final. Ideal para una visión general.</p>
+            <p style="font-size: 14px; color: var(--texto-suave);">Todas las áreas tendrán exactamente la misma importancia en el cálculo de tu resultado final. Ideal para una visión general.</p>
         </div>
 
         <div class="modo-caja" onclick="seleccionarModo('personalizado')">
@@ -98,12 +109,12 @@
         </div>
     </div>
 
-    <!-- PASO 1.5: REPARTO DE 100 PUNTOS (Solo si elige personalizado) -->
+    <!-- PASO 1.5: REPARTO DE 100 PUNTOS -->
     <div id="vista-100-puntos" class="seccion">
         <div id="marcador-caja" class="marcador-puntos">
             Puntos asignados: <span id="contador-puntos">0</span> / 100
         </div>
-        <p style="font-size: 14px; margin-bottom: 20px; color: var(--texto-suave);">Mueve los deslizadores para repartir tus puntos. Si un tema no te importa, déjalo en 0. No puedes superar los 100 puntos en total.</p>
+        <p style="font-size: 14px; margin-bottom: 20px; color: var(--texto-suave);">Mueve los deslizadores para repartir tus puntos. Puedes desplegar el botón de información (ℹ️) para ver la capacidad de decisión real que tiene el Estado en cada temática.</p>
         
         <div id="contenedor-ponderaciones"></div>
         
@@ -114,7 +125,7 @@
     <!-- PASO 2: TEST A CIEGAS -->
     <div id="vista-paso2" class="seccion">
         <div style="background: #e0f2fe; padding: 15px; border-radius: 8px; margin-bottom: 25px; font-size: 13px;">
-            <strong>Evaluación a ciegas:</strong> Los partidos (A, B, C...) han sido mezclados al azar. Valora cada medida. Puedes desplegar el texto literal extraído del programa si necesitas confirmar el resumen.
+            <strong>Evaluación a ciegas:</strong> Los partidos (A, B, C...) han sido mezclados al azar. Valora cada medida. Puedes desplegar el texto literal extraído del programa oficial para confirmarlo (la fuente exacta se oculta hasta el final para garantizar tu neutralidad).
         </div>
         <div id="contenedor-cuestiones"></div>
         <button class="btn-accion" onclick="calcularResultados()">Calcular Afinidad y Desvelar Partidos</button>
@@ -130,7 +141,7 @@
 
 <script>
     // =====================================================================
-    // 1. BASE DE DATOS ESTRUCTURADA (NIVEL 2: Cuestiones Comparables)
+    // 1. BASE DE DATOS ESTRUCTURADA
     // =====================================================================
     const BASE_DE_DATOS = {
         metadatos: { fecha: "2026-11-29" },
@@ -141,11 +152,68 @@
             { id: "sumar", nombre: "Sumar" },
             { id: "podemos", nombre: "Podemos" }
         ],
+        // Competencias reordenadas e incluyen la justificación pedagógica
         competencias: [
-            { id: "viv", nombre: "Vivienda y Urbanismo" },
-            { id: "fis", nombre: "Fiscalidad e Impuestos" },
-            { id: "san", nombre: "Sanidad Pública" }
-            // Se añadirán el resto aquí...
+            { 
+                id: "pen", nombre: "Pensiones y Seg. Social", 
+                estado: 100, ccaa: 0,
+                justificacion: "Competencia exclusiva del Estado (Caja Única de la Seguridad Social), que decide unilateralmente la edad de jubilación, los cálculos y la revalorización de las pensiones."
+            },
+            { 
+                id: "ext", nombre: "Pol. Exterior, UE y Defensa", 
+                estado: 100, ccaa: 0,
+                justificacion: "Competencia absoluta del Gobierno central, único actor con potestad legal y capacidad para gestionar fronteras, Fuerzas Armadas, diplomacia y representación de España en el exterior."
+            },
+            { 
+                id: "ter", nombre: "Modelo de Estado y Financiación", 
+                estado: 90, ccaa: 10,
+                justificacion: "Las Cortes Generales y el Estado tienen un papel decisivo en la Constitución, los Estatutos, el sistema general de financiación autonómica y la configuración territorial. Las CCAA participan y pueden impulsar reformas, pero no pueden modificar unilateralmente el modelo."
+            },
+            { 
+                id: "eco", nombre: "Economía y Empleo", 
+                estado: 80, ccaa: 20,
+                justificacion: "El Estado legisla en exclusiva (fija el SMI, cuotas de autónomos y reformas laborales), mientras que las autonomías se limitan a ejecutar las políticas activas de empleo."
+            },
+            { 
+                id: "jus", nombre: "Justicia e Interior", 
+                estado: 80, ccaa: 20,
+                justificacion: "El Estado legisla en materia penal y procesal y la seguridad pública es de competencia estatal (Policía, Guardia Civil, Ejercito, etc); las autonomías y municipios asumen las policías autonómicas/locales y los medios materiales de los juzgados."
+            },
+            { 
+                id: "fis", nombre: "Fiscalidad e Impuestos", 
+                estado: 75, ccaa: 25,
+                justificacion: "El Estado recauda y diseña las bases del IVA, Sociedades y la mitad del IRPF; las autonomías y ayuntamientos gestionan sus tramos autonómicos, ITP, Patrimonio, Sucesiones y tributos locales."
+            },
+            { 
+                id: "med", nombre: "Medio Ambiente y Energía", 
+                estado: 70, ccaa: 30,
+                justificacion: "El Estado planifica el mix energético nacional, las grandes redes y la legislación ambiental básica; las CCAA otorgan los permisos para instalaciones específicas y protegen sus espacios naturales."
+            },
+            { 
+                id: "soc", nombre: "Políticas Sociales e Igualdad", 
+                estado: 45, ccaa: 55,
+                justificacion: "El Estado aprueba los derechos básicos y cofinancia (ej. Ley de Dependencia), pero las CCAA y los ayuntamientos son quienes evalúan, adjudican y asumen la prestación directa de estos servicios."
+            },
+            { 
+                id: "edu", nombre: "Educación y Ciencia", 
+                estado: 40, ccaa: 60,
+                justificacion: "El Estado aprueba las leyes educativas (currículo básico) y el sistema de becas; las CCAA gestionan los centros educativos, contrata y establece condiciones laborales a los docentes, ejecutan el presupuesto y definen el resto del temario."
+            },
+            { 
+                id: "rur", nombre: "Agricultura y Reto Demogr.", 
+                estado: 40, ccaa: 60,
+                justificacion: "El Estado negocia la PAC en Europa y gestiona las cuencas hidrográficas que cruzan varias regiones; las CCAA dirigen la ejecución de fondos agrícolas y las políticas de desarrollo rural."
+            },
+            { 
+                id: "viv", nombre: "Vivienda y Urbanismo", 
+                estado: 30, ccaa: 70,
+                justificacion: "El Estado regula los arrendamientos, el Código Penal, parte de la fiscalidad de la vivienda y aporta financiación para vivienda pública, pero las CCAA y ayuntamientos tienen la competencia exclusiva real en urbanismo, calificación de suelo y promoción de vivienda pública."
+            },
+            { 
+                id: "san", nombre: "Sanidad y Salud Pública", 
+                estado: 20, ccaa: 80,
+                justificacion: "El Estado define la cartera básica y los precios de los fármacos, pero las CCAA asumen el 100% de la gestión de hospitales, centros de salud, contratación de personal y listas de espera."
+            }
         ],
         cuestiones: [
             {
@@ -158,7 +226,7 @@
                         consta: true,
                         resumen_neutral: "Mantener la Ley de Vivienda y topar subidas en áreas tensionadas.",
                         texto_original: "Consolidaremos la aplicación de la Ley de Vivienda para establecer índices de precios de referencia que topen las subidas en áreas tensionadas.",
-                        fuente: "Programa PSOE, Pág. 42"
+                        fuente: "Programa PSOE, Pág. 42" 
                     },
                     "pp": {
                         consta: true,
@@ -201,13 +269,13 @@
     // =====================================================================
     // 2. ESTADO DE LA APLICACIÓN
     // =====================================================================
-    let modoElegido = ''; // 'equilibrado' o 'personalizado'
-    let pesosUsuario = {}; // { "viv": 20, "fis": 15... }
+    let modoElegido = ''; 
+    let pesosUsuario = {}; 
     let puntosTotalesAsignados = 0;
     const MAX_PUNTOS = 100;
     
-    let votosUsuario = {}; // { "viv-001": { "psoe": 100, "pp": 0 } }
-    let mapaPartidos = []; // Asignación aleatoria para test ciego
+    let votosUsuario = {}; 
+    let mapaPartidos = []; 
 
     function escaparHTML(t) {
         const div = document.createElement('div'); div.textContent = t; return div.innerHTML;
@@ -244,29 +312,42 @@
     function renderizarDeslizadores100Puntos() {
         let htmlPesos = "";
         BASE_DE_DATOS.competencias.forEach(comp => {
-            if (pesosUsuario[comp.id] === undefined) pesosUsuario[comp.id] = 0; // Iniciar a 0
+            if (pesosUsuario[comp.id] === undefined) pesosUsuario[comp.id] = 0; 
             
             htmlPesos += `
                 <div class="bloque-ponderacion">
-                    <h3>${escaparHTML(comp.nombre)}</h3>
-                    <div class="control-rango">
-                        <input type="range" id="rango-${comp.id}" min="0" max="100" value="${pesosUsuario[comp.id]}" 
-                               oninput="ajustarPuntos('${comp.id}', this)">
-                        <span id="peso-texto-${comp.id}" class="nota-peso">${pesosUsuario[comp.id]}</span>
+                    <div class="ponderacion-header">
+                        <h3>${escaparHTML(comp.nombre)}</h3>
+                        <div class="control-rango">
+                            <input type="range" id="rango-${comp.id}" min="0" max="100" value="${pesosUsuario[comp.id]}" 
+                                   oninput="ajustarPuntos('${comp.id}', this)">
+                            <span id="peso-texto-${comp.id}" class="nota-peso">${pesosUsuario[comp.id]}</span>
+                        </div>
                     </div>
+                    
+                    <details class="info-competencial">
+                        <summary>ℹ️ Peso competencial: Estado ${comp.estado}% | Autonomías y Ayto. ${comp.ccaa}%</summary>
+                        <div class="info-barras">
+                            <div class="barra-est" style="width: ${comp.estado}%"></div>
+                            <div class="barra-aut" style="width: ${comp.ccaa}%"></div>
+                        </div>
+                        <div class="leyenda-barras">
+                            <span style="color:var(--primario)">Estado (${comp.estado}%)</span>
+                            <span style="color:#64748b">CCAA/EELL (${comp.ccaa}%)</span>
+                        </div>
+                        <p>${escaparHTML(comp.justificacion)}</p>
+                    </details>
                 </div>`;
         });
         document.getElementById('contenedor-ponderaciones').innerHTML = htmlPesos;
         actualizarMarcadorUI();
     }
 
-    // El motor matemático que impide superar los 100 puntos en tiempo real
     function ajustarPuntos(compId, inputElement) {
         let nuevoValor = parseInt(inputElement.value) || 0;
         let valorAnterior = pesosUsuario[compId];
         let sumaRestantes = puntosTotalesAsignados - valorAnterior;
 
-        // Si la suma supera los 100, forzamos el límite
         if (sumaRestantes + nuevoValor > MAX_PUNTOS) {
             nuevoValor = MAX_PUNTOS - sumaRestantes;
             inputElement.value = nuevoValor; 
@@ -300,23 +381,19 @@
             return alert("Debes asignar al menos 1 punto en total a los temas que te importan para poder ponderar tus resultados.");
         }
 
-        // Si es equilibrado, asignamos peso = 1 internamente a todas las competencias para la matemática final
         if (modoElegido === 'equilibrado') {
             BASE_DE_DATOS.competencias.forEach(comp => pesosUsuario[comp.id] = 1);
         }
 
-        // Aleatorizar partidos
         let partidosBase = [...BASE_DE_DATOS.partidos_oficiales];
         barajar(partidosBase);
         const alfabeto = "ABCDEFGH".split("");
         mapaPartidos = partidosBase.map((p, i) => ({ id_real: p.id, nombre_real: p.nombre, alias: "Partido " + alfabeto[i] }));
 
-        // Renderizar Cuestiones
         let htmlCuestiones = "";
         let hayCuestionesVisibles = false;
 
         BASE_DE_DATOS.cuestiones.forEach(cuestion => {
-            // Si el usuario en modo personalizado le dio 0 puntos a esta competencia, la saltamos para ahorrarle tiempo
             if (pesosUsuario[cuestion.competencia_id] === 0) return;
             
             hayCuestionesVisibles = true;
@@ -334,9 +411,9 @@
                 if (medida && medida.consta) {
                     htmlCuestiones += `
                         <div class="resumen-neutral">${escaparHTML(medida.resumen_neutral)}</div>
-                        <details>
+                        <details class="cita-desplegable">
                             <summary>Ver texto literal extraído del documento</summary>
-                            <div class="cita-literal">"${escaparHTML(medida.texto_original)}" <br><br><strong>Fuente:</strong> ${escaparHTML(medida.fuente)}</div>
+                            <div class="cita-literal">"${escaparHTML(medida.texto_original)}"</div>
                         </details>
                         <div class="botonera-voto" id="btn-group-${cuestion.id}-${partido.id_real}">
                             <button class="btn-voto" onclick="votar('${cuestion.id}', '${partido.id_real}', 0, this)">En contra</button>
@@ -387,10 +464,9 @@
             let cuestionesEnPrograma = 0;
             let medidasValoradas = 0;
             
-            let puntuacionPorCompetencia = {}; // { "viv": { suma: 150, cuenta: 2 } }
-            let desgloseUI = []; // Para mostrar al usuario la tabla final
+            let puntuacionPorCompetencia = {}; 
+            let desgloseUI = []; 
 
-            // 5.1 Agrupar puntuaciones por competencia (Evita que materias con muchas preguntas pesen más)
             BASE_DE_DATOS.cuestiones.forEach(cuestion => {
                 const comp_id = cuestion.competencia_id;
                 const medida = cuestion.medidas[partido.id_real];
@@ -408,7 +484,6 @@
                 }
             });
 
-            // 5.2 Calcular la media por bloque y multiplicar por el peso del usuario (100 puntos)
             Object.keys(puntuacionPorCompetencia).forEach(comp_id => {
                 const mediaBloque = puntuacionPorCompetencia[comp_id].suma / puntuacionPorCompetencia[comp_id].cuenta;
                 const pesoBloque = pesosUsuario[comp_id];
@@ -436,15 +511,12 @@
             });
         });
 
-        // Ordenar del partido más afín al menos afín
         resultados.sort((a, b) => b.afinidad - a.afinidad);
 
-        // 5.3 Pintar la pantalla final
         let htmlRes = "";
         resultados.forEach((res, index) => {
             const alerta = res.cobProgramatica < 50 ? `<div class="alerta-cobertura">⚠ Cobertura programática baja: Este partido tiene posición explícita en menos de la mitad de los temas generales, lo que reduce la solidez de esta comparación.</div>` : "";
             
-            // Generar tabla de desglose
             let filasDesglose = "";
             res.desglose.forEach(d => {
                 const etiquetaPeso = modoElegido === 'personalizado' ? `${d.peso} pts` : `Igualado`;
