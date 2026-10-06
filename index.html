@@ -32,10 +32,10 @@
         .modo-caja:hover { border-color: var(--acento); background: #f0f9ff; }
         .modo-caja h3 { color: var(--acento); margin-bottom: 5px; }
         
-        .marcador-puntos { position: sticky; top: 10px; background: #e0f2fe; color: var(--primario); padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 18px; margin-bottom: 20px; z-index: 10; border: 2px solid var(--acento); transition: 0.3s; }
+        .marcador-puntos { position: sticky; top: 10px; background: #e0f2fe; color: var(--primario); padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 18px; margin-bottom: 15px; z-index: 10; border: 2px solid var(--acento); transition: 0.3s; }
         .marcador-puntos.completo { background: var(--exito); color: white; border-color: var(--exito); }
-        
-        /* Modificación para el bloque pedagógico */
+        .texto-didactico { font-size: 13px; color: var(--texto-suave); background: #f8fafc; padding: 12px; border-radius: 8px; margin-bottom: 25px; border-left: 3px solid var(--acento); }
+
         .bloque-ponderacion { border: 1px solid var(--borde); border-radius: 8px; padding: 15px; margin-bottom: 15px; background: #fff; display: flex; flex-direction: column;}
         .ponderacion-header { display: flex; justify-content: space-between; align-items: center; width: 100%; }
         .ponderacion-header h3 { font-size: 14px; color: var(--primario); width: 45%; }
@@ -99,22 +99,25 @@
         <h2 style="margin-bottom: 15px; font-size: 18px; color: var(--primario);">Paso 1: ¿Cómo quieres ponderar los temas?</h2>
         
         <div class="modo-caja" onclick="seleccionarModo('equilibrado')">
-            <h3>⚖️ Modo Equilibrado (Rápido)</h3>
-            <p style="font-size: 14px; color: var(--texto-suave);">Todas las áreas tendrán exactamente la misma importancia en el cálculo de tu resultado final. Ideal para una visión general.</p>
+            <h3>⚖️ Modo Realista (Rápido)</h3>
+            <p style="font-size: 14px; color: var(--texto-suave);">El reparto de importancia se establece automáticamente en función del grado de responsabilidad o capacidad real de actuación que tiene el Estado sobre otras administraciones (ej. Pensiones tiene más peso que Sanidad). Ideal para un test riguroso y rápido.</p>
         </div>
 
         <div class="modo-caja" onclick="seleccionarModo('personalizado')">
             <h3>🎯 Modo Personalizado (Preciso)</h3>
-            <p style="font-size: 14px; color: var(--texto-suave);">Tienes 100 puntos para repartir libremente entre las áreas que más te importan. El resultado se ajustará milimétricamente a tus prioridades.</p>
+            <p style="font-size: 14px; color: var(--texto-suave);">Arrancas con el reparto realista por defecto, pero tienes la libertad de ajustar y mover tus 100 puntos hacia las áreas que a ti, personalmente, te importen más.</p>
         </div>
     </div>
 
     <!-- PASO 1.5: REPARTO DE 100 PUNTOS -->
     <div id="vista-100-puntos" class="seccion">
         <div id="marcador-caja" class="marcador-puntos">
-            Puntos asignados: <span id="contador-puntos">0</span> / 100
+            <span id="texto-marcador">Puntos asignados:</span> <span id="contador-puntos">0</span> <span id="texto-total">/ 100</span>
         </div>
-        <p style="font-size: 14px; margin-bottom: 20px; color: var(--texto-suave);">Mueve los deslizadores para repartir tus puntos. Puedes desplegar el botón de información (ℹ️) para ver la capacidad de decisión real que tiene el Estado en cada temática.</p>
+        
+        <div class="texto-didactico">
+            💡 <strong>¿Cómo funciona esto?</strong> Tienes un presupuesto máximo de 100 puntos para repartir libremente entre las 12 temáticas. Hemos preconfigurado los deslizadores basándonos en el nivel de competencia real que tiene el Estado en España, pero puedes subir o bajar cualquier área hasta que reflejen tus verdaderas prioridades.
+        </div>
         
         <div id="contenedor-ponderaciones"></div>
         
@@ -152,66 +155,66 @@
             { id: "sumar", nombre: "Sumar" },
             { id: "podemos", nombre: "Podemos" }
         ],
-        // Competencias reordenadas e incluyen la justificación pedagógica
+        // Competencias con su peso por defecto basado en la arquitectura competencial del Estado
         competencias: [
             { 
                 id: "pen", nombre: "Pensiones y Seg. Social", 
-                estado: 100, ccaa: 0,
+                estado: 100, ccaa: 0, peso_defecto: 13,
                 justificacion: "Competencia exclusiva del Estado (Caja Única de la Seguridad Social), que decide unilateralmente la edad de jubilación, los cálculos y la revalorización de las pensiones."
             },
             { 
                 id: "ext", nombre: "Pol. Exterior, UE y Defensa", 
-                estado: 100, ccaa: 0,
+                estado: 100, ccaa: 0, peso_defecto: 13,
                 justificacion: "Competencia absoluta del Gobierno central, único actor con potestad legal y capacidad para gestionar fronteras, Fuerzas Armadas, diplomacia y representación de España en el exterior."
             },
             { 
                 id: "ter", nombre: "Modelo de Estado y Financiación", 
-                estado: 90, ccaa: 10,
+                estado: 90, ccaa: 10, peso_defecto: 12,
                 justificacion: "Las Cortes Generales y el Estado tienen un papel decisivo en la Constitución, los Estatutos, el sistema general de financiación autonómica y la configuración territorial. Las CCAA participan y pueden impulsar reformas, pero no pueden modificar unilateralmente el modelo."
             },
             { 
                 id: "eco", nombre: "Economía y Empleo", 
-                estado: 80, ccaa: 20,
+                estado: 80, ccaa: 20, peso_defecto: 10,
                 justificacion: "El Estado legisla en exclusiva (fija el SMI, cuotas de autónomos y reformas laborales), mientras que las autonomías se limitan a ejecutar las políticas activas de empleo."
             },
             { 
                 id: "jus", nombre: "Justicia e Interior", 
-                estado: 80, ccaa: 20,
+                estado: 80, ccaa: 20, peso_defecto: 10,
                 justificacion: "El Estado legisla en materia penal y procesal y la seguridad pública es de competencia estatal (Policía, Guardia Civil, Ejercito, etc); las autonomías y municipios asumen las policías autonómicas/locales y los medios materiales de los juzgados."
             },
             { 
                 id: "fis", nombre: "Fiscalidad e Impuestos", 
-                estado: 75, ccaa: 25,
+                estado: 75, ccaa: 25, peso_defecto: 10,
                 justificacion: "El Estado recauda y diseña las bases del IVA, Sociedades y la mitad del IRPF; las autonomías y ayuntamientos gestionan sus tramos autonómicos, ITP, Patrimonio, Sucesiones y tributos locales."
             },
             { 
                 id: "med", nombre: "Medio Ambiente y Energía", 
-                estado: 70, ccaa: 30,
+                estado: 70, ccaa: 30, peso_defecto: 9,
                 justificacion: "El Estado planifica el mix energético nacional, las grandes redes y la legislación ambiental básica; las CCAA otorgan los permisos para instalaciones específicas y protegen sus espacios naturales."
             },
             { 
                 id: "soc", nombre: "Políticas Sociales e Igualdad", 
-                estado: 45, ccaa: 55,
+                estado: 45, ccaa: 55, peso_defecto: 6,
                 justificacion: "El Estado aprueba los derechos básicos y cofinancia (ej. Ley de Dependencia), pero las CCAA y los ayuntamientos son quienes evalúan, adjudican y asumen la prestación directa de estos servicios."
             },
             { 
                 id: "edu", nombre: "Educación y Ciencia", 
-                estado: 40, ccaa: 60,
+                estado: 40, ccaa: 60, peso_defecto: 5,
                 justificacion: "El Estado aprueba las leyes educativas (currículo básico) y el sistema de becas; las CCAA gestionan los centros educativos, contrata y establece condiciones laborales a los docentes, ejecutan el presupuesto y definen el resto del temario."
             },
             { 
                 id: "rur", nombre: "Agricultura y Reto Demogr.", 
-                estado: 40, ccaa: 60,
+                estado: 40, ccaa: 60, peso_defecto: 5,
                 justificacion: "El Estado negocia la PAC en Europa y gestiona las cuencas hidrográficas que cruzan varias regiones; las CCAA dirigen la ejecución de fondos agrícolas y las políticas de desarrollo rural."
             },
             { 
                 id: "viv", nombre: "Vivienda y Urbanismo", 
-                estado: 30, ccaa: 70,
+                estado: 30, ccaa: 70, peso_defecto: 4,
                 justificacion: "El Estado regula los arrendamientos, el Código Penal, parte de la fiscalidad de la vivienda y aporta financiación para vivienda pública, pero las CCAA y ayuntamientos tienen la competencia exclusiva real en urbanismo, calificación de suelo y promoción de vivienda pública."
             },
             { 
                 id: "san", nombre: "Sanidad y Salud Pública", 
-                estado: 20, ccaa: 80,
+                estado: 20, ccaa: 80, peso_defecto: 3,
                 justificacion: "El Estado define la cartera básica y los precios de los fármacos, pero las CCAA asumen el 100% de la gestión de hospitales, centros de salud, contratación de personal y listas de espera."
             }
         ],
@@ -295,6 +298,8 @@
     function seleccionarModo(modo) {
         modoElegido = modo;
         if (modo === 'equilibrado') {
+            // Asignamos silenciosamente los pesos realistas por defecto para el cálculo final
+            BASE_DE_DATOS.competencias.forEach(comp => pesosUsuario[comp.id] = comp.peso_defecto);
             iniciarEvaluacion();
         } else {
             renderizarDeslizadores100Puntos();
@@ -311,8 +316,13 @@
 
     function renderizarDeslizadores100Puntos() {
         let htmlPesos = "";
+        puntosTotalesAsignados = 0; // Reiniciamos contador para el cálculo
+
         BASE_DE_DATOS.competencias.forEach(comp => {
-            if (pesosUsuario[comp.id] === undefined) pesosUsuario[comp.id] = 0; 
+            // Si el usuario no ha tocado nada aún, inicializamos con el peso competencial por defecto
+            if (pesosUsuario[comp.id] === undefined) pesosUsuario[comp.id] = comp.peso_defecto; 
+            
+            puntosTotalesAsignados += pesosUsuario[comp.id];
             
             htmlPesos += `
                 <div class="bloque-ponderacion">
@@ -348,6 +358,7 @@
         let valorAnterior = pesosUsuario[compId];
         let sumaRestantes = puntosTotalesAsignados - valorAnterior;
 
+        // Evitar que el usuario supere los 100 puntos en total
         if (sumaRestantes + nuevoValor > MAX_PUNTOS) {
             nuevoValor = MAX_PUNTOS - sumaRestantes;
             inputElement.value = nuevoValor; 
@@ -362,14 +373,21 @@
 
     function actualizarMarcadorUI() {
         const marcadorCaja = document.getElementById('marcador-caja');
-        document.getElementById('contador-puntos').innerText = puntosTotalesAsignados;
+        const contador = document.getElementById('contador-puntos');
+        const textoPre = document.getElementById('texto-marcador');
+        const textoPost = document.getElementById('texto-total');
         
+        contador.innerText = puntosTotalesAsignados;
+        
+        // Estructura segura que no borra elementos HTML al cambiar los estilos
         if (puntosTotalesAsignados === MAX_PUNTOS) {
             marcadorCaja.classList.add('completo');
-            marcadorCaja.innerHTML = `✅ ¡Perfecto! Has asignado tus ${MAX_PUNTOS} puntos.`;
+            textoPre.innerText = "✅ ¡Perfecto! Has asignado tus ";
+            textoPost.innerText = " puntos.";
         } else {
             marcadorCaja.classList.remove('completo');
-            marcadorCaja.innerHTML = `Puntos asignados: <span id="contador-puntos">${puntosTotalesAsignados}</span> / ${MAX_PUNTOS}`;
+            textoPre.innerText = "Puntos asignados: ";
+            textoPost.innerText = " / " + MAX_PUNTOS;
         }
     }
 
@@ -379,10 +397,6 @@
     function iniciarEvaluacion() {
         if (modoElegido === 'personalizado' && puntosTotalesAsignados === 0) {
             return alert("Debes asignar al menos 1 punto en total a los temas que te importan para poder ponderar tus resultados.");
-        }
-
-        if (modoElegido === 'equilibrado') {
-            BASE_DE_DATOS.competencias.forEach(comp => pesosUsuario[comp.id] = 1);
         }
 
         let partidosBase = [...BASE_DE_DATOS.partidos_oficiales];
@@ -413,6 +427,7 @@
                         <div class="resumen-neutral">${escaparHTML(medida.resumen_neutral)}</div>
                         <details class="cita-desplegable">
                             <summary>Ver texto literal extraído del documento</summary>
+                            <!-- Se omite la fuente para mantener anonimato total -->
                             <div class="cita-literal">"${escaparHTML(medida.texto_original)}"</div>
                         </details>
                         <div class="botonera-voto" id="btn-group-${cuestion.id}-${partido.id_real}">
@@ -437,7 +452,7 @@
 
         document.getElementById('contenedor-cuestiones').innerHTML = htmlCuestiones;
         document.getElementById('vista-inicio').classList.remove('activa');
-        document.getElementById('vista-100-puntos').classList.remove('activa');
+        if(document.getElementById('vista-100-puntos')) document.getElementById('vista-100-puntos').classList.remove('activa');
         document.getElementById('vista-paso2').classList.add('activa');
         window.scrollTo(0, 0);
     }
@@ -515,12 +530,11 @@
 
         let htmlRes = "";
         resultados.forEach((res, index) => {
-            const alerta = res.cobProgramatica < 50 ? `<div class="alerta-cobertura">⚠ Cobertura programática baja: Este partido tiene posición explícita en menos de la mitad de los temas generales, lo que reduce la solidez de esta comparación.</div>` : "";
+            const alerta = res.cobProgramatica < 50 ? `<div class="alerta-cobertura">⚠ Cobertura programática baja: Este partido tiene posición explícita en menos de la mitad de los temas generales.</div>` : "";
             
             let filasDesglose = "";
             res.desglose.forEach(d => {
-                const etiquetaPeso = modoElegido === 'personalizado' ? `${d.peso} pts` : `Igualado`;
-                filasDesglose += `<tr><td>${escaparHTML(d.nombre)}</td><td><strong>${d.afinidad}%</strong></td><td style="color:var(--texto-suave)">${etiquetaPeso}</td></tr>`;
+                filasDesglose += `<tr><td>${escaparHTML(d.nombre)}</td><td><strong>${d.afinidad}%</strong></td><td style="color:var(--texto-suave)">${d.peso} pts</td></tr>`;
             });
 
             htmlRes += `
