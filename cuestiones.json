@@ -1,0 +1,1331 @@
+[
+  {
+    "id": "ter-01",
+    "competencia_id": "ter",
+    "subcompetencia": "Memoria democrática",
+    "en_test_rapido": true,
+    "titulo": "Ley de Memoria Democrática y políticas de memoria",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Derogar la Ley de Memoria Democrática vigente y aprobar en su lugar una ley de concordia.",
+        "texto_original": "DEROGAREMOS LA LEY DE MEMORIA DEMOCRÁTICA Y APROBAREMOS UNA LEY DE CONCORDIA.",
+        "fuente": "Programa PP 2026, Pág. 47"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Ampliar la red de lugares de memoria democrática, retirar la simbología franquista y avanzar en la supresión de entidades que hagan apología de la dictadura.",
+        "texto_original": "Ampliar la red de Lugares de Memoria Democrática, retirar simbología franquista y avanzar en la eliminación de entidades que hagan apología de la dictadura.",
+        "fuente": "Programa PSOE 2026, Pág. 98"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Superar normas como la Ley de Memoria Democrática al considerarlas leyes ideológicas que imponen una verdad oficial y perjudican la convivencia.",
+        "texto_original": "Superación de las divisivas leyes ideológicas que enfrentan a los españoles, tales como la de Memoria Democrática, que dañan la convivencia y dividen y enfrentan a los españoles tratando de imponer una verdad oficial.",
+        "fuente": "Programa VOX 2026, Pág. 26"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Desarrollar la Ley de Memoria Democrática con más medios para reconocer la reparación integral de las víctimas del franquismo como un derecho individual, compensar bienes incautados y abrir los archivos.",
+        "texto_original": "Desarrollo reglamentario de la Ley de Memoria Democrática que recoja el derecho a la reparación de todas las víctimas de la dictadura franquista y contemple esa reparación integral como derecho subjetivo, así como el derecho al resarcimiento de los bienes incautados y las sanciones económicas producidas por razones políticas, ideológicas, de conciencia o creencia religiosa durante la Guerra Civil y la dictadura y dotación de medios personales, económicos, tecnológicos y materiales para implementar la Ley de Memoria Democrática, asegurar el funcionamiento del Banco Estatal de ADN y la reforma de la Ley de Secretos Oficiales para garantizar el acceso a los archivos.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 146"
+      }
+    }
+  },
+  {
+    "id": "ter-02",
+    "competencia_id": "ter",
+    "subcompetencia": "Administración y sector público",
+    "en_test_rapido": false,
+    "titulo": "Tamaño de la Administración y empresas públicas",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Revisar todas las participaciones empresariales del Estado y vender aquellas que no respondan a un interés público o estratégico acreditado.",
+        "texto_original": "Revisaremos todas las participaciones empresariales del Estado y venderemos aquellas que no respondan a un interés público o estratégico acreditado.",
+        "fuente": "Programa PP 2026, Pág. 13"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Reforzar el sector público empresarial y mantener la participación estatal en sectores estratégicos para modernizar el modelo productivo y preservar capacidades industriales y tecnológicas.",
+        "texto_original": "Reforzaremos el sector público empresarial. El sector público es una herramienta esencial para impulsar la modernización de nuestro modelo productivo, la creación de empleo de calidad, y garantizar servicios públicos. Mantendremos la participación del Estado en sectores estratégicos, preservando capacidades industriales y tecnológicas esenciales, fortaleciendo la autonomía estratégica de España y Europa.",
+        "fuente": "Programa PSOE 2026, Pág. 15"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Reducir el tamaño de la Administración Pública hasta el mínimo estrictamente necesario.",
+        "texto_original": "Reducir al mínimo estrictamente necesario el tamaño de la Administración Pública.",
+        "fuente": "Programa VOX 2026, Pág. 25"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Incorporar a trabajadores y usuarios en los órganos directivos de las empresas públicas, con objetivos evaluables, dirección profesionalizada y rendición de cuentas periódica ante el Congreso.",
+        "texto_original": "Control democrático de las empresas públicas: Incorporaremos representación de trabajadores y usuarios en sus órganos directivos, con mandatos de servicio e inversión con objetivos evaluables y transparencia pública para impedir la gestión opaca o el reparto partidista de cargos, bajo una dirección profesionalizada que rinda cuentas periódicamente ante el Congreso de los Diputados.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 116"
+      }
+    }
+  },
+  {
+    "id": "ter-03",
+    "competencia_id": "ter",
+    "subcompetencia": "Corrupción y transparencia",
+    "en_test_rapido": false,
+    "titulo": "Medidas contra la corrupción y castigo a responsables",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Aprobar una nueva Ley del Indulto con criterios objetivos que impida indultar a condenados por corrupción, terrorismo, delitos contra el orden constitucional o delitos graves contra menores.",
+        "texto_original": "Aprobaremos una nueva Ley del Indulto con criterios objetivos y transparentes. No podrán ser indultados los condenados por corrupción, terrorismo, delitos contra la integridad territorial o el orden constitucional ni por delitos graves contra menores.",
+        "fuente": "Programa PP 2026, Pág. 29"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Aprobar una Ley Orgánica de Integridad Pública con mapas de riesgos en todas las administraciones y crear una agencia independiente que coordine la supervisión y proteja a los denunciantes.",
+        "texto_original": "Aprobar una Ley Orgánica de Integridad Pública y una Estrategia Nacional Anticorrupción con mapas de riesgos en todas las administraciones, y crear una Agencia Independiente de Integridad Pública que coordine los organismos de supervisión y refuerce la protección de quienes denuncian.",
+        "fuente": "Programa PSOE 2026, Pág. 102"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Reforzar la responsabilidad patrimonial de los cargos públicos condenados por corrupción para que respondan con todos sus bienes presentes y futuros hasta devolver el total de los fondos desviados.",
+        "texto_original": "Reforzaremos la responsabilidad patrimonial personal de los cargos públicos condenados por delitos de corrupción, garantizando que respondan con todos sus bienes presentes y futuros por la totalidad del perjuicio económico causado a las arcas públicas, hasta su completa recuperación de los fondos públicos desviados.",
+        "fuente": "Programa VOX 2026, Pág. 50"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Endurecer las sanciones por corrupción para prohibir durante veinte años que las empresas y personas condenadas puedan contratar con el sector público.",
+        "texto_original": "Haremos efectivas las sanciones en casos de corrupción para que las empresas y personas condenadas no puedan contratar con el sector público durante veinte años.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 142"
+      }
+    }
+  },
+  {
+    "id": "eco-01",
+    "competencia_id": "eco",
+    "subcompetencia": "Movilidad urbana y vehículo privado",
+    "en_test_rapido": false,
+    "titulo": "Zonas de Bajas Emisiones y restricciones a vehículos contaminantes",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Favorecer la descarbonización del tráfico por carretera mediante inversiones en puntos de recarga y vías conectadas con despliegue de 5G.",
+        "texto_original": "Impulsaremos las inversiones en infraestructuras conectadas, sostenibles y seguras, que favorezcan el desarrollo y despliegue del 5G en las vías de alta capacidad, y la implantación de puntos de recarga a fin de favorecer la descarbonización de los tráficos rodados.",
+        "fuente": "Programa PP 2026, Pág. 46"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Impulsar las Zonas de Bajas Emisiones y la movilidad sostenible en las ciudades para reducir las emisiones contaminantes y mejorar la calidad del aire.",
+        "texto_original": "Impulsar las Zonas de Bajas Emisiones y la movilidad sostenible en las ciudades, promoviendo medidas eficaces para reducir las emisiones y mejorar la calidad del aire.",
+        "fuente": "Programa PSOE 2026, Pág. 71"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Eliminar la obligación de las Zonas de Bajas Emisiones y otras medidas climáticas del Pacto Verde al considerar que limitan la libertad de circulación y dañan a la economía.",
+        "texto_original": "Acabar con todas las imposiciones climáticas como el Pacto Verde que castigan nuestra industria, nuestro campo o que coartan la libertad de circulación de los españoles, como la imposición de ZBE.",
+        "fuente": "Programa VOX 2026, Pág. 25"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Reformar el impuesto municipal de circulación para calcularlo según las emisiones reales de CO₂ y la etiqueta ambiental, permitiendo multiplicar hasta por 2,5 la cuota a los vehículos más contaminantes.",
+        "texto_original": "Reformaremos el impuesto municipal sobre vehículos según sus emisiones. El objetivo es vincularlo a las emisiones reales de CO₂ y a la etiqueta ambiental, en vez de a la potencia fiscal. Permitiremos un coeficiente de hasta 2,5 para vehículos sin distintivo ambiental o con emisiones superiores a 120 g/km.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 48"
+      }
+    }
+  },
+  {
+    "id": "eco-02",
+    "competencia_id": "eco",
+    "subcompetencia": "Ferrocarril e infraestructuras",
+    "en_test_rapido": false,
+    "titulo": "Modelo de gestión del ferrocarril y alta velocidad",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Movilizar junto al sector privado más de 300.000 millones en quince años para impulsar Alta Velocidad, Cercanías, autovías e infraestructuras hidráulicas y energéticas mediante un plan nacional.",
+        "texto_original": "Por ello movilizaremos, junto con el sector privado, más de 300.000 millones en los próximos 15 años para impulsar autovías y redes viarias, Alta Velocidad y Cercanías e infraestructuras hidráulicas y energéticas a través de un Plan Nacional de Infraestructuras.",
+        "fuente": "Programa PP 2026, Pág. 45"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Priorizar el mantenimiento y la fiabilidad de toda la red ferroviaria con unos 19.000 millones hasta 2030, culminar los corredores Mediterráneo y Atlántico e impulsar el transporte de mercancías por tren.",
+        "texto_original": "En el transporte, culminaremos los corredores Mediterráneo y Atlántico, conectando puertos, plataformas logísticas y polos industriales con la red europea; impulsaremos el transporte de mercancías por ferrocarril y la intermodalidad para descarbonizar la logística; y daremos prioridad al mantenimiento y la fiabilidad de toda la red ferroviaria, con unos 19.000 millones de euros comprometidos hasta 2030.",
+        "fuente": "Programa PSOE 2026, Pág. 13"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Auditar el estado de la red ferroviaria y dar prioridad a la seguridad, al mantenimiento de las infraestructuras y a los servicios de Cercanías y Media Distancia.",
+        "texto_original": "Prioridad a la seguridad ferroviaria, al mantenimiento de una red abandonada e infradotada y a los servicios de Cercanías y Media Distancia. Auditoría del estado de la red.",
+        "fuente": "Programa VOX 2026, Pág. 53"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Revertir la liberalización ferroviaria para restablecer la alta velocidad como un servicio cien por cien público operado en exclusiva por la empresa pública estatal.",
+        "texto_original": "Alta velocidad 100 % pública y reversión de la liberalización: Restableceremos la alta velocidad como un servicio público de titularidad y operación exclusiva por parte de Renfe.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 105"
+      }
+    }
+  },
+  {
+    "id": "eco-03",
+    "competencia_id": "eco",
+    "subcompetencia": "Transporte aéreo y aeropuertos",
+    "en_test_rapido": false,
+    "titulo": "Ampliación de aeropuertos y fiscalidad del transporte aéreo",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Resolver la saturación de los aeropuertos y ejecutar las ampliaciones necesarias según la demanda prevista y la conectividad territorial.",
+        "texto_original": "MAYOR CAPACIDAD Y MEJORES ACCESOS PARA LOS AEROPUERTOS. Resolveremos los puntos de saturación y ejecutaremos las ampliaciones que justifiquen la demanda prevista y las necesidades de conectividad territorial.",
+        "fuente": "Programa PP 2026, Pág. 46"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Desplegar el plan inversor DORA III en aeropuertos y los planes portuarios para modernizar infraestructuras, adaptarlas al cambio climático y mejorar las conexiones entre medios de transporte.",
+        "texto_original": "Desplegaremos el programa DORA III en aeropuertos y los planes de inversión de las autoridades portuarias para modernizar las infraestructuras, adaptarlas al cambio climático y facilitar las conexiones intermodales.",
+        "fuente": "Programa PSOE 2026, Pág. 21"
+      },
+      "vox": {
+        "consta": false
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Paralizar las ampliaciones de aeropuertos incompatibles con los objetivos climáticos, suprimir los privilegios fiscales del sector aéreo y crear impuestos a viajeros frecuentes y transportes de lujo.",
+        "texto_original": "Eliminaremos privilegios fiscales al sector aéreo, crearemos una tasa progresiva a los viajeros frecuentes y un nuevo impuesto a los transportes de lujo, y paralizaremos las ampliaciones aeroportuarias incompatibles con objetivos climáticos.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 68"
+      }
+    }
+  },
+  {
+    "id": "eco-04",
+    "competencia_id": "eco",
+    "subcompetencia": "Cuentas públicas",
+    "en_test_rapido": true,
+    "titulo": "Control del gasto público, deuda y reglas fiscales",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Ampliar las competencias de la Autoridad Independiente de Responsabilidad Fiscal (AIReF) para evaluar el gasto público y la sostenibilidad de la deuda, reforzando su control sobre el cumplimiento de las reglas fiscales en todas las administraciones.",
+        "texto_original": "Además, ampliaremos las competencias de la AIReF para evaluar el gasto y la sostenibilidad de la deuda y reforzar su papel de control en el cumplimiento de las reglas fiscales en todas las administraciones.",
+        "fuente": "Programa PP 2026, Pág. 13"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Presentar a la Comisión Europea en 2027 un plan fiscal para toda la legislatura que fije una senda de gasto neto compatible con las reglas fiscales europeas, respaldado por previsiones avaladas por la AIReF.",
+        "texto_original": "Presentar a la Comisión Europea, en la primavera de 2027, un nuevo Plan Fiscal y Estructural de Medio Plazo para toda la legislatura. El Plan fijará una senda de gasto neto compatible con las reglas fiscales europeas y se apoyará en previsiones avaladas por la AIReF.",
+        "fuente": "Programa PSOE 2026, Pág. 47"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Reducir la deuda pública y compatibilizar la bajada de impuestos con la financiación de los servicios esenciales mediante el control del déficit, la eliminación del gasto considerado superfluo o ideológico y el impulso del crecimiento económico.",
+        "texto_original": "Reducción de la deuda pública. Compatibilizar la rebaja de impuestos con la financiación de los servicios […] públicos esenciales, mediante el control del déficit, la eliminación del gasto superfluo e ideológico y el impulso del crecimiento económico.",
+        "fuente": "Programa VOX 2026, Pág. 7"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Superar de forma definitiva las reglas fiscales europeas del Pacto de Estabilidad y Crecimiento y eliminar las políticas de recortes y austeridad presupuestaria como herramienta de ajuste económico.",
+        "texto_original": "Superación del Pacto de Estabilidad y Crecimiento: Superaremos de forma definitiva el Pacto de Estabilidad y Crecimiento y eliminaremos las políticas de recortes o austeridad presupuestaria como herramienta de ajuste macroeconómico de los Estados miembros.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 136"
+      }
+    }
+  },
+  {
+    "id": "eco-05",
+    "competencia_id": "eco",
+    "subcompetencia": "Industria y Estado",
+    "en_test_rapido": false,
+    "titulo": "Papel del Estado en la reindustrialización y sectores estratégicos",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Declarar estratégicos de interés nacional los proyectos que generen al menos cien empleos, dotándolos de tramitación prioritaria, un único trámite digital estatal y conexión eléctrica planificada en seis meses.",
+        "texto_original": "Declararemos estratégicos de interés nacional los proyectos que creen al menos cien empleos. Tendrán una dirección única, tramitación prioritaria, un único trámite digital para las autorizaciones del Estado, incluidas las ambientales, y su conexión eléctrica planificada en seis meses.",
+        "fuente": "Programa PP 2026, Pág. 63"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Aprobar una Ley de Industria y Autonomía Estratégica para impulsar la industria limpia mediante electrificación, energías renovables, hidrógeno renovable, economía circular y ampliación de redes eléctricas con nuevos concursos de acceso.",
+        "texto_original": "Aprobaremos una nueva Ley de Industria y Autonomía Estratégica y apoyaremos la industria limpia y las cadenas de valor estratégicas mediante la electrificación, las energías renovables, el hidrógeno renovable, el almacenamiento energético, la economía circular, la simbiosis industrial y la modernización y ampliación de las redes eléctricas, convocando nuevos concursos de acceso para garantizar el desarrollo de proyectos industriales estratégicos.",
+        "fuente": "Programa PSOE 2026, Pág. 14"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Aprobar un Plan Nacional de Reindustrialización orientado a frenar las deslocalizaciones, combatir la competencia desleal y revertir la pérdida de empleo y de peso industrial en la economía.",
+        "texto_original": "Aprobación de un Plan Nacional de Reindustrialización enfocado a contrarrestar las deslocalizaciones, la competencia desleal, la pérdida de empleo industrial y la baja participación de la industria en el PIB.",
+        "fuente": "Programa VOX 2026, Pág. 10"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Transformar la SEPI en una Agencia Industrial Pública con capital y capacidad operativa para crear empresas públicas, entrar en sectores estratégicos y coordinar los distintos organismos financieros públicos.",
+        "texto_original": "Transformaremos la SEPI en una verdadera Agencia Industrial Pública, dotada de capital, personal especializado y capacidad operativa para crear empresas públicas, entrar en sectores estratégicos y coordinar la participación del Estado. Su actuación se articulará de forma coordinada con el ICO, CDTI, ENISA e instituciones autonómicas para evitar la dispersión de instrumentos públicos.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 80"
+      }
+    }
+  },
+  {
+    "id": "eco-06",
+    "competencia_id": "eco",
+    "subcompetencia": "Turismo",
+    "en_test_rapido": false,
+    "titulo": "Modelo turístico y gestión de zonas saturadas",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Dinamizar el sector turístico y hostelero para generar mayor gasto por visitante, más inversión, más empleo estable y mayor actividad repartida durante todo el año.",
+        "texto_original": "Dinamizaremos el sector turístico y hostelero, uno de los grandes motores de nuestra economía, para que genere más gasto por visitante, más inversión, más empleo estable y más actividad durante todo el año.",
+        "fuente": "Programa PP 2026, Pág. 64"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Impulsar un modelo de turismo sostenible y resiliente centrado en la eficiencia en el uso del agua y la energía y en la adaptación de los destinos a los efectos del cambio climático.",
+        "texto_original": "Impulsar un modelo de turismo sostenible y resiliente, promoviendo la eficiencia hídrica y energética y la adaptación de los destinos a los efectos del cambio climático.",
+        "fuente": "Programa PSOE 2026, Pág. 73"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Fomentar la industria turística impulsando empleos de calidad y asegurando la convivencia vecinal y la preservación de la identidad de los barrios.",
+        "texto_original": "Fomentar la industria turística mediante empleos de calidad y garantizando la convivencia y la preservación de la identidad de nuestros barrios.",
+        "fuente": "Programa VOX 2026, Pág. 11"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Ordenar el turismo según la capacidad ecológica y social de cada territorio, limitando plazas en zonas tensionadas, controlando las viviendas turísticas y exigiendo registros y la retirada de anuncios sin licencia.",
+        "texto_original": "Ordenaremos el turismo según la capacidad ecológica y social de los territorios. Limitaremos plazas en zonas tensionadas, controlaremos viviendas turísticas y exigiremos registros y retirada de anuncios sin licencia.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 72"
+      }
+    }
+  },
+  {
+    "id": "eco-07",
+    "competencia_id": "eco",
+    "subcompetencia": "Autónomos",
+    "en_test_rapido": true,
+    "titulo": "Cotización a la Seguridad Social de los autónomos",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Propone eximir de pagar cuota a la Seguridad Social a los nuevos autónomos durante su primer año de actividad, y también durante el segundo si sus ingresos no alcanzan el salario mínimo.",
+        "texto_original": "Los nuevos autónomos no pagarán cuota a la Seguridad Social durante su primer año, ni durante el segundo si sus ingresos no llegan al salario mínimo.",
+        "fuente": "Programa PP 2026, Pág. 59"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Plantea avanzar en el sistema de cotización por ingresos reales, actualizar el Estatuto del Trabajo Autónomo, simplificar el acceso al cese de actividad y garantizar la transición al régimen de autónomos para mutualistas.",
+        "texto_original": "Actualizar el Estatuto del Trabajo Autónomo para adaptarlo a los cambios tecnológicos y las nuevas profesiones; seguir mejorando la protección social de las personas autónomas, atendiendo también a la conciliación de los cuidados, avanzando en la cotización por ingresos reales; simplificar el acceso a la prestación por cese de actividad; adaptar la prevención de riesgos laborales al trabajo autónomo y a sus necesidades; y garantizar la transición justa al RETA para profesionales de mutualidades alternativas.",
+        "fuente": "Programa PSOE 2026, Pág. 42"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Propone establecer una cuota de cero euros para los autónomos cuyos ingresos no lleguen al salario mínimo y, por encima de ese umbral, aplicar una cuota progresiva a partir de 50 euros según sus ingresos.",
+        "texto_original": "Apoyo a los trabajadores autónomos. Cuota de cero euros si los ingresos no llegan al Salario Mínimo Interprofesional y, superado dicho umbral, una cuota progresiva desde los 50 euros en función de sus ingresos.",
+        "fuente": "Programa VOX 2026, Pág. 7"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Propone un régimen específico para autónomos de bajos ingresos que les permita acogerse a una cotización fija bonificada sin perder derechos de protección cuando ganen menos del salario mínimo anual por causas objetivas.",
+        "texto_original": "Apoyaremos a las personas trabajadoras autónomas en situación de bajos ingresos con un régimen específico de cotización. Cuando los ingresos reales percibidos por la persona trabajadora autónoma sean inferiores al SMI anual por causas objetivas, tales como las condiciones del mercado o el inicio de actividad, se podrá acoger a una cotización fija bonificada sin pérdida de derechos de protección.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 92"
+      }
+    }
+  },
+  {
+    "id": "eco-08",
+    "competencia_id": "eco",
+    "subcompetencia": "Jornada laboral",
+    "en_test_rapido": false,
+    "titulo": "Reducción y flexibilidad de la jornada laboral",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Plantea facilitar horarios flexibles de entrada y salida y el teletrabajo cuando la naturaleza del puesto lo permita, sin proponer un recorte legal general de la jornada semanal.",
+        "texto_original": "Facilitaremos horarios flexibles de entrada y salida y el teletrabajo cuando la naturaleza del puesto lo permita.",
+        "fuente": "Programa PP 2026, Pág. 57"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Propone completar la reducción de la jornada laboral a 37,5 horas semanales sin pérdida de salario, con diálogo social y periodos transitorios para pymes, e incentivar en la negociación colectiva el avance hacia las 35 horas.",
+        "texto_original": "Completar la reducción de la jornada a 37,5 horas e incentivar los avances en la negociación colectiva hacia las 35 horas. Trabajar menos horas debe permitir ganar tiempo para la familia, los cuidados, el descanso y la vida personal, sin perder salario. Se aplicará con un calendario que beba del diálogo social y periodos transitorios que faciliten a las pymes su implementación.",
+        "fuente": "Programa PSOE 2026, Pág. 41"
+      },
+      "vox": {
+        "consta": false
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Propone reducir progresivamente el tiempo máximo de trabajo efectivo hasta alcanzar la jornada laboral de 32 horas semanales.",
+        "texto_original": "Reduciremos la jornada laboral limitando el tiempo de trabajo efectivo de forma progresiva hasta las 32 horas semanales.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 55"
+      }
+    }
+  },
+  {
+    "id": "eco-09",
+    "competencia_id": "eco",
+    "subcompetencia": "Despido y legislación laboral",
+    "en_test_rapido": false,
+    "titulo": "Regulación del despido y reforma de la legislación laboral",
+    "medidas": {
+      "pp": {
+        "consta": false
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Propone reformar el despido improcedente para que la indemnización sea efectiva, proporcionada y disuasoria en función de las circunstancias y los daños causados, adecuándola a la Carta Social Europea.",
+        "texto_original": "Reformar el despido improcedente para garantizar una reparación efectiva, proporcionada y disuasoria, teniendo en cuenta las circunstancias y los daños causados, y adecuar la normativa al artículo 24.b de la Carta Social Europea revisada y a las decisiones del Comité Europeo de Derechos Sociales.",
+        "fuente": "Programa PSOE 2026, Pág. 41"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Plantea derogar la legislación laboral vigente, al considerar que ha desincentivado la contratación, agravado la precariedad y ocultado las cifras reales de temporalidad.",
+        "texto_original": "Derogar la legislación laboral de Sánchez que ha agravado la precariedad, desincentivado la contratación y empeorado una situación ya de por sí insostenible, que ha maquillado las cifras de temporalidad y que beneficia al duopolio sindical que ha traicionado a los trabajadores.",
+        "fuente": "Programa VOX 2026, Pág. 11"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Propone recuperar la autorización administrativa previa para los despidos colectivos o exigir la devolución de ayudas públicas en empresas con beneficios, además de fijar una cotización adicional si se despide por automatización o inteligencia artificial.",
+        "texto_original": "Autorización previa y compensación por despido tecnológico: Recuperaremos la autorización administrativa previa para despidos colectivos (o devolución de ayudas públicas en empresas con beneficios) y estableceremos un compromiso de cotización adicional a la Seguridad Social para empresas que despidan por implantar IA o automatización.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 53"
+      }
+    }
+  },
+  {
+    "id": "eco-10",
+    "competencia_id": "eco",
+    "subcompetencia": "Incapacidad temporal",
+    "en_test_rapido": false,
+    "titulo": "Gestión de las bajas médicas y papel de las mutuas",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Propone reforzar los medios de la Seguridad Social y el papel de las mutuas, en el marco del diálogo social, para agilizar la gestión de las bajas por incapacidad temporal.",
+        "texto_original": "En el marco del diálogo social, reforzaremos los medios de la Seguridad Social y el papel de las mutuas para agilizar la gestión de la incapacidad temporal.",
+        "fuente": "Programa PP 2026, Pág. 60"
+      },
+      "psoe": {
+        "consta": false
+      },
+      "vox": {
+        "consta": false
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Plantea garantizar por ley que las altas, bajas y confirmaciones por enfermedades comunes correspondan en exclusiva a la sanidad pública, rechazando ampliar las competencias de las mutuas.",
+        "texto_original": "Control exclusivo de bajas por la sanidad pública: Garantizaremos por ley que las altas, bajas y confirmaciones por contingencias comunes correspondan en exclusiva a la sanidad pública, rechazando ampliar competencias a las mutuas.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 54"
+      }
+    }
+  },
+  {
+    "id": "jus-01",
+    "competencia_id": "jus",
+    "subcompetencia": "Inmigración y regularización",
+    "en_test_rapido": true,
+    "titulo": "Regularización de personas en situación irregular y arraigo",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Prohibir por ley las regularizaciones masivas e indiscriminadas y restringir el arraigo para que sea un reconocimiento individual excepcional y no una vía generalizada.",
+        "texto_original": "Reformaremos la Ley de Extranjería para prohibir las regularizaciones masivas e indiscriminadas y para que el arraigo sea un reconocimiento […] individual excepcional, no una vía generalizada de regularización.",
+        "fuente": "Programa PP 2026, Pág. 22"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Simplificar los trámites de extranjería, impulsar la contratación en origen, agilizar la homologación de títulos y facilitar el acceso al empleo de las personas migrantes.",
+        "texto_original": "Queremos seguir avanzando en esta dirección: simplificar los trámites, dar seguridad jurídica, impulsar la contratación en origen, agilizar la homologación de títulos y facilitar el acceso al empleo, para aprovechar el talento de quienes vienen a vivir y trabajar aquí.",
+        "fuente": "Programa PSOE 2026, Pág. 92"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Prohibir las regularizaciones masivas e impedir de forma permanente que quien haya entrado ilegalmente pueda regularizar su situación.",
+        "texto_original": "Prohibición de las regularizaciones masivas. Quien entra de forma ilegal jamás podrá regularizar su situación.",
+        "fuente": "Programa VOX 2026, Pág. 13"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Reformar integralmente la Ley de Extranjería para instaurar un procedimiento estable, permanente y reglado de regularización administrativa.",
+        "texto_original": "Procedimiento estable de regularización: Reformaremos de forma integral la Ley de Extranjería para instaurar un procedimiento estable, permanente y reglado de regularización administrativa.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 126"
+      }
+    }
+  },
+  {
+    "id": "jus-02",
+    "competencia_id": "jus",
+    "subcompetencia": "Control de fronteras",
+    "en_test_rapido": false,
+    "titulo": "Control de fronteras y devoluciones en frontera",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Reformar la Ley de Extranjería para ampliar el rechazo en frontera y aplicarlo también a las entradas a nado en Ceuta y Melilla.",
+        "texto_original": "Reformaremos la Ley de Extranjería para que el rechazo en frontera cubra también las entradas a nado en Ceuta y Melilla.",
+        "fuente": "Programa PP 2026, Pág. 21"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Defender una gestión europea ordenada de las fronteras que combine la lucha contra las mafias con el respeto a los derechos humanos, el asilo y vías legales de migración.",
+        "texto_original": "Defender una política migratoria europea ordenada, basada en la solidaridad, la responsabilidad, las necesidades del mercado de trabajo europeo y el respeto de los derechos humanos, combinando la lucha contra las mafias con una gestión eficaz del asilo, las fronteras y las vías legales y seguras de migración.",
+        "fuente": "Programa PSOE 2026, Pág. 110"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Establecer un modelo de protección permanente de todas las fronteras con participación de las Fuerzas Armadas en apoyo a la policía contra la inmigración irregular, especialmente en Ceuta y Melilla.",
+        "texto_original": "Establecer un nuevo modelo de protección permanente de las fronteras terrestres, marítimas y aéreas, con participación de las Fuerzas Armadas, en apoyo a la Guardia Civil y el Cuerpo Nacional de Policía, reforzando la lucha contra la inmigración ilegal, las mafias de tráfico […] de personas y las amenazas híbridas, especialmente en Ceuta y Melilla.",
+        "fuente": "Programa VOX 2026, Pág. 40"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Derogar el rechazo en frontera de la Ley de Extranjería por considerar que pone en riesgo el derecho de asilo y crear un mecanismo independiente de control de derechos humanos en la Frontera Sur.",
+        "texto_original": "Derogación del rechazo en frontera y control independiente: Derogaremos formalmente la disposición adicional décima de la Ley de Extranjería (relativa al «rechazo en frontera») por poner en riesgo el derecho de asilo al carecer de procedimientos y garantías procesales debidas. Creación y financiación de un mecanismo de control independiente de derechos humanos en la Frontera Sur.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 126"
+      }
+    }
+  },
+  {
+    "id": "jus-03",
+    "competencia_id": "jus",
+    "subcompetencia": "Menores migrantes",
+    "en_test_rapido": false,
+    "titulo": "Acogida, reparto o retorno de menores extranjeros no acompañados",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Asumir desde el Estado la identificación inicial, evitar que la tutela recaiga automáticamente en las comunidades autónomas y sustituir el reparto como respuesta principal por un modelo individualizado con retorno.",
+        "texto_original": "El Estado asumirá la atención inicial, la identificación y la determinación de edad, y revisaremos el régimen de tutela para evitar su atribución automática a las Comunidades Autónomas. Sustituiremos el reparto como respuesta principal por un modelo de protección individualizada con retorno.",
+        "fuente": "Programa PP 2026, Pág. 24"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Garantizar un sistema de acogida sólido y reforzar especialmente la protección de los menores que llegan solos, situando siempre el interés superior del menor como prioridad.",
+        "texto_original": "Garantizar un sistema de acogida digno, robusto y una protección internacional efectiva, reforzando la protección especialmente de los niños, niñas y adolescentes que lleguen solos, situando siempre el interés superior del menor en el centro de nuestra política.",
+        "fuente": "Programa PSOE 2026, Pág. 93"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Devolver a los menores extranjeros no acompañados con sus padres o a las instituciones de tutela de sus países de origen.",
+        "texto_original": "Devolución de menores extranjeros no acompañados a sus padres o a las […] instituciones de tutela de sus países de origen, atendiendo al interés superior del menor.",
+        "fuente": "Programa VOX 2026, Pág. 13"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Aprobar un plan integral de atención e inclusión para menores migrantes y jóvenes que llegan a la mayoría de edad, con un acuerdo vinculante de reparto solidario entre comunidades autónomas.",
+        "texto_original": "Infancia migrante no acompañada: Aprobaremos el Plan Integral de Atención, Protección e Inclusión de la Infancia Migrante (incluyendo jóvenes en tránsito a la vida adulta) con un acuerdo marco vinculante para un reparto solidario y equitativo entre comunidades autónomas.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 41"
+      }
+    }
+  },
+  {
+    "id": "jus-04",
+    "competencia_id": "jus",
+    "subcompetencia": "Asilo y acogida",
+    "en_test_rapido": false,
+    "titulo": "Política de asilo y capacidad de acogida migratoria",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Aplicar el Pacto Europeo de Migración e impulsar acuerdos con países seguros para que examinen solicitudes de asilo y acojan a quienes necesiten protección.",
+        "texto_original": "Aplicaremos el Pacto Europeo e impulsaremos acuerdos con países seguros para que examinen solicitudes y acojan a quienes lo necesiten.",
+        "fuente": "Programa PP 2026, Pág. 22"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Ampliar las vías legales y seguras de protección internacional con reasentamiento y visados humanitarios, reforzando el sistema público de acogida con financiación estable y atención especializada.",
+        "texto_original": "Ampliar las vías legales y seguras de protección internacional y reforzar el sistema público de acogida y asilo, con mecanismos para el reasentamiento y visados humanitarios, financiación estable y atención especializada en salud mental, educación, traducción e integración social.",
+        "fuente": "Programa PSOE 2026, Pág. 92"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Frenar la acogida de nuevos inmigrantes al considerar que el país no puede absorber más llegadas tras las recibidas en los últimos cinco años.",
+        "texto_original": "Ni uno más. Después de recibir a 5 millones de personas en 5 años España no puede acoger a más inmigrantes.",
+        "fuente": "Programa VOX 2026, Pág. 13"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Permitir solicitar protección internacional en embajadas y consulados españoles y suprimir el visado de tránsito aeroportuario para personas procedentes de países en conflicto.",
+        "texto_original": "Protección en embajadas y exención de visados de tránsito: Aplicaremos el artículo 38 de la Ley de Asilo para permitir la solicitud de protección internacional en embajadas y consulados (conforme a la interpretación del Tribunal Supremo) y eximiremos del visado de tránsito aeroportuario a las personas procedentes de países en conflicto (tales como Palestina, Siria o Sudán).",
+        "fuente": "Programa Frente Amplio 2026, Pág. 127"
+      }
+    }
+  },
+  {
+    "id": "jus-05",
+    "competencia_id": "jus",
+    "subcompetencia": "Poder Judicial",
+    "en_test_rapido": true,
+    "titulo": "Sistema de elección del Consejo General del Poder Judicial (CGPJ)",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Propone que los doce vocales de procedencia judicial del Consejo General del Poder Judicial sean elegidos directamente por los jueces y magistrados de todas las categorías.",
+        "texto_original": "Los jueces y magistrados de todas las categorías elegirán a los doce vocales judiciales del Consejo General del Poder Judicial.",
+        "fuente": "Programa PP 2026, Pág. 32"
+      },
+      "psoe": {
+        "consta": false
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Plantea reformar la ley del Poder Judicial para que los doce vocales judiciales del Consejo General del Poder Judicial sean elegidos mediante voto personal, directo y secreto entre los propios jueces y magistrados, eliminando el reparto por cuotas políticas.",
+        "texto_original": "Modificar la Ley Orgánica del Poder Judicial para que los doce vocales de procedencia judicial del Consejo General del Poder Judicial sean elegidos mediante voto personal, directo y secreto por y entre los propios jueces y magistrados, terminando con el sistema de cuotas partidistas.",
+        "fuente": "Programa VOX 2026, Pág. 48"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Propone mantener la elección parlamentaria por mayoría de tres quintos, pero permitir que las Cámaras elijan a los vocales judiciales por mayoría absoluta en segunda votación si en dos meses no hay acuerdo, pudiendo constituirse el órgano aunque falten los del turno de juristas.",
+        "texto_original": "Reformaremos la Ley Orgánica del Poder Judicial para que ningún partido pueda volver a bloquear la renovación del Consejo General del Poder Judicial. Los vocales del turno judicial se seguirán eligiendo por mayoría de tres quintos, pero si en dos meses no hay acuerdo, las Cámaras podrán elegirlos en segunda votación por mayoría absoluta. Además, el nuevo Consejo podrá constituirse con los vocales ya elegidos, aunque falten los del turno de juristas.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 148"
+      }
+    }
+  },
+  {
+    "id": "jus-06",
+    "competencia_id": "jus",
+    "subcompetencia": "Seguridad ciudadana",
+    "en_test_rapido": false,
+    "titulo": "Ley de Seguridad Ciudadana y control de la actuación policial",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Plantea reforzar la cobertura legal de la actuación policial preventiva ante indicios de violencia organizada, regulando la incautación anticipada de objetos peligrosos, la identificación de personas con el rostro cubierto y la disolución de concentraciones violentas.",
+        "texto_original": "Fortaleceremos la cobertura legal y la seguridad jurídica de la actuación policial preventiva ante indicios objetivos de violencia organizada, con reglas claras que protejan los derechos y libertades individuales, y regulen la incautación anticipada de instrumentos peligrosos, la identificación de quienes ocultan su rostro y la disolución de concentraciones violentas.",
+        "fuente": "Programa PP 2026, Pág. 18"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Propone sustituir la actual Ley de Seguridad Ciudadana por una nueva norma que garantice los derechos de reunión y manifestación, precise el régimen sancionador, evite identificaciones discriminatorias e implante cámaras corporales en toda la Policía Nacional y la Guardia Civil.",
+        "texto_original": "Aprobar una nueva Ley de Seguridad Ciudadana que sustituya a la Ley Orgánica 4/2015, garantizando los derechos de reunión y manifestación, un régimen sancionador preciso, identificaciones sin discriminación y cámaras corporales en toda la Policía Nacional y Guardia Civil con garantías de protección de datos.",
+        "fuente": "Programa PSOE 2026, Pág. 99"
+      },
+      "vox": {
+        "consta": false
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Propone prohibir las pelotas de goma y otro material antidisturbios muy lesivo, regular el uso de la fuerza y las cámaras corporales, garantizar la identificación visible de los agentes y prohibir los controles de identidad por perfil racial.",
+        "texto_original": "Control democrático de la actuación policial: Prohibiremos las pelotas de goma y otros materiales antidisturbios muy lesivos, regularemos el uso de la fuerza y de las cámaras corporales, garantizaremos la identificación visible de los agentes y prohibiremos los controles de identidad por perfil racial.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 145"
+      }
+    }
+  },
+  {
+    "id": "jus-07",
+    "competencia_id": "jus",
+    "subcompetencia": "Código Penal",
+    "en_test_rapido": false,
+    "titulo": "Prisión permanente revisable y endurecimiento de penas",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Propone ampliar la prisión permanente revisable a los asesinos que oculten el cadáver de su víctima o se nieguen a revelar su paradero, así como a pederastas y violadores reincidentes.",
+        "texto_original": "AMPLIAREMOS LA PRISIÓN PERMANENTE REVISABLE A QUIEN HAGA DESAPARECER A SU VÍCTIMA Y A LOS DEPREDADORES SEXUALES. Se aplicará al asesino que oculte el cadáver o se niegue a revelar dónde está, y a los depredadores sexuales, pederastas y violadores reincidentes.",
+        "fuente": "Programa PP 2026, Pág. 20"
+      },
+      "psoe": {
+        "consta": false
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Plantea ampliar los supuestos de aplicación de la prisión permanente revisable para imponer las máximas condenas a quienes cometan los delitos más graves.",
+        "texto_original": "Ampliación de la prisión permanente revisable. Los que cometen los peores delitos deben tener las máximas condenas.",
+        "fuente": "Programa VOX 2026, Pág. 39"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Apuesta por reducir el uso de la cárcel en delitos de mediana gravedad, ampliando las penas no privativas de libertad y el cumplimiento en régimen abierto.",
+        "texto_original": "Ampliaremos el uso de las penas no privativas de libertad y el medio abierto para los delitos de mediana gravedad.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 149"
+      }
+    }
+  },
+  {
+    "id": "med-01",
+    "competencia_id": "med",
+    "subcompetencia": "Cambio climático",
+    "en_test_rapido": true,
+    "titulo": "Ritmo de la descarbonización y Pacto Verde Europeo",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Mantiene la descarbonización como objetivo, pero propone revisar los plazos de cada sector según la evolución internacional, la tecnología disponible y la demanda para frenar calendarios que considera inasumibles.",
+        "texto_original": "La lucha contra el cambio climático y la descarbonización son objetivos irrenunciables para Europa por razones ambientales, geoestratégicas y económicas. Pero ha llegado el momento de revisar los ritmos de cada sector atendiendo a tres factores: lo que está ocurriendo en el resto del mundo, la tecnología realmente disponible y la evolución de la demanda. Pondremos freno a la imposición de calendarios imposibles.",
+        "fuente": "Programa PP 2026, Pág. 72"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Defiende mantener y profundizar el Pacto Verde Europeo, asegurando que la simplificación administrativa no rebaje la ambición climática y conservando inversiones elevadas en clima y biodiversidad en el presupuesto comunitario.",
+        "texto_original": "Defender y profundizar el Pacto Verde Europeo, garantizando que la simplificación administrativa no suponga una reducción de la ambición climática y […] ambiental y manteniendo objetivos ambiciosos de inversión en clima, biodiversidad y sostenibilidad en el presupuesto de la Unión Europea.",
+        "fuente": "Programa PSOE 2026, Pág. 73"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Propone eliminar las exigencias climáticas derivadas del Pacto Verde, argumentando que perjudican a la industria y al campo y restringen la libertad de circulación mediante medidas como las zonas de bajas emisiones.",
+        "texto_original": "Acabar con todas las imposiciones climáticas como el Pacto Verde que castigan nuestra industria, nuestro campo o que coartan la libertad de circulación de los españoles, como la imposición de ZBE.",
+        "fuente": "Programa VOX 2026, Pág. 25"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Plantea acelerar la reducción de emisiones respecto a 1990 hasta un 38 % en 2035 y un 85 % en 2040, alcanzando la neutralidad climática en 2050 mediante metas integradas por ley y sendas sectoriales.",
+        "texto_original": "Reduciremos las emisiones respecto a 1990 un 38 % en 2035, un 85 % en 2040 y alcanzaremos la neutralidad climática en 2050, integrando estos objetivos en la legislación climática y en la planificación energética, con sendas sectoriales que permitan evaluar su cumplimiento y ajustar las medidas de ejecución.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 60"
+      }
+    }
+  },
+  {
+    "id": "med-02",
+    "competencia_id": "med",
+    "subcompetencia": "Gestión del agua",
+    "en_test_rapido": true,
+    "titulo": "Política del agua, embalses, trasvases y regadíos",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Propone un Pacto Nacional del Agua para modernizar embalses y conducciones, renovar los regadíos existentes y definir nuevos, ampliando además el uso de agua depurada y la desalación donde sea necesario.",
+        "texto_original": "En el marco del Pacto Nacional del Agua, modernizaremos embalses y conducciones, renovaremos los regadíos para reducir su consumo de agua y energía, definiremos nuevos regadíos, ampliaremos el uso de agua depurada y reforzaremos la desalación donde sea necesaria.",
+        "fuente": "Programa PP 2026, Pág. 65"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Plantea modernizar los regadíos para mejorar su eficiencia hídrica y energética sin aumentar el consumo total de agua, financiando tecnologías de precisión, energías renovables y sistemas digitales.",
+        "texto_original": "Modernizar los regadíos, mejorando la eficiencia hídrica y energética sin aumentar el consumo total de agua. Para ello, se financiarán programas para la adopción de tecnologías de precisión, energías renovables y sistemas digitales.",
+        "fuente": "Programa PSOE 2026, Pág. 68"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Propone un Plan Nacional del Agua basado en la interconexión de todas las cuencas hidrográficas para gestionar el recurso, reactivar el sector primario e impulsar y modernizar los regadíos y la producción de energía.",
+        "texto_original": "115. Plan Nacional del Agua. Interconexión de todas las cuencas que permita una gestión más eficiente del agua y pueda servir para reactivar económicamente a […] nuestro sector primario, así como para impulsar y modernizar los regadíos y la producción de energía.",
+        "fuente": "Programa VOX 2026, Pág. 53"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Propone aplicar una moratoria a la expansión de grandes infraestructuras hidráulicas como nuevos embalses, trasvases o megabalsas que agraven la sobreexplotación de los recursos hídricos.",
+        "texto_original": "Moratoria a la expansión de infraestructuras de alto impacto, tales como las grandes infraestructuras hidráulicas, como nuevos proyectos de embalses, trasvases o megabalsas que agraven la sobreexplotación de los recursos hídricos.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 74"
+      }
+    }
+  },
+  {
+    "id": "med-03",
+    "competencia_id": "med",
+    "subcompetencia": "Bosques e incendios",
+    "en_test_rapido": false,
+    "titulo": "Prevención de incendios y gestión forestal",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Propone reformar la Ley de Montes para facilitar la prevención mediante modelos predefinidos de ordenación, agricultura y ganadería preventivas, biomasa, tratamientos selvícolas e impulso de la industria forestal.",
+        "texto_original": "Reformaremos la Ley de Montes para facilitar la prevención, elaboraremos modelos de ordenación predefinidos y potenciaremos la agricultura y ganadería preventivas, la biomasa, los tratamientos selvícolas, los aprovechamientos colectivos y la industria forestal.",
+        "fuente": "Programa PP 2026, Pág. 66"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Plantea una gestión forestal sostenible orientada a crear bosques más diversos y paisajes en mosaico, facilitando la gestión activa de montes infrautilizados e incentivando la bioeconomía forestal ligada al desarrollo rural.",
+        "texto_original": "Promover una gestión forestal sostenible y resiliente frente a los incendios, favoreciendo bosques más diversos, saludables y adaptados al cambio climático, así como paisajes en mosaico que reduzcan el riesgo de grandes fuegos. Impulsar esta gestión requiere una aproximación múltiple: facilitar la gestión activa y sostenible de la propiedad forestal infrautilizada; fortalecer las cadenas de valor ligadas a los recursos forestales locales para incentivar la bioeconomía forestal e integrar la gestión forestal en las políticas agrarias y de desarrollo rural.",
+        "fuente": "Programa PSOE 2026, Pág. 72"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Propone revisar las restricciones ambientales vigentes que, a su juicio, obstaculizan las labores de prevención de incendios y el aprovechamiento forestal de los montes.",
+        "texto_original": "Revisión de las restricciones ambientales que obstaculizan las labores de prevención y aprovechamiento forestal.",
+        "fuente": "Programa VOX 2026, Pág. 29"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Propone crear un cuerpo público y estable dentro de un plan de empleo garantizado dedicado todo el año al cuidado del territorio, la prevención de incendios en invierno, la extinción en verano y la restauración de ecosistemas.",
+        "texto_original": "Crearemos un cuerpo público y estable en el marco del Plan de Empleo Garantizado dedicado a cuidar el territorio y a la prevención de incendios en invierno y extinción en verano, restauración de ríos y acuíferos, adaptación a sequías e inundaciones y apoyo técnico a quienes quieran pasarse a la agricultura regenerativa.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 65"
+      }
+    }
+  },
+  {
+    "id": "med-04",
+    "competencia_id": "med",
+    "subcompetencia": "Residuos y economía circular",
+    "en_test_rapido": false,
+    "titulo": "Obligaciones de economía circular, residuos y envases",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Apuesta por la responsabilidad ciudadana y la iniciativa empresarial en economía circular, comprometiéndose a no imponer obligaciones adicionales ni acelerar los plazos ya previstos.",
+        "texto_original": "La economía circular constituye una oportunidad para reducir residuos, aprovechar mejor los recursos y generar actividad económica. Creemos en la responsabilidad de los ciudadanos y en la iniciativa de las empresas para mejorar el cuidado del entorno. No impondremos obligaciones adicionales, no aceleraremos los tiempos ni desaprovecharemos las inversiones, infraestructuras y capacidades que ya tiene España.",
+        "fuente": "Programa PP 2026, Pág. 73"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Propone reducir el vertido de residuos por debajo del 30 % en 2030 mediante el impulso de la prevención, el reciclaje, el fomento del retorno de envases y una mayor trazabilidad en su gestión.",
+        "texto_original": "Reducir el vertido de residuos por debajo del 30 % en 2030, impulsando la prevención, la reutilización y el reciclaje; fomentando el retorno de envases; y reforzando la transparencia y la trazabilidad en la gestión de residuos.",
+        "fuente": "Programa PSOE 2026, Pág. 66"
+      },
+      "vox": {
+        "consta": false
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Propone fijar objetivos vinculantes de reutilización para envases y embalajes comerciales, así como para aparatos eléctricos y electrónicos, muebles y textiles.",
+        "texto_original": "Estableceremos objetivos vinculantes de reutilización en el sector de los envases y embalajes comerciales, así como para los flujos con alto potencial de reutilización, como RAEE, muebles o textiles.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 73"
+      }
+    }
+  },
+  {
+    "id": "soc-01",
+    "competencia_id": "soc",
+    "subcompetencia": "Crianza y natalidad",
+    "en_test_rapido": true,
+    "titulo": "Ayudas económicas por crianza y fomento de la natalidad",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Contabilizar al hijo concebido aún no nacido para calcular el acceso a las ayudas y beneficios públicos que correspondan a la familia.",
+        "texto_original": "El concebido no nacido computará para determinar las ayudas y beneficios que correspondan a la familia.",
+        "fuente": "Programa PP 2026, Pág. 56"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Crear una prestación estatal progresiva por crianza para todos los hogares con menores de edad, con un diseño fiscal redistributivo y una protección adicional para las familias de menor renta.",
+        "texto_original": "Prestación estatal por crianza para todos los hogares con menores de edad, con un diseño fiscal redistributivo y una protección adicional para los hogares de renta baja integrada en el CAPI ya existente: un nuevo derecho para los 8 millones de niñas, niños y adolescentes de nuestro país. Será una prestación progresiva para apoyar la crianza y proteger de forma más eficaz a los hogares de menor renta.",
+        "fuente": "Programa PSOE 2026, Pág. 56"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Aumentar los beneficios actuales de las familias numerosas y extenderlos progresivamente a todas las familias desde el primer hijo, intensificando las ayudas y bonificaciones según el número de hijos.",
+        "texto_original": "Todos los beneficios que ahora existen para las familias numerosas se aumentarán y se extenderán a todas las familias de manera progresiva desde el primer hijo, intensificando las ayudas y bonificaciones en función del número de hijos.",
+        "fuente": "Programa VOX 2026, Pág. 44"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Aprobar una prestación universal e inembargable de 200 euros al mes por cada menor de 18 años a cargo, reconocida como derecho propio del menor al margen de los ingresos o situación laboral de los progenitores.",
+        "texto_original": "Aprobaremos la Ley de Prestación Universal por Crianza que concederá 200 € al mes por cada menor de 18 años a cargo. La prestación se configurará como un derecho propio del menor, inembargable y desvinculado de los ingresos o situación laboral de los progenitores.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 21"
+      }
+    }
+  },
+  {
+    "id": "soc-02",
+    "competencia_id": "soc",
+    "subcompetencia": "Conciliación",
+    "en_test_rapido": true,
+    "titulo": "Permisos parentales y conciliación laboral y familiar",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Dar mayor libertad a cada progenitor para decidir cómo y cuándo disfrutar el permiso por nacimiento tras las semanas obligatorias posteriores al parto, con reglas de preaviso que faciliten la planificación empresarial.",
+        "texto_original": "Pasadas las semanas obligatorias tras el parto, cada progenitor tendrá más libertad para decidir cómo y cuándo disfrutar del resto del permiso, con reglas de preaviso que faciliten la planificación de las empresas.",
+        "fuente": "Programa PP 2026, Pág. 56"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Retribuir al 100 % de la base reguladora cuatro semanas del permiso parental para cuidar a hijos menores de ocho años mediante la Seguridad Social y añadir una semana extra al segundo progenitor si los permisos no se solapan.",
+        "texto_original": "Impulsar la corresponsabilidad en los cuidados mediante una prestación de la Seguridad Social que cubra cuatro semanas del permiso parental para el cuidado de hijos menores de ocho años con el 100 % de la base reguladora; y reforzar los permisos de nacimiento y cuidado […] reconociendo una semana adicional para el segundo progenitor cuando ambos hayan disfrutado sus permisos de forma no solapada.",
+        "fuente": "Programa PSOE 2026, Pág. 40"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Financiar desde el Estado la cotización a la Seguridad Social de los ciudadanos españoles dedicados al cuidado de sus hijos para evitar que la crianza penalice su futura jubilación.",
+        "texto_original": "Cotización a la Seguridad Social financiada por el Estado para los españoles dedicados al cuidado de sus hijos. Formar una familia y criar a los hijos es una contribución esencial al futuro de España y no puede ser motivo de penalización en la jubilación.",
+        "fuente": "Programa VOX 2026, Pág. 44"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Retribuir progresivamente al 100 % hasta diez semanas del permiso parental para el cuidado de menores hasta los doce años a cargo de la Seguridad Social, con efecto retroactivo desde la aprobación de la directiva europea que lo regula.",
+        "texto_original": "Ampliación y retribución del permiso parental por cuidado de hijos: Estableceremos la retribución del permiso parental para el cuidado de menores que llegará progresivamente a las 10 semanas retribuidas y hasta los 12 años, garantizando la retribución al 100 % de la base reguladora por la Seguridad Social para evitar la brecha por falta de ingresos. Se hará con carácter retroactivo, desde la aprobación de la directiva que crea el permiso: Directiva (UE) 2019/1158 relativa a la conciliación de la vida familiar y la vida profesional de los progenitores y los cuidadores.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 24"
+      }
+    }
+  },
+  {
+    "id": "soc-03",
+    "competencia_id": "soc",
+    "subcompetencia": "Dependencia y cuidados",
+    "en_test_rapido": false,
+    "titulo": "Financiación y modelo de atención a la dependencia y cuidados",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Permitir a las familias deducirse el 40 % de lo pagado por la atención profesional a un mayor dependiente y asumir desde el Estado las cotizaciones de quien deje de trabajar o reduzca su jornada para cuidar a un familiar.",
+        "texto_original": "Las familias se deducirán el 40% de lo que paguen por la atención profesional de un mayor dependiente, y el Estado cotizará por quien deje de trabajar o reduzca su jornada para cuidar a un familiar dependiente, cobre o no la prestación por cuidados en el entorno familiar.",
+        "fuente": "Programa PP 2026, Pág. 44"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Reforzar la financiación y profesionalización de los servicios de cuidados, ampliar la protección de las trabajadoras del hogar y del sector y equiparar al salario mínimo interprofesional la remuneración de las cuidadoras principales.",
+        "texto_original": "Dignificar y reconocer el trabajo de cuidados, reforzando la financiación de los servicios, la profesionalización del sector y la protección de los derechos de las trabajadoras del hogar y de los cuidados, así como de las cuidadoras principales igualando su remuneración al SMI.",
+        "fuente": "Programa PSOE 2026, Pág. 80"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Aumentar el presupuesto destinado a la dependencia, las ayudas para el cuidado en el hogar y el apoyo a quienes tienen familiares a su cargo.",
+        "texto_original": "Reforzar el presupuesto en dependencia, las ayudas para el cuidado en el hogar, el apoyo a familiares a cargo.",
+        "fuente": "Programa VOX 2026, Pág. 45"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Elevar la inversión pública en el sistema de atención a la dependencia del 0,8 % al 1,7 % del PIB en 2030 mediante un plan con plazos y objetivos presupuestarios concretos.",
+        "texto_original": "Despliegue presupuestario del Sistema de Atención a la Dependencia para elevar la inversión pública del 0,8 % al 1,7 % del PIB en 2030, con un plan con tiempos y objetivos presupuestarios concretos.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 23"
+      }
+    }
+  },
+  {
+    "id": "soc-04",
+    "competencia_id": "soc",
+    "subcompetencia": "Infancia y entorno digital",
+    "en_test_rapido": false,
+    "titulo": "Edad mínima y regulación de redes sociales para menores",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Prohibir que cualquier menor de 14 años tenga cuenta en redes sociales y exigir autorización paterna para su uso hasta los 16 años.",
+        "texto_original": "NINGÚN MENOR DE 14 AÑOS PODRÁ TENER UNA CUENTA EN REDES SOCIALES, Y HASTA LOS 16 NECESITARÁ AUTORIZACIÓN DE SUS PADRES.",
+        "fuente": "Programa PP 2026, Pág. 58"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Fijar en 16 años la edad mínima general para usar redes sociales mediante una ley de protección digital de menores, permitiendo rebajarla únicamente si las plataformas demuestran ser seguras por defecto.",
+        "texto_original": "Establecer a 16 años la edad mínima para usar redes sociales. Aprobar en el primer año de legislatura la Ley de protección de las personas menores de edad en los entornos digitales. La edad mínima solo podrá rebajarse cuando las plataformas demuestren que son seguras por defecto.",
+        "fuente": "Programa PSOE 2026, Pág. 95"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Preservar la inocencia de los menores y protegerlos en internet frente a riesgos como la adicción al juego, la pornografía y la vulnerabilidad ante determinados delitos.",
+        "texto_original": "Preservar la inocencia de los menores y protegerlos frente a los riesgos presentes en los entornos digitales, tales como la adicción al juego o la pornografía o la mayor vulnerabilidad ante ciertos delitos.",
+        "fuente": "Programa VOX 2026, Pág. 45"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Regular estrictamente las redes sociales dirigidas a menores de 16 años sin verificación de edad respetuosa con la privacidad y eliminar funciones adictivas como el desplazamiento infinito, los algoritmos de recomendación o la publicidad dirigida.",
+        "texto_original": "Regulación severa de plataformas y redes sociales dirigidas a menores de 16 años sin verificación de edad respetuosa con la privacidad y eliminación de funciones adictivas (scroll infinito, reproducción automática, notificaciones constantes, «me gusta», rachas, recomendaciones algorítmicas, publicidad dirigida, rastreo biométrico/emocional y contacto con adultos desconocidos).",
+        "fuente": "Programa Frente Amplio 2026, Pág. 41"
+      }
+    }
+  },
+  {
+    "id": "edu-01",
+    "competencia_id": "edu",
+    "subcompetencia": "Educación pública y concertada",
+    "en_test_rapido": false,
+    "titulo": "Colegios concertados y libre elección de centro educativo",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Garantizar la elección de colegio por parte de las familias y mantener los conciertos educativos en todos los centros donde exista demanda suficiente.",
+        "texto_original": "LOS PADRES ELEGIRÁN COLEGIO, Y NINGÚN CONCIERTO EDUCATIVO SE ELIMINARÁ DONDE HAYA DEMANDA SUFICIENTE.",
+        "fuente": "Programa PP 2026, Pág. 67"
+      },
+      "psoe": {
+        "consta": false
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Garantizar la libre elección de centro y modelo educativo en todos los niveles sin que la situación económica o social de las familias sea un impedimento.",
+        "texto_original": "Garantizar la libre elección de centro educativo en todos los niveles para que las familias elijan libremente el modelo educativo que desean, sin que su situación económica o social sea un impedimento para ello.",
+        "fuente": "Programa VOX 2026, Pág. 35"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Fijar como objetivo que la totalidad de los fondos públicos destinados a educación financien exclusivamente la enseñanza pública.",
+        "texto_original": "El objetivo es que el 100 % de los fondos públicos vayan destinados a la educación pública.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 31"
+      }
+    }
+  },
+  {
+    "id": "edu-02",
+    "competencia_id": "edu",
+    "subcompetencia": "Universidad",
+    "en_test_rapido": true,
+    "titulo": "Acceso a la universidad y coste de las matrículas",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Implantar una prueba de acceso a la universidad común en toda España, con condiciones básicas y criterios de evaluación acordados con las comunidades autónomas y las universidades.",
+        "texto_original": "IMPLANTAREMOS UNA PRUEBA DE ACCESO A LA UNIVERSIDAD (PAU) COMÚN. Se aplicará en todo el territorio nacional. Sus condiciones básicas, incluyendo su evaluación, se acordarán con las Comunidades Autónomas y los órganos de representación de las universidades, con el fin de garantizar la igualdad de oportunidades.",
+        "fuente": "Programa PP 2026, Pág. 39"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Impulsar la gratuidad de la matrícula del primer curso de grado en todas las universidades públicas del país.",
+        "texto_original": "Impulsar la gratuidad de la matrícula del primer curso de grado en las universidades públicas de todo el país.",
+        "fuente": "Programa PSOE 2026, Pág. 54"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Establecer pruebas de reválida y un examen único de acceso a la universidad en todo el país.",
+        "texto_original": "Reválidas y EVAU única.",
+        "fuente": "Programa VOX 2026, Pág. 35"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Reducir las tasas universitarias hacia la gratuidad, ampliar las plazas públicas de grado y máster y aprobar planes plurianuales de financiación y estabilización de plantillas.",
+        "texto_original": "Sostenibilidad financiera y plantillas universitarias: Planes de financiación plurianual para docencia e investigación, ampliación de plazas públicas de grado/ máster, reducción de precios hacia la gratuidad y planes estatales de reposición para reducir el empleo precario del PDI y del PTGAS.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 33"
+      }
+    }
+  },
+  {
+    "id": "edu-03",
+    "competencia_id": "edu",
+    "subcompetencia": "Lenguas en la escuela",
+    "en_test_rapido": false,
+    "titulo": "Lengua vehicular e inmersión lingüística en las aulas",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Garantizar el derecho a recibir enseñanza en castellano en todas las etapas educativas y en todo el país, respetando las lenguas cooficiales y cumpliendo las sentencias judiciales.",
+        "texto_original": "Garantizaremos el derecho constitucional de recibir enseñanza en castellano en todas las etapas del sistema educativo y en toda la Nación, desde el respeto a las lenguas cooficiales de cada una de las Comunidades y en cumplimiento de las sentencias judiciales.",
+        "fuente": "Programa PP 2026, Pág. 39"
+      },
+      "psoe": {
+        "consta": false
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Garantizar el derecho a recibir educación en español en todo el territorio nacional.",
+        "texto_original": "Se garantizará la educación en español en todo el territorio nacional.",
+        "fuente": "Programa VOX 2026, Pág. 35"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Poner en marcha un plan estatal para el aprendizaje de las lenguas cooficiales en todo el Estado y garantizar la inmersión lingüística en catalán como lengua vehicular en Cataluña.",
+        "texto_original": "Lenguas cooficiales y modelo lingüístico: Lanzaremos un Plan Estatal para el aprendizaje y divulgación de las lenguas cooficiales en todo el Estado, garantizando la inmersión lingüística en catalán como lengua vehicular en Cataluña.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 32"
+      }
+    }
+  },
+  {
+    "id": "edu-04",
+    "competencia_id": "edu",
+    "subcompetencia": "Currículo y contenidos escolares",
+    "en_test_rapido": false,
+    "titulo": "Contenidos curriculares y educación en valores en la escuela",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Elaborar los currículos de Historia con las Reales Academias y sociedades científicas al margen del Gobierno, incluyendo el estudio de la Constitución, la Transición y el daño del terrorismo.",
+        "texto_original": "Los currículos de Historia se elaborarán con las Reales Academias y las sociedades científicas, y no con el Gobierno de turno. Los alumnos estudiarán la Constitución, la Transición y el daño causado por el terrorismo, así como el papel de quienes lo combatieron.",
+        "fuente": "Programa PP 2026, Pág. 48"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Promover en la escuela la memoria democrática, los derechos humanos y los valores cívicos para fortalecer el pensamiento crítico frente a la desinformación y los discursos de odio.",
+        "texto_original": "Promover el conocimiento de la memoria democrática, los derechos humanos y los valores cívicos, fortaleciendo el pensamiento crítico, la participación democrática y la lucha contra la desinformación y los discursos de odio.",
+        "fuente": "Programa PSOE 2026, Pág. 52"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Eliminar de la enseñanza los contenidos considerados ideológicos y ajenos a las materias estrictamente académicas.",
+        "texto_original": "Eliminación de contenidos ideológicos ajenos a las materias académicas.",
+        "fuente": "Programa VOX 2026, Pág. 35"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Reforzar en el currículo de competencia estatal los aprendizajes centrados en valores democráticos, igualdad y memoria democrática.",
+        "texto_original": "Reforzaremos, mediante el currículo educativo de competencia estatal, los aprendizajes basados en valores democráticos, igualdad y memoria democrática.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 32"
+      }
+    }
+  },
+  {
+    "id": "edu-05",
+    "competencia_id": "edu",
+    "subcompetencia": "Inteligencia artificial y trabajo",
+    "en_test_rapido": true,
+    "titulo": "Regulación de la inteligencia artificial en el entorno laboral",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Plantea abordar el impacto laboral de la inteligencia artificial junto a los agentes sociales combinando flexibilidad para que las empresas innoven, formación para cambiar de puesto y protección durante la transición.",
+        "texto_original": "La inteligencia artificial puede hacer más productivas a nuestras empresas, crear nuevas profesiones y mejorar muchos empleos, pero también provoca un temor comprensible entre quienes no saben cómo cambiará su trabajo. De la mano de los agentes sociales, nos haremos cargo de las dos realidades con flexibilidad, para que las empresas innoven y creen empleo; formación, para que los trabajadores pasen de un puesto a otro; y protección, para que nadie quede desamparado durante la transición.",
+        "fuente": "Programa PP 2026, Pág. 58"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Propone alcanzar un pacto con sindicatos y empresarios sobre el uso de la inteligencia artificial en el trabajo que garantice la transparencia, la supervisión humana y el derecho a revisar decisiones automatizadas.",
+        "texto_original": "Pactar la gobernanza de la IA en el trabajo. Alcanzar con los agentes sociales un pacto que garantice transparencia, supervisión humana y derecho a revisar las decisiones automatizadas.",
+        "fuente": "Programa PSOE 2026, Pág. 96"
+      },
+      "vox": {
+        "consta": false
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Propone reformar el Estatuto de los Trabajadores para dar al comité de empresa capacidad de configurar, aprobar o vetar los sistemas de inteligencia artificial que organicen, vigilen o evalúen el trabajo, con dos expertos pagados por la empresa.",
+        "texto_original": "Control democrático y regulación de la inteligencia artificial en el trabajo: Reformaremos el artículo 64 del Estatuto de los Trabajadores para otorgar al comité de empresa la facultad de configurar, aprobar o vetar los sistemas de inteligencia artificial destinados a organizar, vigilar o evaluar el trabajo. El comité tendrá derecho a dos expertos financiados por la empresa (uno en IA y otro en impacto ambiental), defendiendo la extensión de este derecho a los comités de empresa de ámbito europeo.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 115"
+      }
+    }
+  },
+  {
+    "id": "edu-06",
+    "competencia_id": "edu",
+    "subcompetencia": "Plataformas digitales",
+    "en_test_rapido": false,
+    "titulo": "Supervisión y sanciones a las grandes plataformas digitales",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Propone que las plataformas digitales que incumplan sus obligaciones reciban sanciones económicas proporcionales a su volumen de facturación.",
+        "texto_original": "Las plataformas que incumplan estas obligaciones responderán con sanciones proporcionales a su facturación.",
+        "fuente": "Programa PP 2026, Pág. 58"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Propone dotar a la CNMC de poderes para aplicar el reglamento europeo, exigir responsabilidad penal a los directivos de plataformas que no retiren contenidos ilegales o de odio y tipificar como delito la manipulación algorítmica.",
+        "texto_original": "Que ninguna plataforma esté por encima de la ley. Dar a la CNMC los poderes necesarios para hacer cumplir en España el Reglamento europeo de Servicios Digitales, exigir responsabilidad penal a los directivos de las plataformas que no retiren contenidos ilegales o de odio y tipificar como delito la manipulación algorítmica y la amplificación deliberada de contenidos ilegales.",
+        "fuente": "Programa PSOE 2026, Pág. 96"
+      },
+      "vox": {
+        "consta": false
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Propone una ley integral que faculte a la CNMC para supervisar a las grandes plataformas y multarlas con hasta el 6 % de su facturación mundial, denunciar ante la Comisión Europea a las radicadas en otros países y abrir sus datos internos a los investigadores.",
+        "texto_original": "Ley de Gobernanza Democrática de los Servicios Digitales y capacidad sancionadora: Aprobaremos un marco regulatorio integral que faculte a la CNMC para supervisar a las grandes plataformas digitales con plantilla y recursos adecuados, pudiendo imponer multas de hasta el 6 % de su facturación mundial. En infracciones cometidas por plataformas con sede en otro país europeo, se elevará la denuncia ante la Comisión Europea, rindiendo cuentas anualmente de los casos tramitados. Garantizaremos el acceso de los investigadores a los datos internos de las plataformas.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 119"
+      }
+    }
+  },
+  {
+    "id": "edu-07",
+    "competencia_id": "edu",
+    "subcompetencia": "Inteligencia artificial",
+    "en_test_rapido": false,
+    "titulo": "Regulación y apoyo estatal a la inteligencia artificial en empresas",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Plantea crear entornos de prueba seguros sin añadir requisitos nacionales por encima de la normativa europea y garantizar respuesta administrativa a los trámites en un máximo de treinta días.",
+        "texto_original": "Habrá entornos de prueba seguros, sin cargas nacionales añadidas al marco europeo, y respuesta a los trámites en treinta días.",
+        "fuente": "Programa PP 2026, Pág. 63"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Propone aprobar una ley estatal de gobernanza de la inteligencia artificial que exija supervisión humana y etiquetado obligatorio, prohíba los montajes sin consentimiento y establezca sanciones de hasta 35 millones de euros.",
+        "texto_original": "Aprobar la Ley para el buen uso y la gobernanza de la inteligencia artificial. Garantizar la supervisión humana de las decisiones que afecten a la ciudadanía, el etiquetado obligatorio de los contenidos generados o manipulados con IA y la prohibición de los deepfakes sin consentimiento, el respeto del derecho de los creadores, con sanciones de hasta 35 millones de euros.",
+        "fuente": "Programa PSOE 2026, Pág. 96"
+      },
+      "vox": {
+        "consta": false
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Propone un plan nacional de adopción de inteligencia artificial para pymes, autónomos y economía social con computación pública y prioridad al código abierto, condicionado a la prohibición de despedir.",
+        "texto_original": "Pondremos en marcha un Plan Nacional de Adopción de Inteligencia Artificial y tecnologías digitales para pymes, autónomos y entidades de la economía social, con acompañamiento técnico, acceso a la capacidad de computación pública y a espacios de datos y prioridad para las soluciones de código abierto condicionado a la prohibición de despedir y con el objetivo de que en 2030 el 90 % de las pymes alcance al menos una intensidad digital básica.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 92"
+      }
+    }
+  },
+  {
+    "id": "rur-01",
+    "competencia_id": "rur",
+    "subcompetencia": "Reto demográfico",
+    "en_test_rapido": true,
+    "titulo": "Incentivos fiscales y servicios contra la despoblación rural",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Establecer incentivos económicos en las zonas en declive demográfico para abrir negocios, facilitar el relevo empresarial, atraer inversiones de empleo estable y comprar o rehabilitar vivienda habitual.",
+        "texto_original": "Estableceremos incentivos económicos en las zonas en declive demográfico para abrir negocios, facilitar el relevo empresarial, atraer inversiones productivas que creen empleo estable y comprar o rehabilitar viviendas destinadas a residencia habitual.",
+        "fuente": "Programa PP 2026, Pág. 40"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Garantizar el acceso a servicios básicos y soluciones de movilidad a menos de treinta minutos en todo el territorio para asegurar la igualdad de oportunidades con independencia del lugar de residencia.",
+        "texto_original": "Garantizar el acceso a servicios básicos y soluciones de movilidad en todo el territorio, avanzando hacia el “País de los 30 minutos” para reforzar la igualdad de oportunidades con independencia del lugar de residencia.",
+        "fuente": "Programa PSOE 2026, Pág. 70"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Aplicar una fiscalidad mínima con bonificaciones y deducciones reforzadas para los residentes españoles en zonas en riesgo de despoblación y para quienes trasladen allí su residencia.",
+        "texto_original": "Fiscalidad mínima y diferenciada en las zonas en riesgo de despoblación. Tipos mínimos y bonificaciones y deducciones reforzadas para los residentes españoles de estas zonas y para todos aquellos españoles que decidan trasladar su residencia a las mismas.",
+        "fuente": "Programa VOX 2026, Pág. 8"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Articular ayudas directas y fiscalidad diferenciada, incluyendo bonificaciones en las cotizaciones empresariales a la Seguridad Social en territorios de baja densidad, para crear empleo cualificado y diversificar su economía más allá del sector primario.",
+        "texto_original": "Para ello, articularemos un sistema de incentivos económicos directos y una fiscalidad diferenciada —incluyendo la aplicación efectiva de bonificaciones en las cotizaciones empresariales a la Seguridad Social en territorios de baja densidad, como ya se hace en territorios como Cuenca, Soria o Teruel—, coordinados con las comunidades autónomas y las corporaciones locales, orientado a generar empleo estable, cualificado y de alta retribución que frene la emigración juvenil y diversifique el modelo productivo más allá del sector primario tradicional.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 97"
+      }
+    }
+  },
+  {
+    "id": "rur-02",
+    "competencia_id": "rur",
+    "subcompetencia": "Ayudas agrarias",
+    "en_test_rapido": false,
+    "titulo": "Reforma de la PAC y criterio de reparto de ayudas al campo",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Mantener sin recortes y como políticas propias la financiación de la Política Agraria Común, la pesca y los programas de apoyo a regiones ultraperiféricas en el presupuesto europeo 2028-2034.",
+        "texto_original": "MANTENDREMOS LA FINANCIACIÓN DE LA PAC, LA PESCA Y EL PROGRAMA POSEI DE APOYO A LAS REGIONES ULTRAPERIFÉRICAS EN EL NUEVO MARCO FINANCIERO PLURIANUAL 20282034. Serán políticas propias y sin recortes.",
+        "fuente": "Programa PP 2026, Pág. 64"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Defender una Política Agraria Común con financiación suficiente orientada a quienes viven del campo, priorizando a las explotaciones profesionales, familiares y de pequeña y mediana dimensión.",
+        "texto_original": "Defender una PAC fuerte, suficiente y orientada a quienes viven del campo, priorizando las explotaciones profesionales, familiares y de pequeña y mediana dimensión.",
+        "fuente": "Programa PSOE 2026, Pág. 69"
+      },
+      "vox": {
+        "consta": false
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Eliminar los derechos históricos en la futura Política Agraria Común y dirigir las ayudas a los sistemas productivos con mayor aportación social y ambiental en lugar de a grandes propietarios.",
+        "texto_original": "Adoptaremos el principio de «dinero público para bienes y servicios públicos» en las negociaciones para la futura Política Agraria Común que debe conllevar la eliminación de los derechos históricos y orientar las ayudas a los sistemas productivos que socialmente más aportan y no a los grandes terratenientes.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 87"
+      }
+    }
+  },
+  {
+    "id": "rur-03",
+    "competencia_id": "rur",
+    "subcompetencia": "Modelo agrario y ganadero",
+    "en_test_rapido": false,
+    "titulo": "Transición ecológica del campo y límites a la ganadería intensiva",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Ofrecer a agricultores, ganaderos, pescadores y propietarios forestales ingresos adicionales por los beneficios ambientales que generan mediante un sistema sencillo y compatible con el mercado europeo de emisiones.",
+        "texto_original": "Agricultores, ganaderos, pescadores y titulares forestales tendrán ingresos extra por beneficios ambientales (carbono, agua, biodiversidad) con un sistema sencillo, verificable y compatible con el mercado europeo de emisiones.",
+        "fuente": "Programa PP 2026, Pág. 66"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Recompensar la ganadería extensiva y la agricultura regenerativa mediante sistemas de certificación, asesoramiento y compensación que reconozcan su contribución a la conservación del territorio.",
+        "texto_original": "Recompensar las prácticas de agroganadería sostenible y en particular en la ganadería extensiva y la agricultura regenerativa. Nuestros agricultores y ganaderos prestan un servicio a la conservación y la gestión sostenible del territorio. Reconocerlo, mediante sistemas de certificación, asesoramiento y compensación, permitirá impulsar estas prácticas y favorecerá una mayor autonomía productiva.",
+        "fuente": "Programa PSOE 2026, Pág. 70"
+      },
+      "vox": {
+        "consta": false
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "No autorizar nuevas macrogranjas ni nuevas instalaciones de acuicultura intensiva que contradigan los objetivos del Pacto Verde Europeo.",
+        "texto_original": "No autorizaremos nuevas macrogranjas ni nuevas instalaciones de acuicultura intensiva que contradigan los objetivos del Pacto Verde Europeo.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 77"
+      }
+    }
+  },
+  {
+    "id": "san-01",
+    "competencia_id": "san",
+    "subcompetencia": "Modelo sanitario",
+    "en_test_rapido": true,
+    "titulo": "Gestión pública o colaboración público-privada en la sanidad",
+    "medidas": {
+      "pp": {
+        "consta": false
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Limitar la privatización sanitaria estableciendo la gestión pública directa como modalidad preferente en la prestación de la atención de salud.",
+        "texto_original": "Limitar la privatización de la sanidad estableciendo la gestión directa como modalidad preferente en la prestación sanitaria.",
+        "fuente": "Programa PSOE 2026, Pág. 49"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Fomentar la colaboración público-privada en sanidad cuando contribuya de forma efectiva a reducir las demoras, con transparencia, evaluación de la calidad y control del gasto.",
+        "texto_original": "Fomento de la colaboración público-privada cuando ayude efectivamente a reducir demoras, con transparencia, evaluación de calidad y control del gasto.",
+        "fuente": "Programa VOX 2026, Pág. 32"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Derogar la ley que permite fórmulas de gestión sanitaria con entidades privadas para restringir la gestión indirecta a casos estrictamente excepcionales que cuenten con justificación objetiva y evaluación técnica previa.",
+        "texto_original": "Derogaremos expresamente la Ley 15/1997, sobre habilitación de nuevas formas de gestión del SNS, que había abierto la puerta a la colaboración con entidades privadas, y los modelos de gestión indirecta pasarán a ser estrictamente excepcionales. Requerirán una justificación objetiva de que no es posible la gestión directa y una evaluación previa obligatoria por un comité técnico especializado.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 26"
+      }
+    }
+  },
+  {
+    "id": "san-02",
+    "competencia_id": "san",
+    "subcompetencia": "Listas de espera",
+    "en_test_rapido": true,
+    "titulo": "Plan contra las listas de espera y financiación sanitaria",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Poner en marcha un plan urgente de reducción de listas de espera acordado con las comunidades autónomas y respetando sus competencias de gestión sanitaria.",
+        "texto_original": "Con ese objetivo, pondremos en marcha, de acuerdo con las Comunidades Autónomas y respetando sus competencias de gestión, un plan urgente de reducción de listas de espera para asegurar una atención ágil y de calidad.",
+        "fuente": "Programa PP 2026, Pág. 69"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Combatir las listas de espera consolidando una financiación pública sanitaria en torno al 7 % del PIB, reforzando el carácter público del sistema y aumentando progresivamente la inversión en prevención hasta la media europea.",
+        "texto_original": "Acabar con las listas de espera, consolidando una financiación pública de la […] sanidad en torno al 7% del PIB, reforzando el carácter público del Sistema Nacional de Salud y aumentando progresivamente la inversión en prevención hasta converger con la media europea.",
+        "fuente": "Programa PSOE 2026, Pág. 49"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Impulsar un plan nacional contra las listas de espera que reorganice circuitos asistenciales, aumente la capacidad diagnóstica y quirúrgica y facilite las derivaciones de pacientes entre centros y territorios.",
+        "texto_original": "Plan nacional de reducción de listas de espera y mejora de la atención sanitaria. Reorganizar circuitos asistenciales, mejorar la capacidad diagnóstica y la actividad quirúrgica y facilitar derivaciones entre centros y territorios.",
+        "fuente": "Programa VOX 2026, Pág. 32"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Aprobar una normativa estatal de listas de espera que inicie el cómputo desde la indicación médica con un máximo de cinco días para la inscripción, prohíba las listas paralelas e incorpore los tiempos de atención primaria y salud mental.",
+        "texto_original": "Aprobaremos el Real Decreto de listas de espera impulsado en la legislatura, que incluya gestión de tiempos y registros iniciando el cómputo con la indicación facultativa (máximo de cinco días para la inscripción sin alterar la fecha por falta de agenda) y prohíba las listas paralelas o de «paso B»; que incluya por primera vez los tiempos de Atención Primaria (medicina de familia, pediatría y enfermería) y de Salud Mental; y se amplíen a 25 los procedimientos quirúrgicos analizados y se evalúen 15 pruebas diagnósticas y terapéuticas.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 29"
+      }
+    }
+  },
+  {
+    "id": "san-03",
+    "competencia_id": "san",
+    "subcompetencia": "Universalidad sanitaria",
+    "en_test_rapido": false,
+    "titulo": "Acceso a la sanidad pública para extranjeros en situación irregular",
+    "medidas": {
+      "pp": {
+        "consta": false
+      },
+      "psoe": {
+        "consta": false
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Dotar de medios al sistema sanitario para atender a los ciudadanos españoles y excluir del acceso a los extranjeros en situación administrativa irregular, salvo en casos de urgencia grave.",
+        "texto_original": "Garantizar la sostenibilidad del sistema sanitario dotándolo de los medios necesarios para atender las necesidades de los españoles, excluyendo a los extranjeros en situación ilegal salvo casos de urgencia grave.",
+        "fuente": "Programa VOX 2026, Pág. 16"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Blindar por ley la asistencia sanitaria universal para todas las personas residentes en España, con independencia de su estatus administrativo.",
+        "texto_original": "Blindaremos por ley la universalidad de la atención sanitaria para residentes en España, independientemente de su estatus administrativo. Se volverá a apostar por […] la Ley de universalidad del SNS que termine de garantizar lo conseguido a través del Real Decreto 180/2026 del actual Ministerio de Sanidad.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 26"
+      }
+    }
+  },
+  {
+    "id": "san-04",
+    "competencia_id": "san",
+    "subcompetencia": "Profesionales sanitarios",
+    "en_test_rapido": false,
+    "titulo": "Condiciones laborales, guardias y acceso a plazas de personal sanitario",
+    "medidas": {
+      "pp": {
+        "consta": true,
+        "resumen_neutral": "Reconocer a los médicos un ámbito de negociación propio sobre sus condiciones laborales adaptado a su singularidad, sin perjudicar los derechos del resto de profesionales sanitarios.",
+        "texto_original": "Atenderemos la singularidad de los médicos reconociendo un ámbito de negociación propio sobre sus condiciones laborales, sin menoscabo de los derechos del resto de profesionales sanitarios.",
+        "fuente": "Programa PP 2026, Pág. 69"
+      },
+      "psoe": {
+        "consta": true,
+        "resumen_neutral": "Impulsar un nuevo marco conjunto que dignifique a todas las profesiones sanitarias, mejore su estabilidad, conciliación y captación de talento y refuerce su participación en la gobernanza del sistema.",
+        "texto_original": "Impulsar un nuevo contrato social con los profesionales sanitarios, dignificando y potenciando todas las profesiones, mejorando sus condiciones laborales, estabilidad, formación, conciliación, reconocimiento profesional, captación y fidelización del talento y participación en la gobernanza del sistema.",
+        "fuente": "Programa PSOE 2026, Pág. 50"
+      },
+      "vox": {
+        "consta": true,
+        "resumen_neutral": "Garantizar que el desconocimiento de las lenguas cooficiales no suponga en ningún caso un impedimento para acceder por oposición a plazas de personal sanitario.",
+        "texto_original": "Garantizar que el desconocimiento de las lenguas regionales no sea en ningún caso impedimento para el acceso por oposición a plazas de personal sanitario ni un perjuicio para los pacientes.",
+        "fuente": "Programa VOX 2026, Pág. 32"
+      },
+      "frente_amplio": {
+        "consta": true,
+        "resumen_neutral": "Imponer el descanso obligatorio durante la mañana del día en que comienza una guardia de 24 horas, sumándose a la libranza del día posterior.",
+        "texto_original": "Libranza de la mañana del día de guardias de 24 horas: Impondremos el descanso/libranza la mañana del día de la guardia (libranza del entrante) igual que ahora se libra la posterior.",
+        "fuente": "Programa Frente Amplio 2026, Pág. 30"
+      }
+    }
+  }
+]

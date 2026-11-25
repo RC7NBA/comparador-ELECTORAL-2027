@@ -5,336 +5,1839 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brújula Electoral - España (29 Noviembre 2026)</title>
     <style>
+        /* =====================================================================
+           DESIGN TOKENS Y ESTILO EDITORIAL SOBRIO
+           ===================================================================== */
         :root {
-            --primario: #0f172a; --acento: #0284c7; --fondo: #f8fafc;
-            --tarjeta: #ffffff; --borde: #e2e8f0; --texto: #334155;
-            --texto-suave: #64748b; --alerta: #f59e0b; --exito: #10b981;
+            --primario: #0f172a;
+            --primario-suave: #1e293b;
+            --acento: #0284c7;
+            --acento-hover: #0369a1;
+            --acento-suave: #f0f9ff;
+            --acento-borde: #bae6fd;
+            --fondo: #f8fafc;
+            --tarjeta: #ffffff;
+            --borde: #e2e8f0;
+            --borde-fuerte: #cbd5e1;
+            --texto: #334155;
+            --texto-suave: #64748b;
+            --alerta: #d97706;
+            --alerta-fondo: #fffbeb;
+            --alerta-borde: #fde68a;
+            --exito: #059669;
+            --exito-fondo: #ecfdf5;
+            --exito-borde: #a7f3d0;
+            --peligro: #dc2626;
+            --peligro-fondo: #fef2f2;
+            --radio: 10px;
+            --radio-sm: 6px;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, system-ui, sans-serif; }
-        body { background-color: var(--fondo); color: var(--texto); line-height: 1.6; padding: 15px; }
-        .contenedor { max-width: 800px; margin: 0 auto; background: var(--tarjeta); padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        
-        header { text-align: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid var(--borde); }
-        header h1 { color: var(--primario); font-size: 24px; margin-bottom: 5px; }
-        
-        .seccion { display: none; animation: fadeIn 0.4s ease-in-out; }
-        .seccion.activa { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Botones y Acciones */
-        .btn-accion { width: 100%; background: var(--primario); color: white; border: none; padding: 15px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.2s; }
-        .btn-accion:hover { background: var(--acento); }
-        .btn-secundario { background: #e2e8f0; color: var(--primario); margin-top: 10px; }
-        .btn-secundario:hover { background: #cbd5e1; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-        /* Paso 1: Selección de Modo y Ponderación */
-        .modo-caja { border: 2px solid var(--borde); border-radius: 10px; padding: 20px; margin-bottom: 15px; cursor: pointer; transition: 0.2s; }
-        .modo-caja:hover { border-color: var(--acento); background: #f0f9ff; }
-        .modo-caja h3 { color: var(--acento); margin-bottom: 5px; }
-        
-        .marcador-puntos { position: sticky; top: 10px; background: #e0f2fe; color: var(--primario); padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 18px; margin-bottom: 15px; z-index: 10; border: 2px solid var(--acento); transition: 0.3s; }
-        .marcador-puntos.completo { background: var(--exito); color: white; border-color: var(--exito); }
-        .texto-didactico { font-size: 13px; color: var(--texto-suave); background: #f8fafc; padding: 12px; border-radius: 8px; margin-bottom: 25px; border-left: 3px solid var(--acento); }
+        html, body {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
 
-        .bloque-ponderacion { border: 1px solid var(--borde); border-radius: 8px; padding: 15px; margin-bottom: 15px; background: #fff; display: flex; flex-direction: column;}
-        .ponderacion-header { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-        .ponderacion-header h3 { font-size: 14px; color: var(--primario); width: 45%; }
-        .control-rango { display: flex; align-items: center; gap: 15px; width: 55%; }
-        .control-rango input { flex: 1; accent-color: var(--acento); cursor: pointer; }
-        .nota-peso { font-weight: bold; font-size: 16px; color: var(--acento); width: 35px; text-align: right; }
+        body {
+            background-color: var(--fondo);
+            color: var(--texto);
+            line-height: 1.6;
+            padding: 16px;
+        }
 
-        .info-competencial { background: #f8fafc; border: 1px solid var(--borde); border-radius: 6px; padding: 10px; margin-top: 12px; }
-        .info-competencial summary { font-size: 12px; color: var(--texto-suave); font-weight: 600; cursor: pointer; outline: none; list-style: none;}
-        .info-competencial summary::-webkit-details-marker { display: none; }
-        .info-competencial p { font-size: 12px; color: var(--texto); margin-top: 10px; line-height: 1.4; }
-        .info-barras { display: flex; height: 8px; border-radius: 4px; overflow: hidden; margin-top: 8px; }
+        .contenedor {
+            max-width: 820px;
+            margin: 0 auto;
+            background: var(--tarjeta);
+            padding: 28px;
+            border-radius: 14px;
+            border: 1px solid var(--borde);
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+        }
+
+        /* Cabecera editorial */
+        header {
+            text-align: center;
+            margin-bottom: 24px;
+            padding-bottom: 18px;
+            border-bottom: 2px solid var(--borde);
+        }
+
+        .etiqueta-fecha {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--acento);
+            background: var(--acento-suave);
+            border: 1px solid var(--acento-borde);
+            padding: 3px 10px;
+            border-radius: 999px;
+            margin-bottom: 8px;
+        }
+
+        header h1 {
+            color: var(--primario);
+            font-size: 26px;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+        }
+
+        header p {
+            color: var(--texto-suave);
+            font-size: 14px;
+        }
+
+        /* Vistas / Secciones */
+        .seccion {
+            display: none;
+            animation: fadeIn 0.35s ease-in-out;
+        }
+
+        .seccion.activa {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* =====================================================================
+           CARGA EXTERNA Y RESPALDO LOCAL (FILE READER)
+           ===================================================================== */
+        .estado-carga {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--texto-suave);
+        }
+
+        .spinner {
+            width: 34px;
+            height: 34px;
+            border: 3px solid var(--borde);
+            border-top-color: var(--acento);
+            border-radius: 50%;
+            margin: 0 auto 14px;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .caja-respaldo {
+            background: var(--fondo);
+            border: 2px dashed var(--borde-fuerte);
+            border-radius: 12px;
+            padding: 28px 22px;
+            text-align: center;
+            transition: border-color 0.2s, background-color 0.2s;
+        }
+
+        .caja-respaldo.arrastrando {
+            border-color: var(--acento);
+            background: var(--acento-suave);
+        }
+
+        .caja-respaldo h2 {
+            font-size: 18px;
+            color: var(--primario);
+            margin-bottom: 8px;
+        }
+
+        .caja-respaldo p {
+            font-size: 14px;
+            color: var(--texto-suave);
+            max-width: 560px;
+            margin: 0 auto 18px;
+        }
+
+        .zona-input-archivo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-subir-json {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--primario);
+            color: #ffffff;
+            padding: 13px 22px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            min-height: 46px;
+        }
+
+        .btn-subir-json:hover {
+            background: var(--acento);
+        }
+
+        .input-archivo-oculto {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        .btn-reintentar-fetch {
+            background: transparent;
+            border: 1px solid var(--borde-fuerte);
+            color: var(--texto);
+            padding: 9px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-height: 40px;
+        }
+
+        .btn-reintentar-fetch:hover {
+            border-color: var(--acento);
+            color: var(--acento);
+        }
+
+        .mensaje-error-inline {
+            display: none;
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-radius: 8px;
+            background: var(--peligro-fondo);
+            border: 1px solid #fecaca;
+            color: var(--peligro);
+            font-size: 13px;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .mensaje-error-inline.visible {
+            display: block;
+        }
+
+        /* =====================================================================
+           BOTONES GENERALES
+           ===================================================================== */
+        .btn-accion {
+            width: 100%;
+            background: var(--primario);
+            color: #ffffff;
+            border: none;
+            padding: 15px 18px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.2s, transform 0.1s;
+            min-height: 50px;
+        }
+
+        .btn-accion:hover {
+            background: var(--acento);
+        }
+
+        .btn-accion:active {
+            transform: scale(0.995);
+        }
+
+        .btn-secundario {
+            background: #e2e8f0;
+            color: var(--primario);
+            margin-top: 10px;
+        }
+
+        .btn-secundario:hover {
+            background: #cbd5e1;
+        }
+
+        /* =====================================================================
+           PASO 1: PROFUNDIDAD DEL TEST + PONDERACIÓN
+           ===================================================================== */
+        .bloque-paso {
+            margin-bottom: 26px;
+        }
+
+        .titulo-paso {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .numero-paso {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--primario);
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .titulo-paso h2 {
+            font-size: 17px;
+            color: var(--primario);
+            line-height: 1.3;
+        }
+
+        .grid-opciones {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .modo-caja {
+            position: relative;
+            border: 2px solid var(--borde);
+            border-radius: 10px;
+            padding: 18px;
+            cursor: pointer;
+            transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .modo-caja:hover {
+            border-color: var(--acento);
+            background: var(--acento-suave);
+        }
+
+        .modo-caja.seleccionado {
+            border-color: var(--acento);
+            background: var(--acento-suave);
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.14);
+        }
+
+        .modo-caja-cabecera {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .modo-caja h3 {
+            color: var(--primario);
+            font-size: 16px;
+            line-height: 1.3;
+        }
+
+        .modo-caja.seleccionado h3 {
+            color: var(--acento-hover);
+        }
+
+        .badge-ruta {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 999px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .badge-recomendado {
+            background: var(--exito-fondo);
+            color: var(--exito);
+            border: 1px solid var(--exito-borde);
+        }
+
+        .badge-precision {
+            background: #f1f5f9;
+            color: var(--primario);
+            border: 1px solid var(--borde-fuerte);
+        }
+
+        .meta-ruta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 2px;
+        }
+
+        .pill-dato {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primario);
+            background: #f1f5f9;
+            border: 1px solid var(--borde);
+            padding: 3px 9px;
+            border-radius: 6px;
+        }
+
+        .modo-caja.seleccionado .pill-dato {
+            background: #ffffff;
+            border-color: var(--acento-borde);
+            color: var(--acento-hover);
+        }
+
+        .modo-caja p {
+            font-size: 13.5px;
+            color: var(--texto-suave);
+            line-height: 1.5;
+        }
+
+        .bloque-ponderacion-inicio {
+            transition: opacity 0.25s ease;
+        }
+
+        .bloque-ponderacion-inicio.pendiente {
+            opacity: 0.55;
+        }
+
+        .aviso-paso1 {
+            font-size: 12.5px;
+            color: var(--acento-hover);
+            background: var(--acento-suave);
+            border: 1px solid var(--acento-borde);
+            border-radius: 8px;
+            padding: 9px 12px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        /* =====================================================================
+           PASO 1.5: REPARTO DE 100 PUNTOS
+           ===================================================================== */
+        .marcador-puntos {
+            position: sticky;
+            top: 8px;
+            background: #e0f2fe;
+            color: var(--primario);
+            padding: 13px 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 14px;
+            z-index: 20;
+            border: 2px solid var(--acento);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+            transition: background-color 0.25s, border-color 0.25s, color 0.25s;
+        }
+
+        .marcador-puntos.completo {
+            background: var(--exito);
+            color: #ffffff;
+            border-color: var(--exito);
+        }
+
+        .texto-didactico {
+            font-size: 13px;
+            color: var(--texto-suave);
+            background: var(--fondo);
+            padding: 13px 14px;
+            border-radius: 8px;
+            margin-bottom: 18px;
+            border-left: 3px solid var(--acento);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .barra-herramientas-pesos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .btn-micro {
+            background: #ffffff;
+            border: 1px solid var(--borde-fuerte);
+            color: var(--primario);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-height: 34px;
+        }
+
+        .btn-micro:hover {
+            border-color: var(--acento);
+            color: var(--acento);
+        }
+
+        .bloque-ponderacion {
+            border: 1px solid var(--borde);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 12px;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ponderacion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            width: 100%;
+        }
+
+        .ponderacion-header h3 {
+            font-size: 14.5px;
+            color: var(--primario);
+            flex: 0 0 42%;
+            line-height: 1.3;
+        }
+
+        .control-rango {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .btn-ajuste {
+            width: 34px;
+            height: 34px;
+            border-radius: 6px;
+            border: 1px solid var(--borde-fuerte);
+            background: var(--fondo);
+            color: var(--primario);
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.15s;
+        }
+
+        .btn-ajuste:hover {
+            border-color: var(--acento);
+            color: var(--acento);
+            background: var(--acento-suave);
+        }
+
+        .control-rango input[type="range"] {
+            flex: 1;
+            min-width: 0;
+            height: 32px;
+            accent-color: var(--acento);
+            cursor: pointer;
+        }
+
+        .nota-peso {
+            font-weight: 800;
+            font-size: 16px;
+            color: var(--acento);
+            width: 44px;
+            text-align: right;
+            flex-shrink: 0;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .info-competencial {
+            background: var(--fondo);
+            border: 1px solid var(--borde);
+            border-radius: 6px;
+            padding: 10px 12px;
+            margin-top: 12px;
+        }
+
+        .info-competencial summary {
+            font-size: 12.5px;
+            color: var(--texto-suave);
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            list-style: none;
+        }
+
+        .info-competencial summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .info-competencial p {
+            font-size: 12.5px;
+            color: var(--texto);
+            margin-top: 10px;
+            line-height: 1.45;
+        }
+
+        .info-barras {
+            display: flex;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
         .barra-est { background: var(--primario); }
         .barra-aut { background: #94a3b8; }
-        .leyenda-barras { display: flex; justify-content: space-between; font-size: 10px; color: var(--texto-suave); margin-top: 4px; font-weight: bold; }
 
-        /* Paso 2: Evaluación */
-        .cuestion-tarjeta { border: 1px solid var(--borde); border-radius: 10px; padding: 20px; margin-bottom: 25px; background: #fff; }
-        .migas-pan { font-size: 11px; text-transform: uppercase; color: var(--texto-suave); font-weight: 700; margin-bottom: 5px; }
-        .cuestion-tarjeta h3 { font-size: 18px; color: var(--primario); margin-bottom: 15px; }
+        .leyenda-barras {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--texto-suave);
+            margin-top: 5px;
+            font-weight: 700;
+        }
 
-        .medida-bloque { background: var(--fondo); border: 1px solid var(--borde); border-radius: 8px; padding: 15px; margin-bottom: 15px; }
-        .insignia-partido { background: var(--primario); color: white; padding: 4px 10px; border-radius: 4px; font-weight: bold; font-size: 13px; display: inline-block; margin-bottom: 10px;}
-        
-        .resumen-neutral { font-size: 15px; color: var(--texto); font-weight: 500; margin-bottom: 10px; }
-        details.cita-desplegable { background: #f1f5f9; padding: 10px; border-radius: 6px; margin-bottom: 15px; }
-        details.cita-desplegable summary { font-size: 12px; color: var(--acento); cursor: pointer; font-weight: 600; outline: none; }
-        .cita-literal { font-style: italic; border-left: 3px solid var(--acento); padding-left: 10px; margin-top: 10px; font-size: 13px; color: var(--texto-suave); }
-        
-        .botonera-voto { display: flex; flex-wrap: wrap; gap: 6px; }
-        .btn-voto { flex: 1; min-width: 80px; padding: 8px 4px; border: 1px solid var(--borde); background: #fff; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; transition: all 0.2s; color: var(--texto); }
-        .btn-voto:hover { border-color: var(--acento); }
-        .btn-voto.seleccionado { background: var(--acento); color: white; border-color: var(--acento); }
-        .no-consta { color: var(--texto-suave); font-size: 13px; font-style: italic; background: #f1f5f9; padding: 10px; border-radius: 6px; text-align: center; }
+        .aviso-puntos-inline {
+            display: none;
+            margin-top: 16px;
+            padding: 12px 14px;
+            border-radius: 8px;
+            background: var(--alerta-fondo);
+            border: 1px solid var(--alerta-borde);
+            color: #92400e;
+            font-size: 13.5px;
+            font-weight: 600;
+        }
 
-        /* Resultados */
-        .resultado-item { border: 1px solid var(--borde); padding: 15px; border-radius: 8px; margin-bottom: 15px; }
-        .res-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        .res-nombre { font-size: 18px; font-weight: bold; color: var(--primario); }
-        .res-afinidad { font-size: 24px; font-weight: 900; color: var(--acento); }
-        .barra-progreso { width: 100%; height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden; margin-bottom: 10px; }
-        .barra-relleno { height: 100%; background: var(--acento); width: 0%; transition: width 1s ease-out; }
-        .metricas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 12px; color: var(--texto-suave); background: #f8fafc; padding: 10px; border-radius: 6px; margin-bottom: 10px;}
-        .alerta-cobertura { grid-column: span 2; font-size: 11px; color: var(--alerta); font-weight: 600; margin-top: 5px; }
-        
-        .desglose-tabla { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 10px; }
-        .desglose-tabla th, .desglose-tabla td { padding: 8px; text-align: left; border-bottom: 1px solid var(--borde); }
-        .desglose-tabla th { color: var(--texto-suave); font-weight: 600; }
+        .aviso-puntos-inline.visible {
+            display: block;
+        }
+
+        /* =====================================================================
+           PASO 2: EVALUACIÓN A CIEGAS Y BARRA FIJA DISCRETA
+           ===================================================================== */
+        .barra-fija-paso2 {
+            position: sticky;
+            top: 8px;
+            z-index: 30;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--borde-fuerte);
+            border-radius: 10px;
+            padding: 10px 14px;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .barra-fija-fila {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .barra-fija-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            font-size: 13px;
+        }
+
+        .chip-modo-activo {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--primario);
+            color: #ffffff;
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 3px 9px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+
+        .contador-valoradas {
+            font-weight: 700;
+            color: var(--primario);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .btn-calcular-rapido {
+            background: var(--acento);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 13px;
+            font-size: 12.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            min-height: 36px;
+            white-space: nowrap;
+        }
+
+        .btn-calcular-rapido:hover {
+            background: var(--acento-hover);
+        }
+
+        .progreso-mini-track {
+            width: 100%;
+            height: 5px;
+            background: #e2e8f0;
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .progreso-mini-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--acento);
+            transition: width 0.25s ease;
+        }
+
+        .aviso-ciegas {
+            background: var(--acento-suave);
+            border: 1px solid var(--acento-borde);
+            padding: 14px 16px;
+            border-radius: 8px;
+            margin-bottom: 22px;
+            font-size: 13.5px;
+            color: var(--primario-suave);
+        }
+
+        .cuestion-tarjeta {
+            border: 1px solid var(--borde);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 22px;
+            background: #ffffff;
+        }
+
+        .cuestion-cabecera-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+        }
+
+        .migas-pan {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--texto-suave);
+            font-weight: 700;
+        }
+
+        .num-cuestion {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--texto-suave);
+            background: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+
+        .cuestion-tarjeta h3 {
+            font-size: 18px;
+            color: var(--primario);
+            margin-bottom: 16px;
+            line-height: 1.35;
+        }
+
+        .medida-bloque {
+            background: var(--fondo);
+            border: 1px solid var(--borde);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 14px;
+        }
+
+        .medida-bloque:last-child {
+            margin-bottom: 0;
+        }
+
+        .insignia-partido {
+            background: var(--primario);
+            color: #ffffff;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 12.5px;
+            display: inline-block;
+            margin-bottom: 10px;
+            letter-spacing: 0.02em;
+        }
+
+        .resumen-neutral {
+            font-size: 15px;
+            color: var(--primario-suave);
+            font-weight: 500;
+            margin-bottom: 10px;
+            line-height: 1.55;
+        }
+
+        details.cita-desplegable {
+            background: #f1f5f9;
+            padding: 10px 12px;
+            border-radius: 6px;
+            margin-bottom: 14px;
+            border: 1px solid #e2e8f0;
+        }
+
+        details.cita-desplegable summary {
+            font-size: 12.5px;
+            color: var(--acento-hover);
+            cursor: pointer;
+            font-weight: 600;
+            outline: none;
+        }
+
+        .cita-literal {
+            font-style: italic;
+            border-left: 3px solid var(--acento);
+            padding-left: 11px;
+            margin-top: 10px;
+            font-size: 13px;
+            color: var(--texto);
+            line-height: 1.5;
+        }
+
+        /* Botonera de voto optimizada para escritorio y táctil móvil */
+        .botonera-voto {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 6px;
+        }
+
+        .btn-voto {
+            padding: 10px 5px;
+            min-height: 44px;
+            border: 1px solid var(--borde-fuerte);
+            background: #ffffff;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.25;
+            transition: all 0.15s;
+            color: var(--texto);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            word-break: break-word;
+        }
+
+        .btn-voto:hover {
+            border-color: var(--acento);
+            background: var(--acento-suave);
+        }
+
+        .btn-voto.btn-no-valorar {
+            background: #f1f5f9;
+            color: var(--texto-suave);
+        }
+
+        .btn-voto.seleccionado {
+            background: var(--acento);
+            color: #ffffff;
+            border-color: var(--acento);
+            box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25);
+        }
+
+        .btn-voto.btn-no-valorar.seleccionado {
+            background: var(--primario-suave);
+            border-color: var(--primario-suave);
+            color: #ffffff;
+        }
+
+        .no-consta {
+            color: var(--texto-suave);
+            font-size: 13px;
+            font-style: italic;
+            background: #f1f5f9;
+            padding: 11px 12px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        /* =====================================================================
+           PASO 3: RESULTADOS Y AUDITORÍA DE FUENTES
+           ===================================================================== */
+        .resumen-contexto-resultados {
+            text-align: center;
+            margin-bottom: 22px;
+        }
+
+        .resumen-contexto-resultados h2 {
+            color: var(--primario);
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .chips-resumen {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .chip-contexto {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--texto);
+            background: #f1f5f9;
+            border: 1px solid var(--borde);
+            padding: 4px 10px;
+            border-radius: 999px;
+        }
+
+        .aviso-sin-votos {
+            background: var(--alerta-fondo);
+            border: 1px solid var(--alerta-borde);
+            color: #92400e;
+            padding: 14px 16px;
+            border-radius: 8px;
+            font-size: 13.5px;
+            margin-bottom: 18px;
+        }
+
+        .resultado-item {
+            border: 1px solid var(--borde);
+            padding: 18px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+            background: #ffffff;
+        }
+
+        .resultado-item.primero {
+            border-color: var(--acento-borde);
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.08);
+        }
+
+        .res-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .res-alias-etiqueta {
+            font-size: 12px;
+            color: var(--texto-suave);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .res-nombre {
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--primario);
+        }
+
+        .res-afinidad {
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--acento);
+            font-variant-numeric: tabular-nums;
+            flex-shrink: 0;
+        }
+
+        .barra-progreso {
+            width: 100%;
+            height: 9px;
+            background: #e2e8f0;
+            border-radius: 999px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .barra-relleno {
+            height: 100%;
+            background: var(--acento);
+            width: 0%;
+            transition: width 0.8s ease-out;
+        }
+
+        .metricas-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 12.5px;
+            color: var(--texto-suave);
+            background: var(--fondo);
+            padding: 11px 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .alerta-cobertura {
+            grid-column: span 2;
+            font-size: 11.5px;
+            color: var(--alerta);
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .desglose-details {
+            margin-top: 10px;
+            background: #ffffff;
+            border: 1px solid var(--borde);
+            border-radius: 8px;
+            padding: 10px 12px;
+        }
+
+        .desglose-details summary {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primario);
+            cursor: pointer;
+            outline: none;
+        }
+
+        .desglose-tabla-wrap {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+
+        .desglose-tabla {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12.5px;
+        }
+
+        .desglose-tabla th,
+        .desglose-tabla td {
+            padding: 8px 6px;
+            text-align: left;
+            border-bottom: 1px solid var(--borde);
+        }
+
+        .desglose-tabla th {
+            color: var(--texto-suave);
+            font-weight: 700;
+        }
+
+        /* Bloque desplegable de auditoría final y correspondencia */
+        .auditoria-bloque {
+            margin-top: 26px;
+            border: 2px solid var(--borde-fuerte);
+            border-radius: 12px;
+            background: var(--fondo);
+            padding: 16px 18px;
+        }
+
+        .auditoria-bloque > summary {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primario);
+            cursor: pointer;
+            outline: none;
+            line-height: 1.4;
+        }
+
+        .correspondencia-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+            margin: 16px 0 20px;
+        }
+
+        .correspondencia-card {
+            background: #ffffff;
+            border: 1px solid var(--borde);
+            border-radius: 8px;
+            padding: 10px 12px;
+            text-align: center;
+        }
+
+        .correspondencia-alias {
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--texto-suave);
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .correspondencia-real {
+            display: block;
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--primario);
+        }
+
+        .auditoria-cuestion {
+            background: #ffffff;
+            border: 1px solid var(--borde);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 14px;
+        }
+
+        .auditoria-cuestion h4 {
+            font-size: 15.5px;
+            color: var(--primario);
+            margin: 4px 0 12px;
+            line-height: 1.35;
+        }
+
+        .auditoria-medida {
+            border-top: 1px solid var(--borde);
+            padding-top: 12px;
+            margin-top: 12px;
+        }
+
+        .auditoria-medida:first-of-type {
+            border-top: none;
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        .auditoria-medida-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .auditoria-partido-nombre {
+            font-weight: 800;
+            font-size: 14px;
+            color: var(--primario);
+        }
+
+        .auditoria-alias-mini {
+            font-weight: 600;
+            font-size: 12px;
+            color: var(--texto-suave);
+            margin-left: 4px;
+        }
+
+        .tag-voto-usuario {
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: var(--acento-suave);
+            color: var(--acento-hover);
+            border: 1px solid var(--acento-borde);
+        }
+
+        .tag-voto-usuario.sin-voto {
+            background: #f1f5f9;
+            color: var(--texto-suave);
+            border-color: var(--borde);
+        }
+
+        .auditoria-resumen {
+            font-size: 13.5px;
+            color: var(--texto);
+            margin-bottom: 6px;
+        }
+
+        .auditoria-cita {
+            font-size: 12.5px;
+            font-style: italic;
+            color: var(--texto-suave);
+            border-left: 3px solid var(--borde-fuerte);
+            padding-left: 10px;
+            margin-bottom: 6px;
+            line-height: 1.45;
+        }
+
+        .auditoria-fuente {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primario-suave);
+            background: #f1f5f9;
+            display: inline-block;
+            padding: 3px 9px;
+            border-radius: 5px;
+        }
+
+        /* =====================================================================
+           PIE DE PÁGINA (ATRIBUCIÓN Y NOTA METODOLÓGICA)
+           ===================================================================== */
+        footer.pie-legal {
+            margin-top: 32px;
+            padding-top: 18px;
+            border-top: 1px solid var(--borde);
+            font-size: 12px;
+            color: var(--texto-suave);
+            line-height: 1.55;
+            text-align: left;
+        }
+
+        footer.pie-legal a {
+            color: var(--acento-hover);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        /* =====================================================================
+           OPTIMIZACIÓN TÁCTIL PARA MÓVILES Y TABLETS
+           ===================================================================== */
+        @media (max-width: 720px) {
+            body {
+                padding: 8px;
+            }
+
+            .contenedor {
+                padding: 18px 14px;
+                border-radius: 12px;
+            }
+
+            header h1 {
+                font-size: 22px;
+            }
+
+            .grid-opciones {
+                grid-template-columns: 1fr;
+            }
+
+            .ponderacion-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            .ponderacion-header h3 {
+                flex: none;
+                width: 100%;
+                font-size: 15px;
+            }
+
+            .control-rango {
+                width: 100%;
+            }
+
+            .botonera-voto {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 8px;
+            }
+
+            .btn-voto {
+                min-height: 46px;
+                font-size: 12.5px;
+                padding: 8px 6px;
+            }
+
+            .cuestion-tarjeta {
+                padding: 15px 13px;
+            }
+
+            .medida-bloque {
+                padding: 13px 12px;
+            }
+
+            .metricas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .alerta-cobertura {
+                grid-column: span 1;
+            }
+
+            .correspondencia-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .barra-fija-fila {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn-calcular-rapido {
+                width: 100%;
+                min-height: 40px;
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="contenedor">
     <header>
+        <span class="etiqueta-fecha">Elecciones Generales · 29 de noviembre de 2026</span>
         <h1>Brújula Electoral</h1>
-        <p>Elecciones Generales (29 Noviembre 2026)</p>
+        <p>Compara propuestas reales a ciegas y calcula tu afinidad ponderada por competencias</p>
     </header>
 
-    <!-- PASO 1: SELECCIÓN DE MODO -->
-    <div id="vista-inicio" class="seccion activa">
-        <h2 style="margin-bottom: 15px; font-size: 18px; color: var(--primario);">Paso 1: ¿Cómo quieres ponderar los temas?</h2>
-        
-        <div class="modo-caja" onclick="seleccionarModo('equilibrado')">
-            <h3>⚖️ Modo Realista (Rápido)</h3>
-            <p style="font-size: 14px; color: var(--texto-suave);">El reparto de importancia se establece automáticamente en función del grado de responsabilidad o capacidad real de actuación que tiene el Estado sobre otras administraciones (ej. Pensiones tiene más peso que Sanidad). Ideal para un test riguroso y rápido.</p>
+    <!-- ESTADO DE CARGA INICIAL -->
+    <div id="vista-cargando" class="seccion activa">
+        <div class="estado-carga">
+            <div class="spinner" aria-hidden="true"></div>
+            <p>Cargando base de datos de cuestiones oficiales (<code>./cuestiones.json</code>)...</p>
+        </div>
+    </div>
+
+    <!-- RESPALDO PARA LOCAL / CANVAS SI FETCH FALLA -->
+    <div id="vista-carga-manual" class="seccion">
+        <div id="zona-drop-json" class="caja-respaldo">
+            <h2>Cargar archivo de cuestiones</h2>
+            <p>
+                No se pudo leer automáticamente <code>./cuestiones.json</code> (habitual al abrir el archivo directamente desde tu equipo o en entornos de vista previa). Selecciona o arrastra tu archivo <code>cuestiones.json</code> para activar la aplicación al instante.
+            </p>
+            <div class="zona-input-archivo">
+                <label for="input-json-local" class="btn-subir-json">
+                    📂 Seleccionar archivo cuestiones.json
+                </label>
+                <input
+                    type="file"
+                    id="input-json-local"
+                    class="input-archivo-oculto"
+                    accept=".json,application/json"
+                >
+                <button type="button" class="btn-reintentar-fetch" onclick="cargarCuestionesRemotas()">
+                    ↻ Reintentar carga automática
+                </button>
+            </div>
+            <div id="error-carga-json" class="mensaje-error-inline" role="alert"></div>
+        </div>
+    </div>
+
+    <!-- PASO 1: PROFUNDIDAD DEL TEST Y MODO DE PONDERACIÓN -->
+    <div id="vista-inicio" class="seccion">
+        <!-- PASO 1A: DOS CAMINOS DE PROFUNDIDAD -->
+        <div class="bloque-paso">
+            <div class="titulo-paso">
+                <span class="numero-paso">1</span>
+                <h2>Elige la profundidad de tu recorrido</h2>
+            </div>
+
+            <div class="grid-opciones">
+                <button type="button" id="card-ruta-rapido" class="modo-caja" onclick="seleccionarProfundidad('rapido')">
+                    <div class="modo-caja-cabecera">
+                        <h3>⚡ Test Exprés</h3>
+                        <span class="badge-ruta badge-recomendado">Recomendado</span>
+                    </div>
+                    <div class="meta-ruta">
+                        <span class="pill-dato" id="dato-count-rapido">0 cuestiones</span>
+                        <span class="pill-dato">~3-4 min</span>
+                    </div>
+                    <p>
+                        Recomendado para empezar. Incluye únicamente las cuestiones clave (1 o 2 por competencia) para obtener una orientación rápida y equilibrada.
+                    </p>
+                </button>
+
+                <button type="button" id="card-ruta-completo" class="modo-caja" onclick="seleccionarProfundidad('completo')">
+                    <div class="modo-caja-cabecera">
+                        <h3>🔬 Test Completo</h3>
+                        <span class="badge-ruta badge-precision">Máxima precisión</span>
+                    </div>
+                    <div class="meta-ruta">
+                        <span class="pill-dato" id="dato-count-completo">0 cuestiones</span>
+                        <span class="pill-dato">~8-10 min</span>
+                    </div>
+                    <p>
+                        Incluye el 100 % de las cuestiones disponibles (3 o 4 por competencia), ofreciendo el diagnóstico más exhaustivo y riguroso.
+                    </p>
+                </button>
+            </div>
         </div>
 
-        <div class="modo-caja" onclick="seleccionarModo('personalizado')">
-            <h3>🎯 Modo Personalizado (Preciso)</h3>
-            <p style="font-size: 14px; color: var(--texto-suave);">Arrancas con el reparto realista por defecto, pero tienes la libertad de ajustar y mover tus 100 puntos hacia las áreas que a ti, personalmente, te importen más.</p>
+        <!-- PASO 1B: SELECCIÓN DE PONDERACIÓN -->
+        <div id="bloque-ponderacion-inicio" class="bloque-paso bloque-ponderacion-inicio pendiente">
+            <div class="titulo-paso">
+                <span class="numero-paso">2</span>
+                <h2>¿Cómo quieres ponderar los temas?</h2>
+            </div>
+
+            <div id="aviso-paso1" class="aviso-paso1">
+                👆 Selecciona primero arriba entre <strong>Test Exprés</strong> o <strong>Test Completo</strong> para continuar.
+            </div>
+
+            <div class="grid-opciones">
+                <button type="button" class="modo-caja" onclick="seleccionarModo('equilibrado')">
+                    <div class="modo-caja-cabecera">
+                        <h3>⚖️ Modo Realista</h3>
+                        <span class="badge-ruta badge-recomendado">Automático</span>
+                    </div>
+                    <p>
+                        El reparto de importancia se establece automáticamente en función del grado de responsabilidad o capacidad real de actuación que tiene el Estado sobre otras administraciones (ej. Pensiones tiene más peso que Sanidad). Ideal para un test riguroso y ágil.
+                    </p>
+                </button>
+
+                <button type="button" class="modo-caja" onclick="seleccionarModo('personalizado')">
+                    <div class="modo-caja-cabecera">
+                        <h3>🎯 Modo Personalizado</h3>
+                        <span class="badge-ruta badge-precision">100 puntos</span>
+                    </div>
+                    <p>
+                        Arrancas con el reparto realista por defecto, pero tienes la libertad de ajustar y mover tus 100 puntos hacia las áreas que a ti, personalmente, te importen más.
+                    </p>
+                </button>
+            </div>
         </div>
     </div>
 
     <!-- PASO 1.5: REPARTO DE 100 PUNTOS -->
     <div id="vista-100-puntos" class="seccion">
         <div id="marcador-caja" class="marcador-puntos">
-            <span id="texto-marcador">Puntos asignados:</span> <span id="contador-puntos">0</span> <span id="texto-total">/ 100</span>
+            <span id="texto-marcador">Puntos asignados: </span><span id="contador-puntos">0</span><span id="texto-total"> / 100</span>
         </div>
-        
+
         <div class="texto-didactico">
-            💡 <strong>¿Cómo funciona esto?</strong> Tienes un presupuesto máximo de 100 puntos para repartir libremente entre las 12 temáticas. Hemos preconfigurado los deslizadores basándonos en el nivel de competencia real que tiene el Estado en España, pero puedes subir o bajar cualquier área hasta que reflejen tus verdaderas prioridades.
+            <div>
+                💡 <strong>¿Cómo funciona esto?</strong> Tienes un presupuesto máximo de 100 puntos para repartir libremente entre las 12 temáticas. Hemos preconfigurado los deslizadores basándonos en el nivel de competencia real que tiene el Estado en España, pero puedes subir o bajar cualquier área hasta que reflejen tus verdaderas prioridades.
+            </div>
+            <div class="barra-herramientas-pesos">
+                <span id="resumen-ruta-pesos" style="font-weight:700; color:var(--primario);"></span>
+                <button type="button" class="btn-micro" onclick="restablecerPesosRealistas()">
+                    ↺ Restablecer reparto realista
+                </button>
+            </div>
         </div>
-        
+
         <div id="contenedor-ponderaciones"></div>
-        
-        <button class="btn-accion" onclick="iniciarEvaluacion()">Continuar a la evaluación a ciegas</button>
-        <button class="btn-accion btn-secundario" onclick="volverInicio()">Atrás</button>
+
+        <div id="aviso-puntos-inline" class="aviso-puntos-inline" role="alert"></div>
+
+        <button type="button" class="btn-accion" onclick="iniciarEvaluacion()">
+            Continuar a la evaluación a ciegas
+        </button>
+        <button type="button" class="btn-accion btn-secundario" onclick="volverInicio()">
+            Atrás
+        </button>
     </div>
 
     <!-- PASO 2: TEST A CIEGAS -->
     <div id="vista-paso2" class="seccion">
-        <div style="background: #e0f2fe; padding: 15px; border-radius: 8px; margin-bottom: 25px; font-size: 13px;">
-            <strong>Evaluación a ciegas:</strong> Los partidos (A, B, C...) han sido mezclados al azar. Valora cada medida. Puedes desplegar el texto literal extraído del programa oficial para confirmarlo (la fuente exacta se oculta hasta el final para garantizar tu neutralidad).
+        <!-- Barra fija discreta de progreso y acceso inmediato a resultados -->
+        <div class="barra-fija-paso2" role="region" aria-label="Progreso de evaluación">
+            <div class="barra-fija-fila">
+                <div class="barra-fija-info">
+                    <span id="chip-modo-activo" class="chip-modo-activo">⚡ Test Exprés</span>
+                    <span id="contador-medidas-valoradas" class="contador-valoradas">0 / 0 medidas valoradas</span>
+                </div>
+                <button type="button" class="btn-calcular-rapido" onclick="calcularResultados()">
+                    Calcular Afinidad y Desvelar Partidos
+                </button>
+            </div>
+            <div class="progreso-mini-track" aria-hidden="true">
+                <div id="progreso-mini-fill" class="progreso-mini-fill"></div>
+            </div>
         </div>
+
+        <div class="aviso-ciegas">
+            <strong>Evaluación a ciegas:</strong> Los 4 partidos (Partido A, Partido B, Partido C y Partido D) han sido mezclados al azar. Valora las medidas que desees; puedes desplegar la cita literal para confirmarla. Tanto el nombre real de los partidos como la fuente exacta permanecen ocultos hasta el paso final.
+        </div>
+
         <div id="contenedor-cuestiones"></div>
-        <button class="btn-accion" onclick="calcularResultados()">Calcular Afinidad y Desvelar Partidos</button>
+
+        <button type="button" class="btn-accion" onclick="calcularResultados()">
+            Calcular Afinidad y Desvelar Partidos
+        </button>
+        <button type="button" class="btn-accion btn-secundario" onclick="volverDesdePaso2()">
+            ← Volver a la configuración
+        </button>
     </div>
 
-    <!-- PASO 3: RESULTADOS -->
+    <!-- PASO 3: RESULTADOS Y AUDITORÍA DE FUENTES -->
     <div id="vista-resultados" class="seccion">
-        <h2 style="margin-bottom: 20px; color: var(--primario); text-align:center;">Tu Afinidad Programática</h2>
+        <div class="resumen-contexto-resultados">
+            <h2>Tu Afinidad Programática</h2>
+            <div id="chips-resumen-resultados" class="chips-resumen"></div>
+        </div>
+
         <div id="contenedor-resultados"></div>
-        <button class="btn-accion btn-secundario" style="margin-top: 30px;" onclick="location.reload()">Empezar un nuevo test</button>
+
+        <!-- Bloque desplegable obligatorio de correspondencia y citas oficiales -->
+        <details id="bloque-auditoria" class="auditoria-bloque">
+            <summary>🔍 Desvelar qué partido era cada letra y verificar citas oficiales (2026)</summary>
+            <div id="contenido-auditoria"></div>
+        </details>
+
+        <button type="button" class="btn-accion btn-secundario" style="margin-top: 26px;" onclick="reiniciarTest()">
+            Empezar un nuevo test
+        </button>
     </div>
+
+    <!-- ATRIBUCIÓN OBLIGATORIA Y NOTA METODOLÓGICA -->
+    <footer class="pie-legal">
+        Datos base de propuestas y citas literales verificadas procedentes de los datos abiertos de 29N (<a href="https://29nov.es" target="_blank" rel="noopener noreferrer">29nov.es</a>), reutilizados bajo licencia <a href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener noreferrer">Creative Commons CC BY 4.0</a>. Los porcentajes competenciales Estado/CCAA son estimaciones pedagógicas orientativas (no aplican de forma idéntica a los regímenes forales de País Vasco y Navarra).
+    </footer>
 </div>
 
 <script>
     // =====================================================================
-    // 1. BASE DE DATOS ESTRUCTURADA
+    // 1. ESTRUCTURA BASE (SIN CUESTIONES INCRUSTADAS EN EL HTML)
     // =====================================================================
     const BASE_DE_DATOS = {
         metadatos: { fecha: "2026-11-29" },
+        // Los 4 partidos oficiales del 29-N 2026
         partidos_oficiales: [
-            { id: "psoe", nombre: "PSOE" },
             { id: "pp", nombre: "Partido Popular" },
+            { id: "psoe", nombre: "PSOE" },
             { id: "vox", nombre: "VOX" },
-            { id: "sumar", nombre: "Sumar" },
-            { id: "podemos", nombre: "Podemos" }
+            { id: "frente_amplio", nombre: "Frente Amplio" }
         ],
-        // Competencias con su peso por defecto basado en la arquitectura competencial del Estado
+        // Las 12 competencias intactas con sus porcentajes Estado/CCAA, pesos por defecto y justificaciones
         competencias: [
-            { 
-                id: "pen", nombre: "Pensiones y Seg. Social", 
+            {
+                id: "pen", nombre: "Pensiones y Seg. Social",
                 estado: 100, ccaa: 0, peso_defecto: 13,
                 justificacion: "Competencia exclusiva del Estado (Caja Única de la Seguridad Social), que decide unilateralmente la edad de jubilación, los cálculos y la revalorización de las pensiones."
             },
-            { 
-                id: "ext", nombre: "Pol. Exterior, UE y Defensa", 
+            {
+                id: "ext", nombre: "Pol. Exterior, UE y Defensa",
                 estado: 100, ccaa: 0, peso_defecto: 13,
                 justificacion: "Competencia absoluta del Gobierno central, único actor con potestad legal y capacidad para gestionar fronteras, Fuerzas Armadas, diplomacia y representación de España en el exterior."
             },
-            { 
-                id: "ter", nombre: "Modelo de Estado y Financiación", 
+            {
+                id: "ter", nombre: "Modelo de Estado y Financiación",
                 estado: 90, ccaa: 10, peso_defecto: 12,
                 justificacion: "Las Cortes Generales y el Estado tienen un papel decisivo en la Constitución, los Estatutos, el sistema general de financiación autonómica y la configuración territorial. Las CCAA participan y pueden impulsar reformas, pero no pueden modificar unilateralmente el modelo."
             },
-            { 
-                id: "eco", nombre: "Economía y Empleo", 
+            {
+                id: "eco", nombre: "Economía y Empleo",
                 estado: 80, ccaa: 20, peso_defecto: 10,
                 justificacion: "El Estado legisla en exclusiva (fija el SMI, cuotas de autónomos y reformas laborales), mientras que las autonomías se limitan a ejecutar las políticas activas de empleo."
             },
-            { 
-                id: "jus", nombre: "Justicia e Interior", 
+            {
+                id: "jus", nombre: "Justicia e Interior",
                 estado: 80, ccaa: 20, peso_defecto: 10,
                 justificacion: "El Estado legisla en materia penal y procesal y la seguridad pública es de competencia estatal (Policía, Guardia Civil, Ejercito, etc); las autonomías y municipios asumen las policías autonómicas/locales y los medios materiales de los juzgados."
             },
-            { 
-                id: "fis", nombre: "Fiscalidad e Impuestos", 
+            {
+                id: "fis", nombre: "Fiscalidad e Impuestos",
                 estado: 75, ccaa: 25, peso_defecto: 10,
                 justificacion: "El Estado recauda y diseña las bases del IVA, Sociedades y la mitad del IRPF; las autonomías y ayuntamientos gestionan sus tramos autonómicos, ITP, Patrimonio, Sucesiones y tributos locales."
             },
-            { 
-                id: "med", nombre: "Medio Ambiente y Energía", 
+            {
+                id: "med", nombre: "Medio Ambiente y Energía",
                 estado: 70, ccaa: 30, peso_defecto: 9,
                 justificacion: "El Estado planifica el mix energético nacional, las grandes redes y la legislación ambiental básica; las CCAA otorgan los permisos para instalaciones específicas y protegen sus espacios naturales."
             },
-            { 
-                id: "soc", nombre: "Políticas Sociales e Igualdad", 
+            {
+                id: "soc", nombre: "Políticas Sociales e Igualdad",
                 estado: 45, ccaa: 55, peso_defecto: 6,
                 justificacion: "El Estado aprueba los derechos básicos y cofinancia (ej. Ley de Dependencia), pero las CCAA y los ayuntamientos son quienes evalúan, adjudican y asumen la prestación directa de estos servicios."
             },
-            { 
-                id: "edu", nombre: "Educación y Ciencia", 
+            {
+                id: "edu", nombre: "Educación y Ciencia",
                 estado: 40, ccaa: 60, peso_defecto: 5,
                 justificacion: "El Estado aprueba las leyes educativas (currículo básico) y el sistema de becas; las CCAA gestionan los centros educativos, contrata y establece condiciones laborales a los docentes, ejecutan el presupuesto y definen el resto del temario."
             },
-            { 
-                id: "rur", nombre: "Agricultura y Reto Demogr.", 
+            {
+                id: "rur", nombre: "Agricultura y Reto Demogr.",
                 estado: 40, ccaa: 60, peso_defecto: 5,
                 justificacion: "El Estado negocia la PAC en Europa y gestiona las cuencas hidrográficas que cruzan varias regiones; las CCAA dirigen la ejecución de fondos agrícolas y las políticas de desarrollo rural."
             },
-            { 
-                id: "viv", nombre: "Vivienda y Urbanismo", 
+            {
+                id: "viv", nombre: "Vivienda y Urbanismo",
                 estado: 30, ccaa: 70, peso_defecto: 4,
                 justificacion: "El Estado regula los arrendamientos, el Código Penal, parte de la fiscalidad de la vivienda y aporta financiación para vivienda pública, pero las CCAA y ayuntamientos tienen la competencia exclusiva real en urbanismo, calificación de suelo y promoción de vivienda pública."
             },
-            { 
-                id: "san", nombre: "Sanidad y Salud Pública", 
+            {
+                id: "san", nombre: "Sanidad y Salud Pública",
                 estado: 20, ccaa: 80, peso_defecto: 3,
                 justificacion: "El Estado define la cartera básica y los precios de los fármacos, pero las CCAA asumen el 100% de la gestión de hospitales, centros de salud, contratación de personal y listas de espera."
             }
         ],
-        cuestiones: [
-            {
-                id: "viv-001",
-                competencia_id: "viv",
-                subcompetencia: "Alquiler",
-                titulo: "Regulación de los precios del alquiler",
-                medidas: {
-                    "psoe": {
-                        consta: true,
-                        resumen_neutral: "Mantener la Ley de Vivienda y topar subidas en áreas tensionadas.",
-                        texto_original: "Consolidaremos la aplicación de la Ley de Vivienda para establecer índices de precios de referencia que topen las subidas en áreas tensionadas.",
-                        fuente: "Programa PSOE, Pág. 42" 
-                    },
-                    "pp": {
-                        consta: true,
-                        resumen_neutral: "Derogar la actual Ley de Vivienda y eliminar los topes de precios.",
-                        texto_original: "Derogaremos la actual Ley de Vivienda, eliminando los topes artificiales al precio del alquiler que contraen la oferta.",
-                        fuente: "Programa PP, Pág. 18"
-                    },
-                    "vox": {
-                        consta: true,
-                        resumen_neutral: "Derogar la ley de vivienda y permitir libre pacto de precios.",
-                        texto_original: "Derogación de la ley por el derecho a la vivienda y recuperación de la libertad de pactos entre propietarios e inquilinos.",
-                        fuente: "Programa VOX, Pág. 89"
-                    },
-                    "podemos": { consta: false }
-                }
-            },
-            {
-                id: "fis-037",
-                competencia_id: "fis",
-                subcompetencia: "Impuestos Específicos",
-                titulo: "Eliminación del impuesto a grandes fortunas",
-                medidas: {
-                    "vox": {
-                        consta: true,
-                        resumen_neutral: "Eliminación inmediata del impuesto a las grandes fortunas a nivel nacional.",
-                        texto_original: "Eliminación inmediata del impuesto a las grandes fortunas, sucesiones y donaciones en todo el territorio nacional.",
-                        fuente: "Programa VOX, Pág. 55"
-                    },
-                    "pp": {
-                        consta: true,
-                        resumen_neutral: "Supresión del Impuesto sobre Grandes Fortunas.",
-                        texto_original: "Supresión del Impuesto sobre Grandes Fortunas y diseño de un marco fiscal predecible.",
-                        fuente: "Programa PP, Pág. 34"
-                    }
-                }
-            }
-        ]
+        // Se rellena dinámicamente desde ./cuestiones.json o mediante FileReader
+        cuestiones: []
+    };
+
+    // Etiquetas legibles para los valores de voto (usadas en auditoría)
+    const ETIQUETAS_VOTO = {
+        0: "En contra",
+        25: "Más bien en contra",
+        50: "Neutral",
+        75: "Más bien a favor",
+        100: "A favor"
     };
 
     // =====================================================================
     // 2. ESTADO DE LA APLICACIÓN
     // =====================================================================
-    let modoElegido = ''; 
-    let pesosUsuario = {}; 
+    let profundidadElegida = ""; // 'rapido' | 'completo'
+    let modoElegido = "";        // 'equilibrado' | 'personalizado'
+    let pesosUsuario = {};
     let puntosTotalesAsignados = 0;
     const MAX_PUNTOS = 100;
-    
-    let votosUsuario = {}; 
-    let mapaPartidos = []; 
 
-    function escaparHTML(t) {
-        const div = document.createElement('div'); div.textContent = t; return div.innerHTML;
+    let cuestionesActivas = [];      // Cuestiones filtradas por profundidad + peso > 0
+    let totalMedidasEvaluables = 0;  // Total de propuestas con consta === true visibles en Paso 2
+    let votosUsuario = {};           // { [cuestionId]: { [partidoIdReal]: number | null } }
+    let mapaPartidos = [];           // [{ idx, id_real, nombre_real, alias }]
+
+    // =====================================================================
+    // 3. UTILIDADES SEGURAS
+    // =====================================================================
+    function escaparHTML(texto) {
+        const div = document.createElement("div");
+        div.textContent = texto == null ? "" : String(texto);
+        return div.innerHTML;
     }
 
     function barajar(array) {
-        for (let i = array.length - 1; i > 0; i--) {
+        const copia = [...array];
+        for (let i = copia.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
+            [copia[i], copia[j]] = [copia[j], copia[i]];
         }
-        return array;
+        return copia;
+    }
+
+    function mostrarSeccion(idSeccion) {
+        document.querySelectorAll(".seccion").forEach(sec => sec.classList.remove("activa"));
+        const destino = document.getElementById(idSeccion);
+        if (destino) destino.classList.add("activa");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function obtenerNombreCompetencia(compId) {
+        const encontrada = BASE_DE_DATOS.competencias.find(c => c.id === compId);
+        return encontrada ? encontrada.nombre : compId;
     }
 
     // =====================================================================
-    // 3. NAVEGACIÓN Y LÓGICA DE PUNTOS
+    // 4. CARGA EXTERNA DE ./cuestiones.json Y RESPALDO LOCAL (FILEREADER)
     // =====================================================================
+    function validarYNormalizarCuestiones(datos) {
+        // Soporta tanto el formato oficial (array raíz) como un objeto { cuestiones: [...] }
+        const lista = Array.isArray(datos)
+            ? datos
+            : (datos && Array.isArray(datos.cuestiones) ? datos.cuestiones : null);
+
+        if (!lista || lista.length === 0) {
+            throw new Error("El archivo JSON no contiene ninguna cuestión válida.");
+        }
+
+        const esValida = lista.every(item =>
+            item &&
+            typeof item.id === "string" &&
+            typeof item.competencia_id === "string" &&
+            typeof item.titulo === "string" &&
+            item.medidas &&
+            typeof item.medidas === "object"
+        );
+
+        if (!esValida) {
+            throw new Error("La estructura del archivo JSON no coincide con el formato esperado de cuestiones.json.");
+        }
+
+        return lista;
+    }
+
+    function activarAplicacionConCuestiones(listaCuestiones) {
+        BASE_DE_DATOS.cuestiones = listaCuestiones;
+
+        const totalCompleto = listaCuestiones.length;
+        const totalRapido = listaCuestiones.filter(c => c.en_test_rapido === true).length;
+
+        document.getElementById("dato-count-rapido").textContent =
+            `${totalRapido} ${totalRapido === 1 ? "cuestión" : "cuestiones"}`;
+        document.getElementById("dato-count-completo").textContent =
+            `${totalCompleto} ${totalCompleto === 1 ? "cuestión" : "cuestiones"}`;
+
+        // Ocultar posibles errores previos de carga
+        const errBox = document.getElementById("error-carga-json");
+        errBox.textContent = "";
+        errBox.classList.remove("visible");
+
+        mostrarSeccion("vista-inicio");
+    }
+
+    async function cargarCuestionesRemotas() {
+        mostrarSeccion("vista-cargando");
+        try {
+            const respuesta = await fetch("./cuestiones.json", { cache: "no-store" });
+            if (!respuesta.ok) {
+                throw new Error(`HTTP ${respuesta.status}`);
+            }
+            const datos = await respuesta.json();
+            const lista = validarYNormalizarCuestiones(datos);
+            activarAplicacionConCuestiones(lista);
+        } catch (error) {
+            console.warn("Carga automática de ./cuestiones.json no disponible:", error);
+            mostrarSeccion("vista-carga-manual");
+        }
+    }
+
+    function leerArchivoLocalJSON(archivo) {
+        const errBox = document.getElementById("error-carga-json");
+        errBox.classList.remove("visible");
+
+        if (!archivo) return;
+
+        const lector = new FileReader();
+        lector.onload = function (evento) {
+            try {
+                const contenido = JSON.parse(evento.target.result);
+                const lista = validarYNormalizarCuestiones(contenido);
+                activarAplicacionConCuestiones(lista);
+            } catch (err) {
+                errBox.textContent = `No se pudo cargar el archivo: ${err.message}`;
+                errBox.classList.add("visible");
+            }
+        };
+        lector.onerror = function () {
+            errBox.textContent = "Ocurrió un error al leer el archivo desde tu navegador.";
+            errBox.classList.add("visible");
+        };
+        lector.readAsText(archivo, "UTF-8");
+    }
+
+    function configurarRespaldoLocal() {
+        const inputArchivo = document.getElementById("input-json-local");
+        const zonaDrop = document.getElementById("zona-drop-json");
+
+        inputArchivo.addEventListener("change", function (e) {
+            if (e.target.files && e.target.files[0]) {
+                leerArchivoLocalJSON(e.target.files[0]);
+            }
+            // Permite volver a seleccionar el mismo archivo si fuera necesario
+            e.target.value = "";
+        });
+
+        // Soporte táctil/escritorio de arrastrar y soltar
+        ["dragenter", "dragover"].forEach(ev => {
+            zonaDrop.addEventListener(ev, function (e) {
+                e.preventDefault();
+                zonaDrop.classList.add("arrastrando");
+            });
+        });
+
+        ["dragleave", "drop"].forEach(ev => {
+            zonaDrop.addEventListener(ev, function (e) {
+                e.preventDefault();
+                zonaDrop.classList.remove("arrastrando");
+            });
+        });
+
+        zonaDrop.addEventListener("drop", function (e) {
+            const archivo = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+            if (archivo) leerArchivoLocalJSON(archivo);
+        });
+    }
+
+    // =====================================================================
+    // 5. PASO 1: SELECCIÓN DE PROFUNDIDAD Y MODO DE PONDERACIÓN
+    // =====================================================================
+    function seleccionarProfundidad(ruta) {
+        profundidadElegida = ruta;
+
+        document.getElementById("card-ruta-rapido").classList.toggle("seleccionado", ruta === "rapido");
+        document.getElementById("card-ruta-completo").classList.toggle("seleccionado", ruta === "completo");
+
+        const bloquePonderacion = document.getElementById("bloque-ponderacion-inicio");
+        bloquePonderacion.classList.remove("pendiente");
+
+        const aviso = document.getElementById("aviso-paso1");
+        const count = ruta === "rapido"
+            ? BASE_DE_DATOS.cuestiones.filter(c => c.en_test_rapido === true).length
+            : BASE_DE_DATOS.cuestiones.length;
+
+        aviso.innerHTML = ruta === "rapido"
+            ? `✅ Recorrido seleccionado: <strong>⚡ Test Exprés (${count} cuestiones clave)</strong>. Ahora elige cómo ponderar los temas:`
+            : `✅ Recorrido seleccionado: <strong>🔬 Test Completo (${count} cuestiones)</strong>. Ahora elige cómo ponderar los temas:`;
+    }
+
     function seleccionarModo(modo) {
+        // Garantiza que el usuario elija primero la profundidad del test
+        if (!profundidadElegida) {
+            const aviso = document.getElementById("aviso-paso1");
+            aviso.style.background = "var(--alerta-fondo)";
+            aviso.style.borderColor = "var(--alerta-borde)";
+            aviso.style.color = "#92400e";
+            aviso.innerHTML = "⚠️ Primero elige arriba entre <strong>⚡ Test Exprés</strong> o <strong>🔬 Test Completo</strong>.";
+            document.getElementById("card-ruta-rapido").scrollIntoView({ behavior: "smooth", block: "center" });
+            return;
+        }
+
         modoElegido = modo;
-        if (modo === 'equilibrado') {
-            // Asignamos silenciosamente los pesos realistas por defecto para el cálculo final
-            BASE_DE_DATOS.competencias.forEach(comp => pesosUsuario[comp.id] = comp.peso_defecto);
+
+        if (modo === "equilibrado") {
+            BASE_DE_DATOS.competencias.forEach(comp => {
+                pesosUsuario[comp.id] = comp.peso_defecto;
+            });
             iniciarEvaluacion();
         } else {
             renderizarDeslizadores100Puntos();
-            document.getElementById('vista-inicio').classList.remove('activa');
-            document.getElementById('vista-100-puntos').classList.add('activa');
-            window.scrollTo(0, 0);
+            mostrarSeccion("vista-100-puntos");
         }
     }
 
     function volverInicio() {
-        document.getElementById('vista-100-puntos').classList.remove('activa');
-        document.getElementById('vista-inicio').classList.add('activa');
+        ocultarAvisoPuntos();
+        mostrarSeccion("vista-inicio");
+    }
+
+    // =====================================================================
+    // 6. PASO 1.5: REPARTO DE 100 PUNTOS
+    // =====================================================================
+    function restablecerPesosRealistas() {
+        BASE_DE_DATOS.competencias.forEach(comp => {
+            pesosUsuario[comp.id] = comp.peso_defecto;
+        });
+        renderizarDeslizadores100Puntos();
+        ocultarAvisoPuntos();
     }
 
     function renderizarDeslizadores100Puntos() {
         let htmlPesos = "";
-        puntosTotalesAsignados = 0; // Reiniciamos contador para el cálculo
+        puntosTotalesAsignados = 0;
+
+        const etiquetaRuta = profundidadElegida === "rapido" ? "⚡ Test Exprés" : "🔬 Test Completo";
+        document.getElementById("resumen-ruta-pesos").textContent = `Recorrido activo: ${etiquetaRuta}`;
 
         BASE_DE_DATOS.competencias.forEach(comp => {
-            // Si el usuario no ha tocado nada aún, inicializamos con el peso competencial por defecto
-            if (pesosUsuario[comp.id] === undefined) pesosUsuario[comp.id] = comp.peso_defecto; 
-            
+            if (pesosUsuario[comp.id] === undefined) {
+                pesosUsuario[comp.id] = comp.peso_defecto;
+            }
             puntosTotalesAsignados += pesosUsuario[comp.id];
-            
+
             htmlPesos += `
                 <div class="bloque-ponderacion">
                     <div class="ponderacion-header">
                         <h3>${escaparHTML(comp.nombre)}</h3>
                         <div class="control-rango">
-                            <input type="range" id="rango-${comp.id}" min="0" max="100" value="${pesosUsuario[comp.id]}" 
-                                   oninput="ajustarPuntos('${comp.id}', this)">
+                            <button type="button" class="btn-ajuste" aria-label="Restar 1 punto a ${escaparHTML(comp.nombre)}" onclick="incrementarPuntos('${comp.id}', -1)">−</button>
+                            <input
+                                type="range"
+                                id="rango-${comp.id}"
+                                min="0"
+                                max="100"
+                                value="${pesosUsuario[comp.id]}"
+                                aria-label="Peso para ${escaparHTML(comp.nombre)}"
+                                oninput="ajustarPuntos('${comp.id}', this.value)"
+                            >
+                            <button type="button" class="btn-ajuste" aria-label="Sumar 1 punto a ${escaparHTML(comp.nombre)}" onclick="incrementarPuntos('${comp.id}', 1)">+</button>
                             <span id="peso-texto-${comp.id}" class="nota-peso">${pesosUsuario[comp.id]}</span>
                         </div>
                     </div>
-                    
+
                     <details class="info-competencial">
                         <summary>ℹ️ Peso competencial: Estado ${comp.estado}% | Autonomías y Ayto. ${comp.ccaa}%</summary>
                         <div class="info-barras">
@@ -349,175 +1852,297 @@
                     </details>
                 </div>`;
         });
-        document.getElementById('contenedor-ponderaciones').innerHTML = htmlPesos;
+
+        document.getElementById("contenedor-ponderaciones").innerHTML = htmlPesos;
         actualizarMarcadorUI();
     }
 
-    function ajustarPuntos(compId, inputElement) {
-        let nuevoValor = parseInt(inputElement.value) || 0;
-        let valorAnterior = pesosUsuario[compId];
-        let sumaRestantes = puntosTotalesAsignados - valorAnterior;
+    function incrementarPuntos(compId, delta) {
+        const valorActual = pesosUsuario[compId] || 0;
+        const nuevoValor = Math.max(0, Math.min(MAX_PUNTOS, valorActual + delta));
+        ajustarPuntos(compId, nuevoValor);
+    }
 
-        // Evitar que el usuario supere los 100 puntos en total
+    function ajustarPuntos(compId, valorCrudo) {
+        let nuevoValor = parseInt(valorCrudo, 10);
+        if (isNaN(nuevoValor) || nuevoValor < 0) nuevoValor = 0;
+
+        const valorAnterior = pesosUsuario[compId] || 0;
+        const sumaRestantes = puntosTotalesAsignados - valorAnterior;
+
+        // Impide superar los 100 puntos totales
         if (sumaRestantes + nuevoValor > MAX_PUNTOS) {
             nuevoValor = MAX_PUNTOS - sumaRestantes;
-            inputElement.value = nuevoValor; 
         }
 
         pesosUsuario[compId] = nuevoValor;
         puntosTotalesAsignados = sumaRestantes + nuevoValor;
 
-        document.getElementById(`peso-texto-${compId}`).innerText = nuevoValor;
+        const inputEl = document.getElementById(`rango-${compId}`);
+        if (inputEl) inputEl.value = nuevoValor;
+
+        const textoEl = document.getElementById(`peso-texto-${compId}`);
+        if (textoEl) textoEl.textContent = nuevoValor;
+
         actualizarMarcadorUI();
+        if (puntosTotalesAsignados === MAX_PUNTOS) {
+            ocultarAvisoPuntos();
+        }
     }
 
     function actualizarMarcadorUI() {
-        const marcadorCaja = document.getElementById('marcador-caja');
-        const contador = document.getElementById('contador-puntos');
-        const textoPre = document.getElementById('texto-marcador');
-        const textoPost = document.getElementById('texto-total');
-        
-        contador.innerText = puntosTotalesAsignados;
-        
-        // Estructura segura que no borra elementos HTML al cambiar los estilos
+        const marcadorCaja = document.getElementById("marcador-caja");
+        const contador = document.getElementById("contador-puntos");
+        const textoPre = document.getElementById("texto-marcador");
+        const textoPost = document.getElementById("texto-total");
+
+        contador.textContent = puntosTotalesAsignados;
+
         if (puntosTotalesAsignados === MAX_PUNTOS) {
-            marcadorCaja.classList.add('completo');
-            textoPre.innerText = "✅ ¡Perfecto! Has asignado tus ";
-            textoPost.innerText = " puntos.";
+            marcadorCaja.classList.add("completo");
+            textoPre.textContent = "✅ ¡Perfecto! Has asignado tus ";
+            textoPost.textContent = " puntos.";
         } else {
-            marcadorCaja.classList.remove('completo');
-            textoPre.innerText = "Puntos asignados: ";
-            textoPost.innerText = " / " + MAX_PUNTOS;
+            marcadorCaja.classList.remove("completo");
+            textoPre.textContent = "Puntos asignados: ";
+            textoPost.textContent = ` / ${MAX_PUNTOS}`;
         }
     }
 
+    function mostrarAvisoPuntos(mensaje) {
+        const box = document.getElementById("aviso-puntos-inline");
+        box.textContent = mensaje;
+        box.classList.add("visible");
+        box.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    function ocultarAvisoPuntos() {
+        const box = document.getElementById("aviso-puntos-inline");
+        box.textContent = "";
+        box.classList.remove("visible");
+    }
+
     // =====================================================================
-    // 4. MOTOR DE EVALUACIÓN A CIEGAS
+    // 7. PASO 2: MOTOR DE EVALUACIÓN A CIEGAS (BLINDAJE TOTAL)
     // =====================================================================
     function iniciarEvaluacion() {
-        // Bloqueo inteligente: Obligamos a que el presupuesto esté 100% gastado
-        if (modoElegido === 'personalizado' && puntosTotalesAsignados < MAX_PUNTOS) {
-            let puntosFaltantes = MAX_PUNTOS - puntosTotalesAsignados;
-            return alert("⚠️ Atención: Debes repartir exactamente los 100 puntos para que la herramienta sea precisa. Te faltan " + puntosFaltantes + " puntos por asignar.");
+        // Comprobación sin alert(): mensaje inline accesible si faltan puntos en modo personalizado
+        if (modoElegido === "personalizado" && puntosTotalesAsignados < MAX_PUNTOS) {
+            const faltantes = MAX_PUNTOS - puntosTotalesAsignados;
+            mostrarAvisoPuntos(
+                `⚠️ Debes repartir exactamente los 100 puntos para continuar. Te ${faltantes === 1 ? "falta 1 punto" : `faltan ${faltantes} puntos`} por asignar.`
+            );
+            return;
         }
+        ocultarAvisoPuntos();
 
-        let partidosBase = [...BASE_DE_DATOS.partidos_oficiales];
-        barajar(partidosBase);
-        const alfabeto = "ABCDEFGH".split("");
-        mapaPartidos = partidosBase.map((p, i) => ({ id_real: p.id, nombre_real: p.nombre, alias: "Partido " + alfabeto[i] }));
+        // Reiniciar votos al iniciar una nueva evaluación
+        votosUsuario = {};
+
+        // Barajar los 4 partidos y asignar alias Partido A, B, C y D
+        const partidosBarajados = barajar(BASE_DE_DATOS.partidos_oficiales);
+        const letras = ["A", "B", "C", "D"];
+        mapaPartidos = partidosBarajados.map((p, idx) => ({
+            idx: idx,
+            id_real: p.id,
+            nombre_real: p.nombre,
+            alias: `Partido ${letras[idx]}`
+        }));
+
+        // Filtrar cuestiones según la profundidad elegida (Exprés vs Completo)
+        const baseRuta = profundidadElegida === "rapido"
+            ? BASE_DE_DATOS.cuestiones.filter(c => c.en_test_rapido === true)
+            : [...BASE_DE_DATOS.cuestiones];
+
+        // Mantener solo cuestiones cuyas competencias tienen peso > 0
+        cuestionesActivas = baseRuta.filter(c => (pesosUsuario[c.competencia_id] || 0) > 0);
+        totalMedidasEvaluables = 0;
 
         let htmlCuestiones = "";
-        let hayCuestionesVisibles = false;
 
-        BASE_DE_DATOS.cuestiones.forEach(cuestion => {
-            if (pesosUsuario[cuestion.competencia_id] === 0) return;
-            
-            hayCuestionesVisibles = true;
-            const nombreComp = BASE_DE_DATOS.competencias.find(c => c.id === cuestion.competencia_id).nombre;
-            
+        cuestionesActivas.forEach((cuestion, indiceCuestion) => {
+            const nombreComp = obtenerNombreCompetencia(cuestion.competencia_id);
+            const subcomp = cuestion.subcompetencia ? ` › ${escaparHTML(cuestion.subcompetencia)}` : "";
+
             htmlCuestiones += `
-                <div class="cuestion-tarjeta">
-                    <div class="migas-pan">${escaparHTML(nombreComp)} > ${escaparHTML(cuestion.subcompetencia)}</div>
+                <article class="cuestion-tarjeta">
+                    <div class="cuestion-cabecera-meta">
+                        <div class="migas-pan">${escaparHTML(nombreComp)}${subcomp}</div>
+                        <span class="num-cuestion">Cuestión ${indiceCuestion + 1} de ${cuestionesActivas.length}</span>
+                    </div>
                     <h3>${escaparHTML(cuestion.titulo)}</h3>`;
 
+            // En el DOM del Paso 2 solo se utiliza el índice anónimo (0..3) y el alias (Partido A..D).
+            // Nunca se expone ni el id real del partido ni el campo 'fuente'.
             mapaPartidos.forEach(partido => {
-                const medida = cuestion.medidas[partido.id_real];
+                const medida = cuestion.medidas ? cuestion.medidas[partido.id_real] : null;
                 htmlCuestiones += `<div class="medida-bloque"><span class="insignia-partido">${partido.alias}</span>`;
 
                 if (medida && medida.consta) {
+                    totalMedidasEvaluables++;
                     htmlCuestiones += `
                         <div class="resumen-neutral">${escaparHTML(medida.resumen_neutral)}</div>
                         <details class="cita-desplegable">
-                            <summary>Ver texto literal extraído del documento</summary>
-                            <!-- Se omite la fuente para mantener anonimato total -->
-                            <div class="cita-literal">"${escaparHTML(medida.texto_original)}"</div>
+                            <summary>Ver cita literal del programa</summary>
+                            <div class="cita-literal">«${escaparHTML(medida.texto_original)}»</div>
                         </details>
-                        <div class="botonera-voto" id="btn-group-${cuestion.id}-${partido.id_real}">
-                            <button class="btn-voto" onclick="votar('${cuestion.id}', '${partido.id_real}', 0, this)">En contra</button>
-                            <button class="btn-voto" onclick="votar('${cuestion.id}', '${partido.id_real}', 25, this)">Más bien en contra</button>
-                            <button class="btn-voto" onclick="votar('${cuestion.id}', '${partido.id_real}', 50, this)">Neutral</button>
-                            <button class="btn-voto" onclick="votar('${cuestion.id}', '${partido.id_real}', 75, this)">Más bien a favor</button>
-                            <button class="btn-voto" onclick="votar('${cuestion.id}', '${partido.id_real}', 100, this)">A favor</button>
-                            <button class="btn-voto" style="background:#e2e8f0" onclick="votar('${cuestion.id}', '${partido.id_real}', null, this)">No valorar</button>
+                        <div class="botonera-voto" id="btn-group-${indiceCuestion}-${partido.idx}" role="group" aria-label="Valorar propuesta de ${partido.alias}">
+                            <button type="button" class="btn-voto" onclick="votar(${indiceCuestion}, ${partido.idx}, 0, this)">En contra</button>
+                            <button type="button" class="btn-voto" onclick="votar(${indiceCuestion}, ${partido.idx}, 25, this)">Más bien en contra</button>
+                            <button type="button" class="btn-voto" onclick="votar(${indiceCuestion}, ${partido.idx}, 50, this)">Neutral</button>
+                            <button type="button" class="btn-voto" onclick="votar(${indiceCuestion}, ${partido.idx}, 75, this)">Más bien a favor</button>
+                            <button type="button" class="btn-voto" onclick="votar(${indiceCuestion}, ${partido.idx}, 100, this)">A favor</button>
+                            <button type="button" class="btn-voto btn-no-valorar" onclick="votar(${indiceCuestion}, ${partido.idx}, null, this)">No valorar</button>
                         </div>`;
                 } else {
                     htmlCuestiones += `<div class="no-consta">El programa analizado no especifica una postura concreta sobre esta cuestión.</div>`;
                 }
+
                 htmlCuestiones += `</div>`;
             });
-            htmlCuestiones += `</div>`;
+
+            htmlCuestiones += `</article>`;
         });
 
-        if (!hayCuestionesVisibles) {
-            htmlCuestiones = `<div style="text-align:center; padding: 40px;">Has asignado 0 puntos a todas las materias que tienen medidas registradas en la base de datos actual. Vuelve atrás y ajusta tus pesos.</div>`;
+        if (cuestionesActivas.length === 0) {
+            htmlCuestiones = `
+                <div style="text-align:center; padding: 36px 16px; color: var(--texto-suave);">
+                    Has asignado 0 puntos a todas las materias que tienen cuestiones en este recorrido. Vuelve atrás y ajusta tus pesos para evaluar las propuestas.
+                </div>`;
         }
 
-        document.getElementById('contenedor-cuestiones').innerHTML = htmlCuestiones;
-        document.getElementById('vista-inicio').classList.remove('activa');
-        if(document.getElementById('vista-100-puntos')) document.getElementById('vista-100-puntos').classList.remove('activa');
-        document.getElementById('vista-paso2').classList.add('activa');
-        window.scrollTo(0, 0);
+        document.getElementById("contenedor-cuestiones").innerHTML = htmlCuestiones;
+        document.getElementById("chip-modo-activo").textContent =
+            profundidadElegida === "rapido" ? "⚡ Test Exprés" : "🔬 Test Completo";
+
+        actualizarBarraProgresoPaso2();
+        mostrarSeccion("vista-paso2");
     }
 
-    function votar(cuestionId, partidoId, valor, btnHtml) {
-        if (!votosUsuario[cuestionId]) votosUsuario[cuestionId] = {};
-        votosUsuario[cuestionId][partidoId] = valor;
+    function votar(indiceCuestion, idxPartido, valor, btnHtml) {
+        const cuestion = cuestionesActivas[indiceCuestion];
+        const partido = mapaPartidos[idxPartido];
+        if (!cuestion || !partido) return;
 
-        const botones = document.getElementById(`btn-group-${cuestionId}-${partidoId}`).getElementsByClassName('btn-voto');
-        for (let btn of botones) btn.classList.remove('seleccionado');
-        btnHtml.classList.add('seleccionado');
+        if (!votosUsuario[cuestion.id]) {
+            votosUsuario[cuestion.id] = {};
+        }
+        votosUsuario[cuestion.id][partido.id_real] = valor;
+
+        const grupo = document.getElementById(`btn-group-${indiceCuestion}-${idxPartido}`);
+        if (grupo) {
+            const botones = grupo.getElementsByClassName("btn-voto");
+            for (let btn of botones) {
+                btn.classList.remove("seleccionado");
+            }
+        }
+        btnHtml.classList.add("seleccionado");
+
+        actualizarBarraProgresoPaso2();
+    }
+
+    function contarMedidasValoradas() {
+        let total = 0;
+        cuestionesActivas.forEach(cuestion => {
+            const votosCuestion = votosUsuario[cuestion.id];
+            if (!votosCuestion) return;
+            mapaPartidos.forEach(partido => {
+                const v = votosCuestion[partido.id_real];
+                if (v !== undefined && v !== null) {
+                    total++;
+                }
+            });
+        });
+        return total;
+    }
+
+    function actualizarBarraProgresoPaso2() {
+        const valoradas = contarMedidasValoradas();
+        const porcentaje = totalMedidasEvaluables > 0
+            ? Math.round((valoradas / totalMedidasEvaluables) * 100)
+            : 0;
+
+        document.getElementById("contador-medidas-valoradas").textContent =
+            `${valoradas} / ${totalMedidasEvaluables} medidas valoradas`;
+        document.getElementById("progreso-mini-fill").style.width = `${porcentaje}%`;
+    }
+
+    function volverDesdePaso2() {
+        if (modoElegido === "personalizado") {
+            mostrarSeccion("vista-100-puntos");
+        } else {
+            mostrarSeccion("vista-inicio");
+        }
     }
 
     // =====================================================================
-    // 5. MATEMÁTICAS PONDERADAS Y RESULTADOS
+    // 8. PASO 3: CÁLCULO DE AFINIDAD PONDERADA Y AUDITORÍA FINAL DE FUENTES
     // =====================================================================
     function calcularResultados() {
-        let resultados = [];
-        const totalCuestiones = BASE_DE_DATOS.cuestiones.length;
+        const resultados = [];
+        const totalCuestiones = cuestionesActivas.length;
+        const totalValoradasGlobal = contarMedidasValoradas();
 
         mapaPartidos.forEach(partido => {
             let sumaPonderada = 0;
             let pesoTotalAplicado = 0;
             let cuestionesEnPrograma = 0;
             let medidasValoradas = 0;
-            
-            let puntuacionPorCompetencia = {}; 
-            let desgloseUI = []; 
 
-            BASE_DE_DATOS.cuestiones.forEach(cuestion => {
-                const comp_id = cuestion.competencia_id;
-                const medida = cuestion.medidas[partido.id_real];
+            const puntuacionPorCompetencia = {};
+            const desgloseUI = [];
+
+            cuestionesActivas.forEach(cuestion => {
+                const compId = cuestion.competencia_id;
+                const medida = cuestion.medidas ? cuestion.medidas[partido.id_real] : null;
 
                 if (medida && medida.consta) {
                     cuestionesEnPrograma++;
-                    
-                    if (votosUsuario[cuestion.id] && votosUsuario[cuestion.id][partido.id_real] !== undefined && votosUsuario[cuestion.id][partido.id_real] !== null) {
+
+                    const voto = votosUsuario[cuestion.id]
+                        ? votosUsuario[cuestion.id][partido.id_real]
+                        : undefined;
+
+                    if (voto !== undefined && voto !== null) {
                         medidasValoradas++;
-                        if (!puntuacionPorCompetencia[comp_id]) puntuacionPorCompetencia[comp_id] = { suma: 0, cuenta: 0 };
-                        
-                        puntuacionPorCompetencia[comp_id].suma += votosUsuario[cuestion.id][partido.id_real];
-                        puntuacionPorCompetencia[comp_id].cuenta++;
+                        if (!puntuacionPorCompetencia[compId]) {
+                            puntuacionPorCompetencia[compId] = { suma: 0, cuenta: 0 };
+                        }
+                        puntuacionPorCompetencia[compId].suma += voto;
+                        puntuacionPorCompetencia[compId].cuenta++;
                     }
                 }
             });
 
-            Object.keys(puntuacionPorCompetencia).forEach(comp_id => {
-                const mediaBloque = puntuacionPorCompetencia[comp_id].suma / puntuacionPorCompetencia[comp_id].cuenta;
-                const pesoBloque = pesosUsuario[comp_id];
-                
+            // Fórmula exacta de afinidad ponderada por competencia
+            BASE_DE_DATOS.competencias.forEach(comp => {
+                const datosComp = puntuacionPorCompetencia[comp.id];
+                if (!datosComp) return;
+
+                const mediaBloque = datosComp.suma / datosComp.cuenta;
+                const pesoBloque = pesosUsuario[comp.id] || 0;
+
                 if (pesoBloque > 0) {
                     sumaPonderada += (mediaBloque * pesoBloque);
                     pesoTotalAplicado += pesoBloque;
-                    
-                    const nombreComp = BASE_DE_DATOS.competencias.find(c => c.id === comp_id).nombre;
-                    desgloseUI.push({ nombre: nombreComp, afinidad: Math.round(mediaBloque), peso: pesoBloque });
+
+                    desgloseUI.push({
+                        nombre: comp.nombre,
+                        afinidad: Math.round(mediaBloque),
+                        peso: pesoBloque
+                    });
                 }
             });
 
-            const afinidadFinal = pesoTotalAplicado > 0 ? Math.round(sumaPonderada / pesoTotalAplicado) : 0;
-            const cobProgramatica = Math.round((cuestionesEnPrograma / totalCuestiones) * 100);
+            const afinidadFinal = pesoTotalAplicado > 0
+                ? Math.round(sumaPonderada / pesoTotalAplicado)
+                : 0;
+            const cobProgramatica = totalCuestiones > 0
+                ? Math.round((cuestionesEnPrograma / totalCuestiones) * 100)
+                : 0;
 
             resultados.push({
+                id: partido.id_real,
                 nombre: partido.nombre_real,
                 alias: partido.alias,
                 afinidad: afinidadFinal,
@@ -528,50 +2153,188 @@
             });
         });
 
-        resultados.sort((a, b) => b.afinidad - a.afinidad);
+        // Orden descendente por afinidad (en empate, más medidas valoradas primero)
+        resultados.sort((a, b) => (b.afinidad - a.afinidad) || (b.valoradas - a.valoradas));
 
+        // Chips de contexto superior
+        const textoProfundidad = profundidadElegida === "rapido" ? "⚡ Test Exprés" : "🔬 Test Completo";
+        const textoPonderacion = modoElegido === "personalizado" ? "🎯 Modo Personalizado" : "⚖️ Modo Realista";
+        document.getElementById("chips-resumen-resultados").innerHTML = `
+            <span class="chip-contexto">${textoProfundidad}</span>
+            <span class="chip-contexto">${textoPonderacion}</span>
+            <span class="chip-contexto">${totalValoradasGlobal} de ${totalMedidasEvaluables} medidas valoradas</span>
+        `;
+
+        // Renderizado de resultados por partido
         let htmlRes = "";
+
+        if (totalValoradasGlobal === 0) {
+            htmlRes += `
+                <div class="aviso-sin-votos">
+                    No has valorado ninguna medida antes de calcular. Se muestran los partidos desvelados con 0 % de afinidad y puedes consultar debajo todas las propuestas y fuentes oficiales.
+                </div>`;
+        }
+
         resultados.forEach((res, index) => {
-            const alerta = res.cobProgramatica < 50 ? `<div class="alerta-cobertura">⚠ Cobertura programática baja: Este partido tiene posición explícita en menos de la mitad de los temas generales.</div>` : "";
-            
+            const esPrimero = index === 0 && totalValoradasGlobal > 0;
+            const alerta = res.cobProgramatica < 50
+                ? `<div class="alerta-cobertura">⚠ Cobertura programática baja: Este partido tiene posición explícita en menos de la mitad de los temas de este recorrido.</div>`
+                : "";
+
             let filasDesglose = "";
             res.desglose.forEach(d => {
-                filasDesglose += `<tr><td>${escaparHTML(d.nombre)}</td><td><strong>${d.afinidad}%</strong></td><td style="color:var(--texto-suave)">${d.peso} pts</td></tr>`;
+                filasDesglose += `
+                    <tr>
+                        <td>${escaparHTML(d.nombre)}</td>
+                        <td><strong>${d.afinidad}%</strong></td>
+                        <td style="color:var(--texto-suave)">${d.peso} pts</td>
+                    </tr>`;
             });
 
             htmlRes += `
-                <div class="resultado-item">
+                <div class="resultado-item ${esPrimero ? "primero" : ""}">
                     <div class="res-header">
                         <div>
-                            <span style="font-size:12px; color:var(--texto-suave)">Evaluado a ciegas como ${res.alias}</span>
-                            <div class="res-nombre">${index === 0 ? '🏆 ' : ''}${res.nombre}</div>
+                            <span class="res-alias-etiqueta">Evaluado a ciegas como ${escaparHTML(res.alias)}</span>
+                            <div class="res-nombre">${esPrimero ? "🏆 " : ""}${escaparHTML(res.nombre)}</div>
                         </div>
                         <div class="res-afinidad">${res.afinidad}%</div>
                     </div>
-                    
-                    <div class="barra-progreso"><div class="barra-relleno" style="width: ${res.afinidad}%"></div></div>
-                    
+
+                    <div class="barra-progreso">
+                        <div class="barra-relleno" style="width: ${res.afinidad}%"></div>
+                    </div>
+
                     <div class="metricas-grid">
                         <div><strong>Tu evaluación:</strong><br>${res.valoradas} de ${res.enPrograma} medidas votadas.</div>
                         <div><strong>Programa del partido:</strong><br>Posición localizada en el ${res.cobProgramatica}% de temas.</div>
                         ${alerta}
                     </div>
 
-                    <details style="margin-top:10px; background:#fff; border:1px solid var(--borde);">
-                        <summary style="font-size:13px; color:var(--primario);">📊 Ver desglose de tu afinidad por materias</summary>
-                        <table class="desglose-tabla">
-                            <tr><th>Materia</th><th>Afinidad</th><th>Peso aplicado</th></tr>
-                            ${filasDesglose || '<tr><td colspan="3">No se valoraron materias para este partido.</td></tr>'}
-                        </table>
+                    <details class="desglose-details">
+                        <summary>📊 Ver desglose de tu afinidad por materias</summary>
+                        <div class="desglose-tabla-wrap">
+                            <table class="desglose-tabla">
+                                <thead>
+                                    <tr>
+                                        <th>Materia</th>
+                                        <th>Afinidad</th>
+                                        <th>Peso aplicado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${filasDesglose || '<tr><td colspan="3">No se valoraron materias para este partido.</td></tr>'}
+                                </tbody>
+                            </table>
+                        </div>
                     </details>
                 </div>`;
         });
 
-        document.getElementById('contenedor-resultados').innerHTML = htmlRes;
-        document.getElementById('vista-paso2').classList.remove('activa');
-        document.getElementById('vista-resultados').classList.add('activa');
-        window.scrollTo(0, 0);
+        document.getElementById("contenedor-resultados").innerHTML = htmlRes;
+
+        // Renderizado del bloque desplegable de auditoría de fuentes y correspondencia
+        renderizarAuditoriaFuentes();
+
+        // Cerrar el desplegable de auditoría por defecto al llegar a resultados
+        document.getElementById("bloque-auditoria").open = false;
+
+        mostrarSeccion("vista-resultados");
     }
+
+    function renderizarAuditoriaFuentes() {
+        let htmlAuditoria = `<div class="correspondencia-grid">`;
+
+        // Correspondencia Partido A, B, C, D -> Nombre real
+        mapaPartidos.forEach(partido => {
+            htmlAuditoria += `
+                <div class="correspondencia-card">
+                    <span class="correspondencia-alias">${escaparHTML(partido.alias)}</span>
+                    <span class="correspondencia-real">${escaparHTML(partido.nombre_real)}</span>
+                </div>`;
+        });
+
+        htmlAuditoria += `</div>`;
+
+        // Listado completo de cuestiones con propuestas reales y fuente oficial (página exacta 2026)
+        cuestionesActivas.forEach((cuestion, idx) => {
+            const nombreComp = obtenerNombreCompetencia(cuestion.competencia_id);
+            const subcomp = cuestion.subcompetencia ? ` › ${escaparHTML(cuestion.subcompetencia)}` : "";
+
+            htmlAuditoria += `
+                <div class="auditoria-cuestion">
+                    <div class="migas-pan">${idx + 1}. ${escaparHTML(nombreComp)}${subcomp}</div>
+                    <h4>${escaparHTML(cuestion.titulo)}</h4>`;
+
+            mapaPartidos.forEach(partido => {
+                const medida = cuestion.medidas ? cuestion.medidas[partido.id_real] : null;
+                const voto = votosUsuario[cuestion.id] ? votosUsuario[cuestion.id][partido.id_real] : undefined;
+                const tieneVoto = voto !== undefined && voto !== null;
+                const etiquetaVoto = tieneVoto ? `Tu voto: ${ETIQUETAS_VOTO[voto]}` : "Sin valorar";
+
+                htmlAuditoria += `
+                    <div class="auditoria-medida">
+                        <div class="auditoria-medida-top">
+                            <div>
+                                <span class="auditoria-partido-nombre">${escaparHTML(partido.nombre_real)}</span>
+                                <span class="auditoria-alias-mini">(${escaparHTML(partido.alias)})</span>
+                            </div>
+                            ${medida && medida.consta
+                                ? `<span class="tag-voto-usuario ${tieneVoto ? "" : "sin-voto"}">${etiquetaVoto}</span>`
+                                : ""}
+                        </div>`;
+
+                if (medida && medida.consta) {
+                    const fuenteTexto = medida.fuente ? medida.fuente : "Fuente oficial no especificada";
+                    htmlAuditoria += `
+                        <p class="auditoria-resumen">${escaparHTML(medida.resumen_neutral)}</p>
+                        <div class="auditoria-cita">«${escaparHTML(medida.texto_original)}»</div>
+                        <span class="auditoria-fuente">📄 ${escaparHTML(fuenteTexto)}</span>`;
+                } else {
+                    htmlAuditoria += `<div class="no-consta" style="text-align:left;">No consta postura concreta en el programa analizado.</div>`;
+                }
+
+                htmlAuditoria += `</div>`;
+            });
+
+            htmlAuditoria += `</div>`;
+        });
+
+        document.getElementById("contenido-auditoria").innerHTML = htmlAuditoria;
+    }
+
+    // =====================================================================
+    // 9. REINICIO SIN PERDER EL JSON CARGADO EN MEMORIA
+    // =====================================================================
+    function reiniciarTest() {
+        profundidadElegida = "";
+        modoElegido = "";
+        pesosUsuario = {};
+        votosUsuario = {};
+        mapaPartidos = [];
+        cuestionesActivas = [];
+        totalMedidasEvaluables = 0;
+
+        document.getElementById("card-ruta-rapido").classList.remove("seleccionado");
+        document.getElementById("card-ruta-completo").classList.remove("seleccionado");
+        document.getElementById("bloque-ponderacion-inicio").classList.add("pendiente");
+
+        const aviso = document.getElementById("aviso-paso1");
+        aviso.style.background = "";
+        aviso.style.borderColor = "";
+        aviso.style.color = "";
+        aviso.innerHTML = "👆 Selecciona primero arriba entre <strong>Test Exprés</strong> o <strong>Test Completo</strong> para continuar.";
+
+        mostrarSeccion("vista-inicio");
+    }
+
+    // =====================================================================
+    // 10. INICIALIZACIÓN
+    // =====================================================================
+    document.addEventListener("DOMContentLoaded", function () {
+        configurarRespaldoLocal();
+        cargarCuestionesRemotas();
+    });
 </script>
 </body>
 </html>
