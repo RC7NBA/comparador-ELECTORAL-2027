@@ -1449,7 +1449,7 @@
         </div>
 
         <div class="aviso-ciegas">
-            <strong>Evaluación a ciegas:</strong> Los 4 partidos (Partido A, Partido B, Partido C y Partido D) han sido mezclados al azar. Valora las medidas que desees; puedes desplegar la cita literal para confirmarla. Tanto el nombre real de los partidos como la fuente exacta permanecen ocultos hasta el paso final.
+            <strong>Test a ciegas reforzado:</strong> el orden de las propuestas cambia al azar en cada pregunta para que no puedas deducir qué partido es cada cual. Valora las medidas que desees; puedes desplegar la cita literal para confirmarla. Tanto el nombre real de los partidos como la fuente exacta permanecen ocultos hasta el paso final.
         </div>
 
         <div id="contenedor-cuestiones"></div>
@@ -1471,9 +1471,9 @@
 
         <div id="contenedor-resultados"></div>
 
-        <!-- Bloque desplegable obligatorio de correspondencia y citas oficiales -->
+        <!-- Bloque desplegable obligatorio de revelación de partidos y citas oficiales -->
         <details id="bloque-auditoria" class="auditoria-bloque">
-            <summary>🔍 Desvelar qué partido era cada letra y verificar citas oficiales (2026)</summary>
+            <summary>🔍 Desvelar partidos y verificar citas oficiales de 2026</summary>
             <div id="contenido-auditoria"></div>
         </details>
 
@@ -1568,6 +1568,9 @@
         cuestiones: []
     };
 
+    // Orden de presentación orientado al ciudadano (solo afecta al orden visual en el Paso 2, nunca a los pesos)
+    const ORDEN_CIUDADANO = ['viv', 'eco', 'fis', 'jus', 'san', 'pen', 'edu', 'soc', 'med', 'rur', 'ter', 'ext'];
+
     // Etiquetas legibles para los valores de voto (usadas en auditoría)
     const ETIQUETAS_VOTO = {
         0: "En contra",
@@ -1586,10 +1589,10 @@
     let puntosTotalesAsignados = 0;
     const MAX_PUNTOS = 100;
 
-    let cuestionesActivas = [];      // Cuestiones filtradas por profundidad + peso > 0
-    let totalMedidasEvaluables = 0;  // Total de propuestas con consta === true visibles en Paso 2
-    let votosUsuario = {};           // { [cuestionId]: { [partidoIdReal]: number | null } }
-    let mapaPartidos = [];           // [{ idx, id_real, nombre_real, alias }]
+    let cuestionesActivas = [];          // Cuestiones filtradas y ordenadas para Paso 2
+    let totalMedidasEvaluables = 0;      // Total de propuestas con consta === true visibles en Paso 2
+    let votosUsuario = {};               // { [cuestionId]: { [partidoIdReal]: number | null } }
+    let ordenPartidosPorCuestion = {};   // { [cuestionId]: [{ id_real, nombre_real, etiqueta }] }
 
     // =====================================================================
     // 3. UTILIDADES SEGURAS
@@ -1619,6 +1622,11 @@
     function obtenerNombreCompetencia(compId) {
         const encontrada = BASE_DE_DATOS.competencias.find(c => c.id === compId);
         return encontrada ? encontrada.nombre : compId;
+    }
+
+    function obtenerIndiceCiudadano(compId) {
+        const idx = ORDEN_CIUDADANO.indexOf(compId);
+        return idx === -1 ? ORDEN_CIUDADANO.length : idx;
     }
 
     // =====================================================================
@@ -1936,18 +1944,9 @@
         }
         ocultarAvisoPuntos();
 
-        // Reiniciar votos al iniciar una nueva evaluación
+        // Reiniciar votos y mapas aleatorios por pregunta al iniciar una nueva evaluación
         votosUsuario = {};
-
-        // Barajar los 4 partidos y asignar alias Partido A, B, C y D
-        const partidosBarajados = barajar(BASE_DE_DATOS.partidos_oficiales);
-        const letras = ["A", "B", "C", "D"];
-        mapaPartidos = partidosBarajados.map((p, idx) => ({
-            idx: idx,
-            id_real: p.id,
-            nombre_real: p.nombre,
-            alias: `Partido ${letras[idx]}`
-        }));
+        ordenPartidosPorCuestion = {};
 
         // Filtrar cuestiones según la profundidad elegida (Exprés vs Completo)
         const baseRuta = profundidadElegida === "rapido"
@@ -1956,6 +1955,19 @@
 
         // Mantener solo cuestiones cuyas competencias tienen peso > 0
         cuestionesActivas = baseRuta.filter(c => (pesosUsuario[c.competencia_id] || 0) > 0);
+
+        // Ordenar únicamente la presentación visual (sin alterar pesos competenciales ni fórmulas)
+        cuestionesActivas.sort((a, b) => {
+            if (modoElegido === "personalizado") {
+                const pesoA = pesosUsuario[a.competencia_id] || 0;
+                const pesoB = pesosUsuario[b.competencia_id] || 0;
+                if (pesoB !== pesoA) {
+                    return pesoB - pesoA;
+                }
+            }
+            return obtenerIndiceCiudadano(a.competencia_id) - obtenerIndiceCiudadano(b.competencia_id);
+        });
+
         totalMedidasEvaluables = 0;
 
         let htmlCuestiones = "";
@@ -1964,41 +1976,53 @@
             const nombreComp = obtenerNombreCompetencia(cuestion.competencia_id);
             const subcomp = cuestion.subcompetencia ? ` › ${escaparHTML(cuestion.subcompetencia)}` : "";
 
+            // Barajar de forma independiente los 4 partidos en esta pregunta
+            const partidosEnPregunta = barajar(BASE_DE_DATOS.partidos_oficiales).map((p, idxPos) => ({
+                id_real: p.id,
+                nombre_real: p.nombre,
+                etiqueta: `Propuesta ${idxPos + 1}`
+            }));
+            ordenPartidosPorCuestion[cuestion.id] = partidosEnPregunta;
+
             htmlCuestiones += `
                 <article class="cuestion-tarjeta">
                     <div class="cuestion-cabecera-meta">
                         <div class="migas-pan">${escaparHTML(nombreComp)}${subcomp}</div>
-                        <span class="num-cuestion">Cuestión ${indiceCuestion + 1} de ${cuestionesActivas.length}</span>
+                        <span class="num-cuestion">Pregunta ${indiceCuestion + 1} de ${cuestionesActivas.length}</span>
                     </div>
                     <h3>${escaparHTML(cuestion.titulo)}</h3>`;
 
-            // En el DOM del Paso 2 solo se utiliza el índice anónimo (0..3) y el alias (Partido A..D).
+            // En el DOM del Paso 2 solo se usa el índice posicional (0..3) y la etiqueta neutra (Propuesta 1..4).
             // Nunca se expone ni el id real del partido ni el campo 'fuente'.
-            mapaPartidos.forEach(partido => {
+            partidosEnPregunta.forEach((partido, idxPropuesta) => {
                 const medida = cuestion.medidas ? cuestion.medidas[partido.id_real] : null;
-                htmlCuestiones += `<div class="medida-bloque"><span class="insignia-partido">${partido.alias}</span>`;
 
                 if (medida && medida.consta) {
                     totalMedidasEvaluables++;
                     htmlCuestiones += `
-                        <div class="resumen-neutral">${escaparHTML(medida.resumen_neutral)}</div>
-                        <details class="cita-desplegable">
-                            <summary>Ver cita literal del programa</summary>
-                            <div class="cita-literal">«${escaparHTML(medida.texto_original)}»</div>
-                        </details>
-                        <div class="botonera-voto" id="btn-group-${indiceCuestion}-${partido.idx}" role="group" aria-label="Valorar propuesta de ${partido.alias}">
-                            <button type="button" class="btn-voto" onclick="votar(${indiceCuestion}, ${partido.idx}, 0, this)">En contra</button>
-                            <button type="button" class="btn-voto" onclick="votar(${indiceCuestion}, ${partido.idx}, 25, this)">Más bien en contra</button>
-                            <button type="button" class="btn-voto" onclick="votar(${indiceCuestion}, ${partido.idx}, 50, this)">Neutral</button>
-                            <button type="button" class="btn-voto" onclick="votar(${indiceCuestion}, ${partido.idx}, 75, this)">Más bien a favor</button>
-                            <button type="button" class="btn-voto" onclick="votar(${indiceCuestion}, ${partido.idx}, 100, this)">A favor</button>
-                            <button type="button" class="btn-voto btn-no-valorar" onclick="votar(${indiceCuestion}, ${partido.idx}, null, this)">No valorar</button>
+                        <div class="medida-bloque">
+                            <span class="insignia-partido">${partido.etiqueta}</span>
+                            <div class="resumen-neutral">${escaparHTML(medida.resumen_neutral)}</div>
+                            <details class="cita-desplegable">
+                                <summary>Ver cita literal del programa</summary>
+                                <div class="cita-literal">«${escaparHTML(medida.texto_original)}»</div>
+                            </details>
+                            <div class="botonera-voto" id="btn-group-${indiceCuestion}-${idxPropuesta}" role="group" aria-label="Valorar ${partido.etiqueta}">
+                                <button type="button" class="btn-voto" onclick="votar(${indiceCuestion}, ${idxPropuesta}, 0, this)">En contra</button>
+                                <button type="button" class="btn-voto" onclick="votar(${indiceCuestion}, ${idxPropuesta}, 25, this)">Más bien en contra</button>
+                                <button type="button" class="btn-voto" onclick="votar(${indiceCuestion}, ${idxPropuesta}, 50, this)">Neutral</button>
+                                <button type="button" class="btn-voto" onclick="votar(${indiceCuestion}, ${idxPropuesta}, 75, this)">Más bien a favor</button>
+                                <button type="button" class="btn-voto" onclick="votar(${indiceCuestion}, ${idxPropuesta}, 100, this)">A favor</button>
+                                <button type="button" class="btn-voto btn-no-valorar" onclick="votar(${indiceCuestion}, ${idxPropuesta}, null, this)">No valorar</button>
+                            </div>
                         </div>`;
                 } else {
-                    htmlCuestiones += `<div class="no-consta">El programa analizado no especifica una postura concreta sobre esta cuestión.</div>`;
+                    htmlCuestiones += `
+                        <div class="medida-bloque">
+                            <span class="insignia-partido">${partido.etiqueta} — Sin postura concreta</span>
+                            <div class="no-consta">El programa analizado no especifica una postura concreta sobre esta cuestión.</div>
+                        </div>`;
                 }
-
-                htmlCuestiones += `</div>`;
             });
 
             htmlCuestiones += `</article>`;
@@ -2019,17 +2043,21 @@
         mostrarSeccion("vista-paso2");
     }
 
-    function votar(indiceCuestion, idxPartido, valor, btnHtml) {
+    function votar(indiceCuestion, idxPropuesta, valor, btnHtml) {
         const cuestion = cuestionesActivas[indiceCuestion];
-        const partido = mapaPartidos[idxPartido];
-        if (!cuestion || !partido) return;
+        if (!cuestion) return;
 
+        const partidosEnPregunta = ordenPartidosPorCuestion[cuestion.id];
+        const partido = partidosEnPregunta ? partidosEnPregunta[idxPropuesta] : null;
+        if (!partido) return;
+
+        // Garantía matemática estricta: el voto se registra siempre por el ID real del partido
         if (!votosUsuario[cuestion.id]) {
             votosUsuario[cuestion.id] = {};
         }
         votosUsuario[cuestion.id][partido.id_real] = valor;
 
-        const grupo = document.getElementById(`btn-group-${indiceCuestion}-${idxPartido}`);
+        const grupo = document.getElementById(`btn-group-${indiceCuestion}-${idxPropuesta}`);
         if (grupo) {
             const botones = grupo.getElementsByClassName("btn-voto");
             for (let btn of botones) {
@@ -2046,8 +2074,8 @@
         cuestionesActivas.forEach(cuestion => {
             const votosCuestion = votosUsuario[cuestion.id];
             if (!votosCuestion) return;
-            mapaPartidos.forEach(partido => {
-                const v = votosCuestion[partido.id_real];
+            BASE_DE_DATOS.partidos_oficiales.forEach(partido => {
+                const v = votosCuestion[partido.id];
                 if (v !== undefined && v !== null) {
                     total++;
                 }
@@ -2083,7 +2111,7 @@
         const totalCuestiones = cuestionesActivas.length;
         const totalValoradasGlobal = contarMedidasValoradas();
 
-        mapaPartidos.forEach(partido => {
+        BASE_DE_DATOS.partidos_oficiales.forEach(partido => {
             let sumaPonderada = 0;
             let pesoTotalAplicado = 0;
             let cuestionesEnPrograma = 0;
@@ -2094,13 +2122,13 @@
 
             cuestionesActivas.forEach(cuestion => {
                 const compId = cuestion.competencia_id;
-                const medida = cuestion.medidas ? cuestion.medidas[partido.id_real] : null;
+                const medida = cuestion.medidas ? cuestion.medidas[partido.id] : null;
 
                 if (medida && medida.consta) {
                     cuestionesEnPrograma++;
 
                     const voto = votosUsuario[cuestion.id]
-                        ? votosUsuario[cuestion.id][partido.id_real]
+                        ? votosUsuario[cuestion.id][partido.id]
                         : undefined;
 
                     if (voto !== undefined && voto !== null) {
@@ -2142,9 +2170,8 @@
                 : 0;
 
             resultados.push({
-                id: partido.id_real,
-                nombre: partido.nombre_real,
-                alias: partido.alias,
+                id: partido.id,
+                nombre: partido.nombre,
                 afinidad: afinidadFinal,
                 valoradas: medidasValoradas,
                 enPrograma: cuestionesEnPrograma,
@@ -2195,7 +2222,6 @@
                 <div class="resultado-item ${esPrimero ? "primero" : ""}">
                     <div class="res-header">
                         <div>
-                            <span class="res-alias-etiqueta">Evaluado a ciegas como ${escaparHTML(res.alias)}</span>
                             <div class="res-nombre">${esPrimero ? "🏆 " : ""}${escaparHTML(res.nombre)}</div>
                         </div>
                         <div class="res-afinidad">${res.afinidad}%</div>
@@ -2233,7 +2259,7 @@
 
         document.getElementById("contenedor-resultados").innerHTML = htmlRes;
 
-        // Renderizado del bloque desplegable de auditoría de fuentes y correspondencia
+        // Renderizado del bloque desplegable de auditoría de fuentes y revelación por pregunta
         renderizarAuditoriaFuentes();
 
         // Cerrar el desplegable de auditoría por defecto al llegar a resultados
@@ -2243,30 +2269,25 @@
     }
 
     function renderizarAuditoriaFuentes() {
-        let htmlAuditoria = `<div class="correspondencia-grid">`;
+        let htmlAuditoria = `<div style="margin-top: 16px;">`;
 
-        // Correspondencia Partido A, B, C, D -> Nombre real
-        mapaPartidos.forEach(partido => {
-            htmlAuditoria += `
-                <div class="correspondencia-card">
-                    <span class="correspondencia-alias">${escaparHTML(partido.alias)}</span>
-                    <span class="correspondencia-real">${escaparHTML(partido.nombre_real)}</span>
-                </div>`;
-        });
-
-        htmlAuditoria += `</div>`;
-
-        // Listado completo de cuestiones con propuestas reales y fuente oficial (página exacta 2026)
+        // Listado completo de cuestiones en el mismo orden evaluado, revelando el partido real de cada propuesta
         cuestionesActivas.forEach((cuestion, idx) => {
             const nombreComp = obtenerNombreCompetencia(cuestion.competencia_id);
             const subcomp = cuestion.subcompetencia ? ` › ${escaparHTML(cuestion.subcompetencia)}` : "";
+            const partidosEnPregunta = ordenPartidosPorCuestion[cuestion.id] ||
+                BASE_DE_DATOS.partidos_oficiales.map((p, i) => ({
+                    id_real: p.id,
+                    nombre_real: p.nombre,
+                    etiqueta: `Propuesta ${i + 1}`
+                }));
 
             htmlAuditoria += `
                 <div class="auditoria-cuestion">
-                    <div class="migas-pan">${idx + 1}. ${escaparHTML(nombreComp)}${subcomp}</div>
+                    <div class="migas-pan">Pregunta ${idx + 1} · ${escaparHTML(nombreComp)}${subcomp}</div>
                     <h4>${escaparHTML(cuestion.titulo)}</h4>`;
 
-            mapaPartidos.forEach(partido => {
+            partidosEnPregunta.forEach(partido => {
                 const medida = cuestion.medidas ? cuestion.medidas[partido.id_real] : null;
                 const voto = votosUsuario[cuestion.id] ? votosUsuario[cuestion.id][partido.id_real] : undefined;
                 const tieneVoto = voto !== undefined && voto !== null;
@@ -2277,7 +2298,7 @@
                         <div class="auditoria-medida-top">
                             <div>
                                 <span class="auditoria-partido-nombre">${escaparHTML(partido.nombre_real)}</span>
-                                <span class="auditoria-alias-mini">(${escaparHTML(partido.alias)})</span>
+                                <span class="auditoria-alias-mini">(${escaparHTML(partido.etiqueta)})</span>
                             </div>
                             ${medida && medida.consta
                                 ? `<span class="tag-voto-usuario ${tieneVoto ? "" : "sin-voto"}">${etiquetaVoto}</span>`
@@ -2300,6 +2321,7 @@
             htmlAuditoria += `</div>`;
         });
 
+        htmlAuditoria += `</div>`;
         document.getElementById("contenido-auditoria").innerHTML = htmlAuditoria;
     }
 
@@ -2311,7 +2333,7 @@
         modoElegido = "";
         pesosUsuario = {};
         votosUsuario = {};
-        mapaPartidos = [];
+        ordenPartidosPorCuestion = {};
         cuestionesActivas = [];
         totalMedidasEvaluables = 0;
 
